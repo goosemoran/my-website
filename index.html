@@ -1,0 +1,1008 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BELLOTA BLANCA</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="BELLOTA BLANCA: International content sales and rights trading. Chinese film, television and animation for Spain and Latin America.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&display=swap">
+<style>
+/* Layout concept: a film-market sales sheet. Navy masthead and hero over an ivory catalogue floor;
+   metadata set in mono like a market screener; gold only for rules, labels and the one primary action. */
+:root{
+  --navy:#102F4B; --gold:#C6A46A; --ivory:#F5F3EE; --char:#263746;
+  --bg:#F5F3EE; --surface:#FBFAF6; --surface-2:#ECE8DD; --ink:#263746; --ink-soft:#56657A; --head:#102F4B;
+  --rule:#D8D1C0; --gold-ink:#8A6824; --band:#102F4B; --band-ink:#F5F3EE; --band-soft:#B5C2CF;
+  --field:#FFFFFF; --focus:#1B5E9B; --ok:#2F7D5B; --warn:#A5651D;
+  --display:"Bodoni Moda","Noto Serif SC","Songti SC",Georgia,serif;
+  --body:"Hanken Grotesk","Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --mono:"IBM Plex Mono","Noto Sans SC",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#091B2B; --surface:#0F2840; --surface-2:#133252; --ink:#DDE3E8; --ink-soft:#9DAAB8; --head:#F3EEE2;
+    --rule:#244462; --gold-ink:#D6B67A; --band:#0A2238; --field:#0B2035; --focus:#7DB4E8; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#091B2B; --surface:#0F2840; --surface-2:#133252; --ink:#DDE3E8; --ink-soft:#9DAAB8; --head:#F3EEE2;
+  --rule:#244462; --gold-ink:#D6B67A; --band:#0A2238; --field:#0B2035; --focus:#7DB4E8; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--body);-webkit-font-smoothing:antialiased;
+  padding-left:max(0px,env(safe-area-inset-left,0px));padding-right:max(0px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--band)}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--mono)}
+.eyebrow{font:500 11.5px/1.2 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--gold-ink)}
+.band .eyebrow,.hero .eyebrow{color:var(--gold)}
+h1,h2,h3,h4{font-family:var(--display);color:var(--head);font-weight:700;margin:0;text-wrap:balance;line-height:1.12}
+:lang(zh) h1,:lang(zh) h2,:lang(zh) h3{font-weight:700;line-height:1.28}
+h2{font-size:clamp(28px,3.6vw,44px);letter-spacing:-.01em}
+h3{font-size:22px}
+p{margin:0}
+.lede{font-size:18px;color:var(--ink-soft);max-width:62ch}
+.sec{padding-block:76px}
+.sec.tint{background:var(--surface-2)}
+.sec-head{display:flex;flex-direction:column;gap:12px;margin-bottom:36px;max-width:780px}
+.sec-head.row{max-width:none;flex-direction:row;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.band{background:var(--band);color:var(--band-ink)}
+.band h2,.band h3{color:var(--band-ink)}
+.band .lede,.band p{color:var(--band-soft)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--head);background:transparent;color:var(--head);padding:12px 20px;font:600 13px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:background .15s,color .15s,border-color .15s}
+.btn:hover{background:var(--head);color:var(--bg)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:#0B2236}
+.btn.gold:hover{background:#D8B97C;border-color:#D8B97C;color:#0B2236}
+.band .btn,.hero .btn{border-color:var(--band-ink);color:var(--band-ink)}
+.band .btn:hover,.hero .btn:hover{background:var(--band-ink);color:var(--navy)}
+.band .btn.gold,.hero .btn.gold{border-color:var(--gold);color:#0B2236;background:var(--gold)}
+.btn.sm{padding:9px 14px;font-size:11.5px}
+.link{font:500 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;background:none;border:0;padding:0;text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--gold);color:inherit}
+
+/* header */
+.mast{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--band);color:var(--band-ink);border-bottom:1px solid rgba(198,164,106,.35)}
+.mast-top{display:flex;align-items:center;gap:20px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;background:none;border:0;padding:0;text-align:left;color:var(--band-ink)}
+.brand img{width:54px;height:54px;flex:none;display:block}
+.brand b{display:block;font:700 19px/1 var(--display);letter-spacing:.14em}
+.brand small{display:block;font:500 9.5px/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-top:5px}
+.mast-right{margin-left:auto;display:flex;align-items:center;gap:18px}
+.lang{display:flex;border:1px solid rgba(245,243,238,.35);border-radius:2px}
+.lang button{background:none;border:0;padding:7px 11px;font:500 12px/1 var(--mono);letter-spacing:.06em;color:var(--band-soft)}
+.lang button[aria-pressed="true"]{background:var(--band-ink);color:var(--navy)}
+.mast .contact-link{font:500 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--band-ink);background:none;border:0;padding:0}
+.mast .contact-link:hover{color:var(--gold)}
+.burger{display:none;background:none;border:1px solid rgba(245,243,238,.35);color:var(--band-ink);width:42px;height:38px;border-radius:2px}
+.nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;border-top:1px solid rgba(245,243,238,.12)}
+.nav::-webkit-scrollbar{display:none}
+.nav button{background:none;border:0;border-bottom:2px solid transparent;padding:13px 14px;font:500 11.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--band-soft);white-space:nowrap}
+.nav button:hover{color:var(--band-ink)}
+.nav button[aria-current="page"]{color:var(--band-ink);border-bottom-color:var(--gold)}
+
+/* hero */
+.hero{background:var(--navy);color:var(--ivory);position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:48px;align-items:center;padding-block:64px 56px}
+.hero h1{color:var(--ivory);font-size:clamp(38px,5.4vw,76px);letter-spacing:-.015em;line-height:1.04}
+.hero h1 span{display:block}
+.hero h1 span:nth-child(2){color:var(--gold)}
+:lang(zh) .hero h1{font-size:clamp(34px,4.6vw,62px)}
+.hero .sub{font:500 13px/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:26px 0 14px}
+.hero p.intro{font-size:18px;color:#C9D3DC;max-width:54ch}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.wall{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;height:600px;overflow:hidden;-webkit-mask-image:linear-gradient(transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(transparent,#000 12%,#000 88%,transparent)}
+.wall .col{display:flex;flex-direction:column;gap:12px;animation:up 70s linear infinite}
+.wall .col:nth-child(2){animation-name:down;animation-duration:85s}
+.wall .col:nth-child(3){animation-duration:78s}
+.wall img{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:2px;background:#16324D}
+@keyframes up{to{transform:translateY(-50%)}}
+@keyframes down{from{transform:translateY(-50%)}to{transform:translateY(0)}}
+.route{border-top:1px solid rgba(198,164,106,.35);background:rgba(0,0,0,.18)}
+.route-in{display:flex;align-items:center;gap:20px 36px;flex-wrap:wrap;padding-block:18px}
+.route .path{font:500 12px/1 var(--mono);letter-spacing:.18em;color:var(--gold)}
+.route .terr{display:flex;gap:8px 14px;flex-wrap:wrap;font:400 12px/1 var(--mono);letter-spacing:.1em;color:#B5C2CF}
+.route .terr b{font-weight:500;color:var(--ivory)}
+.route .tot{margin-left:auto;font:400 12px/1.2 var(--mono);color:#B5C2CF;letter-spacing:.06em}
+
+/* home blocks */
+.who{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px;align-items:start}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--rule)}
+.facts div{padding:18px 0;border-bottom:1px solid var(--rule)}
+.facts div:nth-child(odd){padding-right:18px;border-right:1px solid var(--rule)}
+.facts div:nth-child(even){padding-left:22px}
+.facts b{display:block;font:700 32px/1.1 var(--display);color:var(--head)}
+.facts span{font:500 11px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.biz{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:2px solid var(--head)}
+.biz article{padding:26px 28px 30px 0;display:flex;flex-direction:column;gap:12px}
+.biz article+article{padding-left:28px;border-left:1px solid var(--rule)}
+.biz .n{font:500 12px/1 var(--mono);letter-spacing:.14em;color:var(--gold-ink)}
+.biz ul{margin:6px 0 0;padding:0;list-style:none;font-size:14.5px;color:var(--ink-soft)}
+.biz li{padding:6px 0;border-top:1px solid var(--rule)}
+.cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.cat{background:var(--surface);border:1px solid var(--rule);padding:18px 18px 16px;text-align:left;display:flex;flex-direction:column;gap:8px;min-height:128px;border-radius:2px;transition:border-color .15s,transform .15s}
+.cat:hover{border-color:var(--gold);transform:translateY(-2px)}
+.cat .ct{font:700 19px/1.2 var(--display);color:var(--head)}
+.cat .cn{margin-top:auto;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--gold-ink)}
+.cat.empty{opacity:.7;border-style:dashed}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.entry{background:var(--band);color:var(--band-ink);padding:28px;display:flex;flex-direction:column;gap:14px;border-radius:2px;border-top:3px solid var(--gold)}
+.entry h3{color:var(--band-ink)}
+.entry p{color:var(--band-soft);font-size:15px}
+.entry .btn{margin-top:auto;align-self:flex-start}
+.partners{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0;border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+.partner{padding:24px 22px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:8px}
+.partner b{font:700 20px/1.2 var(--display);color:var(--head)}
+.partner span{font-size:14px;color:var(--ink-soft)}
+.partner em{font:500 10.5px/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;font-style:normal;color:var(--gold-ink)}
+.note{font:400 12.5px/1.55 var(--mono);color:var(--ink-soft);max-width:78ch}
+
+/* cards & posters */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(172px,1fr));gap:26px 18px}
+.grid.six{grid-template-columns:repeat(6,minmax(0,1fr))}
+.card{background:none;border:0;padding:0;text-align:left;display:flex;flex-direction:column;gap:10px;min-width:0}
+.poster{position:relative;aspect-ratio:2/3;background:#16324D;border-radius:2px;overflow:hidden;box-shadow:0 1px 0 var(--rule),0 12px 24px -16px rgba(9,27,43,.6);transition:transform .2s,box-shadow .2s}
+.card:hover .poster{transform:translateY(-4px);box-shadow:0 0 0 1px var(--gold),0 18px 28px -16px rgba(9,27,43,.7)}
+.poster img{width:100%;height:100%;object-fit:cover}
+.poster.sq{background:#0E2740}
+.poster.sq::before{content:"";position:absolute;inset:-10px;background:var(--bgimg) center/cover;filter:blur(18px) saturate(1.2);opacity:.85}
+.poster.sq img{position:relative;top:50%;transform:translateY(-50%);height:auto;aspect-ratio:1/1;object-fit:cover}
+.art{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px;background:linear-gradient(165deg,hsl(var(--h) 40% 25%),hsl(calc(var(--h) + 38) 48% 10%));color:#F5F3EE}
+.art::after{content:"";position:absolute;inset:8px;border:1px solid rgba(198,164,106,.55);pointer-events:none}
+.art i{font:500 9.5px/1.2 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-style:normal}
+.art b{font:700 clamp(17px,1.6vw,22px)/1.1 var(--display);text-wrap:balance;padding-inline:4px}
+.art small{font:400 10px/1.3 var(--mono);letter-spacing:.06em;color:#C9D3DC}
+.badge{position:absolute;left:8px;top:8px;z-index:2;background:var(--gold);color:#0B2236;font:600 9.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:5px 7px;border-radius:2px}
+.badge.prod{background:#F5F3EE}
+.ctitle{font:700 17px/1.2 var(--display);color:var(--head);text-wrap:balance}
+.csub{font:400 11.5px/1.5 var(--mono);color:var(--ink-soft);letter-spacing:.02em}
+.csub b{font-weight:500;color:var(--ink)}
+
+/* catalogue */
+.filters{display:flex;flex-direction:column;gap:16px;padding-block:22px;border-bottom:1px solid var(--rule);margin-bottom:26px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tabs button{background:transparent;border:1px solid var(--rule);color:var(--ink);padding:9px 13px;font:500 11.5px/1 var(--mono);letter-spacing:.06em;border-radius:2px}
+.tabs button[aria-pressed="true"]{background:var(--head);border-color:var(--head);color:var(--bg)}
+.tabs button span{opacity:.6;margin-left:6px}
+.ctrls{display:grid;grid-template-columns:minmax(220px,1.6fr) repeat(4,minmax(130px,1fr)) auto;gap:10px;align-items:end}
+.fld{display:flex;flex-direction:column;gap:6px;min-width:0}
+.fld label{font:500 10.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.fld input,.fld select,.fld textarea{background:var(--field);color:var(--ink);border:1px solid var(--rule);border-radius:2px;padding:11px 12px;font:400 15px/1.3 var(--body);min-width:0;width:100%}
+.fld textarea{min-height:104px;resize:vertical}
+.fld input::placeholder,.fld textarea::placeholder{color:var(--ink-soft);opacity:.8}
+.count{font:500 12px/1 var(--mono);letter-spacing:.08em;color:var(--ink-soft);margin-bottom:18px}
+.empty-state{padding:60px 0;text-align:center;color:var(--ink-soft)}
+
+/* modal */
+.scrim{position:fixed;inset:0;z-index:100;background:rgba(5,16,27,.72);display:flex;justify-content:center;align-items:flex-start;overflow-y:auto;padding:max(24px,env(safe-area-inset-top,0px)) max(12px,env(safe-area-inset-right,0px)) max(24px,env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px))}
+.panel{background:var(--bg);color:var(--ink);width:min(1020px,100%);border-radius:2px;position:relative;border-top:3px solid var(--gold);margin:auto 0}
+.panel .x{position:absolute;right:10px;top:10px;z-index:3;width:40px;height:40px;background:var(--surface);border:1px solid var(--rule);border-radius:2px;font-size:20px;line-height:1}
+.pan-grid{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:36px;padding:34px}
+.pan-grid .poster{position:sticky;top:24px;max-width:300px}
+.pan-main{display:flex;flex-direction:column;gap:18px;min-width:0}
+.pan-main h2{font-size:clamp(26px,3vw,38px);padding-right:44px}
+.pan-sub{font:400 15px/1.4 var(--body);color:var(--ink-soft);margin-top:-6px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font:500 11px/1 var(--mono);letter-spacing:.06em;padding:6px 8px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:2px}
+.chip.g{border-color:var(--gold);color:var(--gold-ink)}
+dl.spec{display:grid;grid-template-columns:150px minmax(0,1fr);margin:0;border-top:1px solid var(--rule)}
+dl.spec dt,dl.spec dd{padding:10px 0;border-bottom:1px solid var(--rule);margin:0}
+dl.spec dt{font:500 10.5px/1.5 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);padding-top:12px}
+dl.spec dd{font-size:15px}
+.fine{font:400 12px/1.55 var(--mono);color:var(--ink-soft)}
+.seasons{font:400 12.5px/1.7 var(--mono)}
+.inq{border-top:1px solid var(--rule);padding-top:20px;margin-top:4px}
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.form .full{grid-column:1/-1}
+.checks{display:flex;gap:6px;flex-wrap:wrap}
+.checks label{display:flex;align-items:center;gap:7px;border:1px solid var(--rule);background:var(--field);padding:8px 10px;font:400 13px/1 var(--body);border-radius:2px;cursor:pointer}
+.checks input{width:auto;accent-color:var(--navy)}
+.result{border:1px solid var(--gold);background:var(--surface);padding:20px;display:flex;flex-direction:column;gap:12px}
+.result pre{margin:0;white-space:pre-wrap;word-break:break-word;font:400 13px/1.6 var(--mono);color:var(--ink);background:var(--field);padding:14px;border:1px solid var(--rule);max-height:260px;overflow:auto}
+.err{color:var(--warn);font:500 12px/1.4 var(--mono)}
+
+/* animation */
+.studio{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:start;padding-block:12px 28px}
+.facts-line{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:22px 0}
+.facts-line div{padding:14px 22px 14px 0;margin-right:22px;min-width:120px}
+.facts-line b{display:block;font:700 24px/1.1 var(--display);color:var(--head)}
+.facts-line span{font:500 10.5px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.gallery img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:2px}
+.gallery img:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto;height:100%}
+.heroes{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.heroes figure{margin:0;background:#fff;border-radius:2px;padding:6px 4px 8px;text-align:center}
+.heroes img{aspect-ratio:3/4;object-fit:contain;width:100%}
+.heroes figcaption{font:500 9.5px/1.2 var(--mono);letter-spacing:.06em;color:#263746;text-transform:uppercase;margin-top:6px}
+.focus{display:flex;flex-wrap:wrap;gap:8px}
+
+/* network */
+.map{border:1px solid var(--rule);background:var(--surface);padding:26px 22px 22px}
+.map svg{width:100%;height:auto;display:block}
+.regions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:2px solid var(--head);margin-top:30px}
+.region{padding:22px 24px 26px 0;display:flex;flex-direction:column;gap:14px}
+.region+.region{padding-left:24px;border-left:1px solid var(--rule)}
+.mk{display:flex;flex-wrap:wrap;gap:6px}
+.mk span{font:500 12px/1 var(--mono);padding:8px 10px;border:1px dashed var(--ink-soft);color:var(--ink);border-radius:2px}
+.mk span.live{border:1px solid var(--gold);border-style:solid;background:var(--gold);color:#0B2236}
+.legend{display:flex;gap:22px;flex-wrap:wrap;margin-top:18px;font:400 12px/1 var(--mono);color:var(--ink-soft)}
+.legend i{display:inline-block;width:14px;height:14px;vertical-align:-3px;margin-right:8px;border-radius:2px}
+
+/* rights */
+.mods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:2px solid var(--head)}
+.mod{padding:24px 24px 26px 0;border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:8px}
+.mod:not(:nth-child(3n+1)){padding-left:24px;border-left:1px solid var(--rule)}
+.mod h3{font-size:19px}
+.mod p{font-size:15px;color:var(--ink-soft)}
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;counter-reset:s}
+.step{padding:22px 18px 4px 0;border-top:2px solid var(--gold);display:flex;flex-direction:column;gap:8px}
+.step:not(:first-child){padding-left:18px;border-left:1px solid rgba(245,243,238,.18)}
+.step b{font:700 18px/1.2 var(--display);color:var(--ivory)}
+.step .n{font:500 11px/1 var(--mono);letter-spacing:.14em;color:var(--gold)}
+.step p{font-size:14px}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.list{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px}
+.list li{padding:12px 0;border-top:1px solid var(--rule);font-size:15.5px}
+.list li b{font-family:var(--display);color:var(--head);font-weight:700}
+
+/* about / contact */
+.tl{display:grid;gap:0;border-top:1px solid var(--rule)}
+.tl div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:20px;padding:16px 0;border-bottom:1px solid var(--rule)}
+.tl b{font:500 13px/1.5 var(--mono);color:var(--gold-ink)}
+.people{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px}
+.cform{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.9fr);gap:56px;align-items:start}
+.addr{display:flex;flex-direction:column;gap:18px;border-top:2px solid var(--head);padding-top:20px}
+.addr div b{display:block;font:500 10.5px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.addr .sel{user-select:all}
+
+/* footer */
+.foot{background:var(--navy);color:#B5C2CF;padding-block:48px 36px;margin-top:0}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:40px}
+.foot h4{font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.foot a,.foot button.fl{color:#DDE3E8;text-decoration:none;background:none;border:0;padding:0;display:block;margin-bottom:10px;font-size:14px;text-align:left}
+.foot a:hover,.foot button.fl:hover{color:var(--gold)}
+.foot .tag{font:italic 500 20px/1.3 var(--display);color:var(--ivory);max-width:30ch}
+.foot .fine{color:#8CA0B3;margin-top:36px;border-top:1px solid rgba(245,243,238,.14);padding-top:18px}
+
+
+/* turn-2 additions */
+.blband{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:40px;border:1px solid var(--rule);background:var(--surface);padding:32px 36px;border-radius:2px;align-items:start}
+.blpts{display:grid;gap:18px}
+.blpts h4{font:500 11px/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:5px}
+.blpts p{font-size:14.5px;color:var(--ink-soft)}
+
+.cline{display:flex;gap:8px 22px;flex-wrap:wrap;font:500 14px/1.5 var(--mono)}
+.cline a{color:var(--gold-ink);text-decoration:underline;text-underline-offset:3px}
+.cline span{color:var(--ink-soft)}
+.cline.on-dark a{color:var(--gold)}
+.vband{display:grid;grid-template-columns:200px minmax(0,1fr);gap:40px;align-items:center;border:1px solid var(--rule);background:var(--surface);padding:34px 38px;border-radius:2px}
+.vband .big b{display:block;font:700 56px/1 var(--display);color:var(--head)}
+.vband .big span{font:500 11px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.want{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:48px;align-items:center}
+.want-box{border:1px solid rgba(245,243,238,.24);padding:28px;border-radius:2px}
+.flag{display:grid;grid-template-columns:210px minmax(0,1fr);gap:44px;align-items:center}
+.flag-poster{max-width:210px;width:100%}
+.feat-mecha{flex-direction:row;gap:28px;align-items:center;width:100%;padding:24px;border:1px solid var(--rule);background:var(--surface);border-radius:2px}
+.feat-mecha .fm-poster{width:150px;flex:none}
+.animhero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
+.animhero img{width:100%;border-radius:2px;aspect-ratio:4/3;object-fit:cover}
+.mh-grid{display:grid;grid-template-columns:minmax(0,1.2fr) 280px;gap:56px;align-items:center}
+.mhero{padding-block:64px}
+.mhero h1{font:700 clamp(42px,6vw,76px)/.98 var(--display);color:var(--band-ink);letter-spacing:-.01em}
+.mhero h1 span{color:var(--gold);font-size:.55em;letter-spacing:.14em}
+.mhero .lede{color:var(--band-soft)}
+.mh-poster{max-width:280px;width:100%;justify-self:end}
+.hcards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:34px}
+.hcard{display:grid;grid-template-columns:170px minmax(0,1fr);gap:20px;border:1px solid var(--rule);padding:16px;background:var(--surface);border-radius:2px}
+.hcard .himg{background:#fff;border-radius:2px;display:flex;align-items:center;justify-content:center;padding:6px;align-self:start}
+.hcard img{width:100%;aspect-ratio:3/4;object-fit:contain}
+.hcard .himg.two{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.hcard .hno{font:500 10.5px/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold-ink)}
+.hcard h3{font-size:22px;margin-top:6px}
+.hcard p{font-size:14.5px;color:var(--ink-soft)}
+.tbl-wrap{overflow-x:auto;border-top:2px solid var(--head)}
+.tbl{width:100%;border-collapse:collapse;font-size:14px;min-width:780px}
+.tbl th{font:500 10.5px/1.3 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);text-align:left;padding:12px 10px;border-bottom:1px solid var(--rule)}
+.tbl td{padding:12px 10px;border-bottom:1px solid var(--rule);white-space:nowrap}
+.mods.m4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.mods.m4 .mod:not(:nth-child(3n+1)){padding-left:0;border-left:0}
+.mods.m4 .mod:not(:nth-child(4n+1)){padding-left:24px;border-left:1px solid var(--rule)}
+.three.t2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.nav button[data-go="mechasia"]{color:var(--gold)}
+.nav button[data-go="mechasia"][aria-current="page"]{color:var(--band-ink)}
+
+@media (max-width:1020px){
+  .hero-grid{grid-template-columns:1fr;gap:32px;padding-block:44px 36px}
+  .wall{height:360px}
+  .who,.studio,.cform,.people{grid-template-columns:1fr;gap:32px}
+  .ctrls{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ctrls .fld:first-child{grid-column:1/-1}
+  .grid.six{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 0}
+  .step:nth-child(odd){padding-left:0;border-left:0}
+  .step:nth-child(even){padding-left:18px;border-left:1px solid rgba(245,243,238,.18)}
+  .step:last-child{grid-column:1/-1;padding-left:0;border-left:0}
+  .heroes{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .blband,.vband,.want,.flag,.animhero,.mh-grid{grid-template-columns:1fr;gap:28px}
+  .mh-poster{justify-self:start;max-width:220px}
+  .hcards{grid-template-columns:1fr}
+  .mods.m4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .mods.m4 .mod:not(:nth-child(4n+1)),.mods.m4 .mod:not(:nth-child(3n+1)){padding-left:0;border-left:0}
+  .mods.m4 .mod:nth-child(even){padding-left:24px;border-left:1px solid var(--rule)}
+}
+@media (max-width:760px){
+  .sec{padding-block:52px}
+  .burger{display:block}
+  .mast-right .contact-link{display:none}
+  .mast-right{gap:10px}
+  .mast-right .btn{display:none}
+  .nav{display:none;flex-direction:column;border-top:1px solid rgba(245,243,238,.2);padding-block:6px}
+  .nav.open{display:flex}
+  .nav button{text-align:left;padding:14px 4px;border-bottom:1px solid rgba(245,243,238,.1)}
+  .brand small{display:none}
+  .biz,.three,.mods,.regions,.two,.list,.foot-grid{grid-template-columns:1fr}
+  .biz article,.biz article+article{padding:22px 0;border-left:0;border-top:1px solid var(--rule)}
+  .mod,.mod:not(:nth-child(3n+1)){padding:20px 0;border-left:0}
+  .region,.region+.region{padding:20px 0;border-left:0;border-top:1px solid var(--rule)}
+  .facts{grid-template-columns:1fr 1fr}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 12px}
+  .grid.six{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pan-grid{grid-template-columns:1fr;padding:22px 16px}
+  .pan-grid .poster{position:relative;top:0;max-width:210px}
+  dl.spec{grid-template-columns:112px minmax(0,1fr)}
+  .form{grid-template-columns:1fr}
+  .gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gallery img:first-child{grid-column:span 2;grid-row:auto;aspect-ratio:16/9}
+  .heroes{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .tl div{grid-template-columns:84px minmax(0,1fr);gap:12px}
+  .route .tot{margin-left:0}
+  .steps{grid-template-columns:1fr}
+  .step,.step:not(:first-child),.step:nth-child(even){padding:18px 0 4px;border-left:0}
+  .step:last-child{grid-column:auto}
+  .vband,.blband{padding:24px 20px}
+  .vband .big b{font-size:44px}
+  .mods.m4,.three.t2{grid-template-columns:1fr}
+  .mods.m4 .mod,.mods.m4 .mod:nth-child(even){padding:20px 0;border-left:0}
+  .hcard{grid-template-columns:120px minmax(0,1fr);gap:14px}
+  .feat-mecha{flex-direction:column;align-items:flex-start;padding:18px}
+  .feat-mecha .fm-poster{width:140px}
+  .mhero{padding-block:44px}
+  .flag-poster{max-width:160px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .wall .col{animation:none}
+  .card:hover .poster,.cat:hover{transform:none}
+}
+
+/* ---- background design layer ---- */
+:root{--gl1:rgba(198,164,106,.18);--gl2:rgba(27,94,155,.07);--gl3:rgba(198,164,106,.11);--guide:rgba(16,47,75,.035);--tintline:rgba(138,104,36,.05)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--gl1:rgba(198,164,106,.10);--gl2:rgba(27,94,155,.22);--gl3:rgba(198,164,106,.06);--guide:rgba(245,243,238,.03);--tintline:rgba(245,243,238,.025)}}
+:root[data-theme="dark"]{--gl1:rgba(198,164,106,.10);--gl2:rgba(27,94,155,.22);--gl3:rgba(198,164,106,.06);--guide:rgba(245,243,238,.03);--tintline:rgba(245,243,238,.025)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+   radial-gradient(1000px 560px at 6% -6%,var(--gl1),transparent 62%),
+   radial-gradient(900px 700px at 104% 38%,var(--gl2),transparent 62%),
+   radial-gradient(760px 560px at -4% 96%,var(--gl3),transparent 62%),
+   repeating-linear-gradient(90deg,var(--guide) 0 1px,transparent 1px 112px)}
+.sec-head .eyebrow::before{content:"";display:inline-block;width:30px;height:1px;background:var(--gold);vertical-align:middle;margin-right:12px;transform:translateY(-1px)}
+.sec.tint{background:
+  repeating-linear-gradient(135deg,var(--tintline) 0 1px,transparent 1px 16px),
+  linear-gradient(180deg,var(--surface-2),color-mix(in srgb,var(--surface-2) 72%,var(--bg)));
+  border-block:1px solid var(--rule)}
+main>.sec:first-child:not(.band){background:
+  radial-gradient(760px 300px at 92% 0,var(--gl1),transparent 70%),
+  linear-gradient(180deg,color-mix(in srgb,var(--surface-2) 55%,transparent),transparent 78%);
+  border-bottom:1px solid var(--rule)}
+/* navy bands: depth, glow and a faint seal watermark */
+.band{position:relative;overflow:hidden;background:
+  radial-gradient(760px 420px at 88% -10%,rgba(198,164,106,.20),transparent 62%),
+  radial-gradient(640px 420px at 0% 110%,rgba(27,94,155,.34),transparent 62%),
+  repeating-linear-gradient(90deg,rgba(245,243,238,.03) 0 1px,transparent 1px 112px),
+  linear-gradient(135deg,#0D2840 0%,var(--band) 50%,#0A2238 100%);
+  border-top:1px solid rgba(198,164,106,.3)}
+.band::after{content:"";position:absolute;right:-80px;bottom:-120px;width:440px;height:440px;background:url(img/logo.png) center/contain no-repeat;opacity:.06;pointer-events:none}
+.band>*{position:relative;z-index:1}
+.hero{background:
+  radial-gradient(920px 540px at 80% 34%,rgba(198,164,106,.22),transparent 62%),
+  radial-gradient(720px 520px at 6% 112%,rgba(27,94,155,.40),transparent 62%),
+  repeating-linear-gradient(90deg,rgba(245,243,238,.035) 0 1px,transparent 1px 112px),
+  linear-gradient(160deg,#0E2B45 0%,var(--navy) 55%,#0A2238 100%)}
+.hero::after{content:"";position:absolute;left:-130px;bottom:-170px;width:520px;height:520px;background:url(img/logo.png) center/contain no-repeat;opacity:.05;pointer-events:none}
+.hero>*{position:relative;z-index:1}
+.foot{background:
+  radial-gradient(600px 300px at 90% 0,rgba(198,164,106,.12),transparent 65%),
+  linear-gradient(180deg,#0D2840,var(--navy))}
+.mhero{background:
+  radial-gradient(700px 520px at 82% 40%,rgba(27,94,155,.55),transparent 62%),
+  radial-gradient(640px 400px at 12% -8%,rgba(198,164,106,.22),transparent 62%),
+  repeating-linear-gradient(90deg,rgba(245,243,238,.04) 0 1px,transparent 1px 96px),
+  repeating-linear-gradient(0deg,rgba(245,243,238,.025) 0 1px,transparent 1px 96px),
+  linear-gradient(160deg,#0A2238 0%,#0E2D4A 60%,#081B2D 100%)}
+.vband,.blband,.feat-mecha,.want-box{box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 14px 34px -22px rgba(16,47,75,.35)}
+.vband,.blband{background:linear-gradient(135deg,var(--surface),color-mix(in srgb,var(--surface) 80%,var(--gold) 6%))}
+</style>
+
+</head><body>
+<div id="app"></div>
+<script>
+const ITEMS=[{"id":"sp2","cats":["doc"],"en":"Smart Pulse · Season 2","zh":"智汇中拉 · 第二季","sub":{"en":"China — LatAm in Motion","es":"China — LatAm in Motion","zh":"China — LatAm in Motion"},"img":"img/sp/s2.jpg","year":"2026–27","eps":{"en":"Several short videos + 1 × 30′ documentary","es":"Varios vídeos cortos + 1 documental de 30′","zh":"多条短视频 + 1部30分钟纪录片"},"run":"30 min","genres":["documentary","business"],"country":"cn","lic":"own","status":"prod","terr":"latam","langs":"es","lines":{"en":"Latin American hosts visit Chinese-invested companies on the ground, and are invited to China to see where the technology comes from.","es":"Presentadores latinoamericanos visitan sobre el terreno empresas con capital chino y viajan a China para conocer el origen de la tecnología.","zh":"拉美主持人走进中资企业的当地工厂，并受邀到中国探访技术的源头。"},"rights":["tv","svod","social"],"subs":{"en":"Bilingual Chinese–Spanish / Chinese–Portuguese","es":"Bilingües chino–español / chino–portugués","zh":"中西 / 中葡双语字幕"},"note":{"en":"Production starts 2026; completion and broadcast 2027 in Spanish and Portuguese. Live events planned in Colombia and Brazil in 2027.","es":"Producción en 2026; finalización y emisión en 2027, en español y portugués. Eventos presenciales previstos en Colombia y Brasil en 2027.","zh":"2026年开拍，2027年完成并播出，西语与葡语发行；2027年计划在哥伦比亚和巴西举办线下活动。"}},{"id":"sp1","cats":["doc"],"en":"Smart Pulse · Season 1","zh":"智汇中拉 · 第一季","img":"img/sp/key.jpg","year":"","eps":{"en":"4 documentary episodes","es":"4 episodios documentales","zh":"4集纪录片"},"run":"","genres":["documentary","business"],"country":"cn","lic":"own","status":"done","terr":"latam","langs":"es","lines":{"en":"Four Latin American creators follow Chinese companies in Colombia and Brazil, from e-commerce logistics to electric buses and driverless metro.","es":"Cuatro creadores latinoamericanos siguen a empresas chinas en Colombia y Brasil: de la logística del comercio electrónico a los autobuses eléctricos y el metro sin conductor.","zh":"四位拉美创作者走进在哥伦比亚与巴西的中国企业：从跨境电商物流到电动公交与无人驾驶地铁。"},"rights":["tv","svod","social"],"note":{"en":"Aired in 5 countries on 10+ channels; 68% audience retention at the premiere on Colombia's public channel; 1M followers reached with local creators; screened at the 17th Bogotá Audiovisual Market and selected at Cinemaluá. Recognised in July 2026 as an outstanding international communication project by the State Council Information Office of China.","es":"Emitida en 5 países y más de 10 canales; 68 % de retención de audiencia en el estreno del canal público de Colombia; 1 M de seguidores alcanzados con creadores locales; proyectada en el 17.º Bogotá Audiovisual Market y seleccionada en Cinemaluá. Reconocida en julio de 2026 como proyecto de comunicación internacional sobresaliente por la Oficina de Información del Consejo de Estado de China.","zh":"在5个国家、10余个频道播出；哥伦比亚公共频道首播观众留存率68%；通过本地创作者触达100万粉丝；入选第17届波哥大视听市场展映及Cinemaluá；2026年7月获国务院新闻办公室认可为优秀国际传播项目。"}},{"id":"mecha","cats":["animation"],"en":"MECHASIA: AWAKENING","zh":"机变战队：觉醒","img":"img/mc/poster.jpg","year":"","eps":{"en":"26 episodes","es":"26 episodios","zh":"26集"},"run":"13 min","featured":true,"genres":["scifi","action","animation3d"],"country":"cn","lic":"od","status":"done","terr":"world","langs":"zh","lines":{"en":"A thousand-year war between two mecha factions pauses, until a young heir leaves home to find his idol and is pulled into a three-way clash.","es":"Una guerra milenaria entre dos facciones de mechas se detiene, hasta que un joven heredero sale de casa en busca de su ídolo y queda atrapado en un choque a tres bandas.","zh":"两大机甲阵营持续千年的战争暂歇，年轻继承人为寻找偶像离家出走，却卷入三方混战。"},"rights":["tv","svod","avod","fast","license","toy"],"audience":{"en":"Ages 6+","es":"Mayores de 6 años","zh":"6岁以上"},"note":{"en":"3D realistic style, sci-fi. Third season of the franchise; the IP reaches its 10th anniversary in 2026, with an established fan base in Asia. Dual-form robot + vehicle toy line available for licensing: 7 heroes, 15–16.6 cm.","es":"Estilo 3D realista, ciencia ficción. Tercera temporada de la franquicia; la IP cumple su décimo aniversario en 2026, con una base de fans consolidada en Asia. Línea de juguetes de doble forma robot + vehículo disponible para licencias: 7 héroes, 15–16,6 cm.","zh":"3D写实风格，科幻题材，系列第三季；该IP于2026年迎来十周年，在亚洲拥有一定的粉丝基础。双形态“机器人+座驾”玩具线开放授权：7位英雄，高15–16.6厘米。"}},{"id":"f01","cats":["film"],"en":"Fight for Tomorrow","zh":"拼命三郎","img":"img/f/01.jpg","year":"2025","run":"101 min","genres":["action","drama"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"A retired tough guy fights to rediscover the meaning of family, friendship and tomorrow.","es":"Un duro retirado lucha por recuperar el sentido de la familia, la amistad y el mañana.","zh":"退隐多年的硬汉为重拾家庭、友情与事业的意义，再度拼尽全力。"},"dir":"Chan Tai Lee","cast":"Patrick Tam , Locker Lam, Merk Cheng","trailer":"https://youtu.be/lNKOoZjLCdo?si=lWfjxs78jY0hfLDw","langs":"zh","tags":[]},{"id":"f02","cats":["film"],"en":"Burning Stars","zh":"孤星計劃","img":"img/f/02.jpg","year":"2024","run":"105 min","genres":["history","suspense"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"Young students take on a top-secret mission they know is impossible, using themselves as bait to carry out an extreme evacuation.","es":"Un grupo de jóvenes asume una misión secreta que saben imposible y se ofrece como cebo para completar una evacuación extrema.","zh":"一群年轻学生接下明知不可能完成的绝密任务，以自身为诱饵，完成一场极限撤离。"},"dir":"Zhanxiong Xu","cast":"Wang Yuan , Zhang Xueying, Liang Jingkang","trailer":"https://vimeo.com/1047710100/02bb70504f?ts=0&share=copy","langs":"zh","tags":[]},{"id":"f03","cats":["film"],"en":"Go For Broke","zh":"重生","img":"img/f/03.jpg","year":"2024","run":"115 min","genres":["action","crime"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"A man whose family was destroyed by drug dealers secretly teams up with an anti-drug chief to take down the syndicate's top two figures.","es":"Un hombre cuya familia fue destruida por narcotraficantes se alía en secreto con un jefe antidrogas para derribar a los dos líderes de la banda.","zh":"家人被毒贩毁掉的男人暗中与缉毒队长联手，誓要铲除犯罪集团的两大头目。"},"dir":"Marc Ma","cast":"Nick Cheung, Ethan Juan, Marc Ma","trailer":"https://youtu.be/czekRd37oj8?si=EdKdsaCpjcloKUZf","langs":"zh","tags":[]},{"id":"f04","cats":["film"],"en":"I Want To Be Rich","zh":"做個有錢人","img":"img/f/04.jpg","year":"2024","run":"107 min","genres":["comedy","romance"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"A hardworking young man dreams of business success, a happy family and a life of wealth.","es":"Un joven trabajador sueña con triunfar en los negocios, formar una familia feliz y hacerse rico.","zh":"勤奋的年轻人憧憬事业有成、家庭幸福，做一个有钱人。"},"dir":"Ling Chi Man","cast":"Louis Cheung, Ng Siu Hin, Ah Ya","trailer":"https://youtu.be/MigxdiMkrNU?si=Y4ApPm6aeN4FmJVm","langs":"zh","tags":[]},{"id":"f05","cats":["film"],"en":"Invincible Swordsman","zh":"笑傲江湖","img":"img/f/05.jpg","year":"2024","run":"119 min","genres":["action","martial"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"Linghu Chong wants to leave the martial world behind, but a meeting with the cult leader Dongfang Bubai drags him back in.","es":"Linghu Chong quiere dejar atrás el mundo marcial, pero su encuentro con el líder de la secta Dongfang Bubai lo arrastra de nuevo.","zh":"令狐冲想远离江湖，却因遇见魔教教主东方不败而再度卷入纷争。"},"dir":"Luo Yi Wei","cast":"Zhang Yu Qi , Tim Huang, Sammo Hung","trailer":"https://vimeo.com/user229220570/review/1049523430/8b3deadae1","langs":"zh","tags":[]},{"id":"f06","cats":["film"],"en":"I Like a Rolling Stone","zh":"出走的決心","img":"img/f/06.jpg","year":"2024","run":"106 min","genres":["drama","women"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"At fifty, Li Hong finally decides to leave and sets out on a self-drive journey to live her own life.","es":"A los cincuenta años, Li Hong decide por fin marcharse y emprende un viaje en coche para vivir su propia vida.","zh":"五十岁的李红终于下定决心出走，开启一场自驾之旅，为自己而活。"},"dir":"YIN Lichuan","cast":"YONG MEI, JIANG Wu, ZHANG Benyu","trailer":"https://vimeo.com/user229220570/review/1066260495/aa636a5e6d","langs":"zh","tags":[]},{"id":"f07","cats":["film"],"en":"Yin Yang Mansion","zh":"鴛鴦樓·驚魂","img":"img/f/07.jpg","year":"2024","run":"95 min","genres":["thriller"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"Lured by a huge insurance payout, a group moves into a haunted tower, where a night of reckoning awaits them.","es":"Atraídos por un enorme seguro, varios personajes se instalan en un edificio encantado donde les espera una noche de ajuste de cuentas.","zh":"一群人被巨额保金诱惑住进阴森“鬼”楼，头七回魂夜，冤魂前来清算。"},"dir":"Shenghe Wang","cast":"Li Meng, Su Xiaoding, Liu Xun","trailer":"https://youtu.be/VwecUvV3aKc?si=IaiJJQn6e9OTjWnj","langs":"zh","tags":[]},{"id":"f08","cats":["film"],"en":"Crypto Storm","zh":"反貪風暴之加密危機","img":"img/f/08.jpg","year":"2023","run":"101 min","genres":["action","drama"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"An ICAC investigator probes a bank executive's crypto market manipulation and uncovers a deeper conspiracy.","es":"Un investigador de la ICAC indaga la manipulación del mercado cripto por un directivo bancario y descubre una conspiración más profunda.","zh":"廉署调查主任追查银行高管操纵加密货币市场，发现背后另有更深的阴谋。"},"dir":"Terry N","cast":"Ron NG, Justin Cheung, Edward Ma","trailer":"https://youtu.be/Ft1JkGeZuRk?si=XV74VX8EwLDbwdw9","langs":"zh","tags":[]},{"id":"f09","cats":["film"],"en":"Endless Battle","zh":"無間一戰","img":"img/f/09.jpg","year":"2023","run":"87 min","genres":["action","crime"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"A Hong Kong crime film that combines two genre staples: the undercover agent and brotherhood.","es":"Un policíaco hongkonés que combina dos clásicos del género: el agente encubierto y la hermandad.","zh":"一部结合“卧底”与“兄弟情义”两大港片元素的犯罪动作片。"},"dir":"Mak HO Pong","cast":"Ron NG, Justin Cheung, Edward Ma","trailer":"https://youtu.be/v4swCOmZZE8?si=0in2LlIc0GEnieo-","langs":"zh","tags":[]},{"id":"f10","cats":["film"],"en":"Prison Flowers","zh":"女子監獄","img":"img/f/10.jpg","year":"2023","run":"88 min","genres":["action","crime"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"A jailed businesswoman allies with an inmate to challenge the cell block's boss for control.","es":"Una empresaria encarcelada se alía con una reclusa para disputar el poder al jefe del pabellón.","zh":"入狱的女商人联手狱友，与狱中大姐头争夺话语权。"},"dir":"Lui Mei-Fung","cast":"Karena NG, Jeannie Chan, Gillian Chung","trailer":"https://www.youtube.com/watch?v=0uPjD5NMrmk","langs":"zh","tags":[]},{"id":"f11","cats":["film"],"en":"Tainted Love","zh":"鸚鵡殺","img":"img/f/11.jpg","year":"2023","run":"100 min","genres":["romance","thriller"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"A betrayed woman meets new friends through a parrot and finds all three share the same wound.","es":"Una mujer traicionada conoce a nuevos amigos gracias a un loro y descubre que los tres comparten la misma herida.","zh":"被背叛的女子因一只鹦鹉结识新朋友，发现三人有着同样的遭遇。"},"dir":"Ma Ying Xin","cast":"Zhou Dong Yu, Zhang Yu, Zang You Hao","trailer":"https://youtu.be/JZzmZ5KUOh0?si=TQo07u2hU3vraL8D","langs":"zh","tags":[]},{"id":"f12","cats":["film"],"en":"Breakout Brothers","zh":"逃獄兄弟","img":"img/f/12.jpg","year":"2020","run":"91 min","genres":["action","crime"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"Three inmates with urgent reasons to get out band together to plot a desperate escape.","es":"Tres reclusos con razones urgentes para salir se unen y planean una fuga desesperada.","zh":"三名各有苦衷的囚犯联手策划一场孤注一掷的越狱。"},"dir":"Mak Ho Pong","cast":"Raymond Wong, Patrick Tam, Julian Cheung","trailer":"","langs":"zh","tags":[]},{"id":"f13","cats":["film"],"en":"Breakout Brothers 2","zh":"逃獄兄弟2","img":"img/f/13.jpg","year":"2022","run":"85 min","genres":["action","crime"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"A young entrepreneur behind bars offers a fortune to fellow inmates to help him break out.","es":"Un joven empresario en prisión ofrece una fortuna a otros reclusos para que le ayuden a fugarse.","zh":"入狱的年轻企业家开出重金，请狱友助他越狱。"},"dir":"Mak Ho Pong","cast":"Ron NG, Patrick Tam, Louis Cheung","trailer":"https://www.youtube.com/watch?v=mDuSxJ5Cx1M","langs":"zh","tags":[]},{"id":"f14","cats":["film"],"en":"Breakout Brothers 3","zh":"逃獄兄弟3","img":"img/f/14.jpg","year":"2022","run":"86 min","genres":["action","crime"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"The prison-break franchise returns with a new escape plan and a bigger payout.","es":"La franquicia de fugas vuelve con un nuevo plan de escape y una recompensa mayor.","zh":"越狱系列再度回归，新的计划与更高的赏金同时登场。"},"dir":"Mak Ho Pong","cast":"Patrick Tam, Justin Cheung, Adam Pak","trailer":"https://youtu.be/ZKxc8bm47L8","langs":"zh","tags":[]},{"id":"f15","cats":["film"],"en":"Say Yes Again","zh":"再說一次我願意","img":"img/f/15.jpg","year":"2022","run":"95 min","genres":["romance"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"After a failed proposal, Luke keeps waking up on the same morning and must try again.","es":"Tras una pedida de mano fallida, Luke despierta una y otra vez la misma mañana y debe intentarlo de nuevo.","zh":"求婚失败后，卢克一次次回到同一个清晨，只能重新再来。"},"dir":"Harry Shuei","cast":"Phil Hou, Molly Chiang , Kuo Shu Yau","trailer":"https://youtu.be/6ME5iTVBjSI","langs":"zh","tags":[]},{"id":"f16","cats":["film"],"en":"G Storm","zh":"G風暴","img":"img/f/16.jpg","year":"2021","run":"93 min","genres":["action"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"An investigator races to stop a terrorist attack at an anti-corruption symposium and finds a link to human trafficking.","es":"Un investigador corre para frenar un atentado en un simposio anticorrupción y descubre una conexión con la trata de personas.","zh":"调查员全力阻止反贪研讨会上的恐袭，并发现案件与人口贩运有关。"},"dir":"David Lam","cast":"Louis Koo, Kevin Cheng","trailer":"https://www.youtube.com/watch?v=wknnaRuF0dk","langs":"zh","tags":[]},{"id":"f17","cats":["film"],"en":"All's Well End's Well 2020","zh":"家有囍事2020","img":"img/f/17.jpg","year":"2020","run":"98 min","genres":["comedy"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"The Yau brothers team up with the Lui sisters to con a notorious mob boss.","es":"Los hermanos Yau se alían con las hermanas Lui para estafar a un conocido jefe mafioso.","zh":"丘氏兄弟与吕氏姐妹联手，设局骗过一位恶名昭彰的黑帮老大。"},"dir":"Raymond Wong","cast":"Raymond Wong, Patrick Tam, Julian Cheung","trailer":"https://www.youtube.com/watch?v=C_wQQDVMePk","langs":"zh","tags":[]},{"id":"f18","cats":["film"],"en":"Do You Love Me As I Love You","zh":"可不可以，你也剛好喜歡我","img":"img/f/18.jpg","year":"2020","run":"108 min","genres":["drama"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"A tarot-loving girl must help three unlikely couples get together so her crush can date her best friend.","es":"Una aficionada al tarot debe emparejar a tres parejas imposibles para que su amor de infancia pueda salir con su mejor amiga.","zh":"喜欢塔罗牌的女孩，必须先撮合三对“不可能”的情侣，暗恋对象才能追求她的闺蜜。"},"dir":"Chieh Shueh Bin","cast":"Yuu Chen, Tsao Yu Ning, Lin Ying Wei","trailer":"https://www.youtube.com/watch?v=qiTo00oAzTs","langs":"zh","tags":[]},{"id":"f19","cats":["film"],"en":"Wolf Pack","zh":"狼群","img":"img/f/19.jpg","year":"2022","run":"105 min","genres":["action"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"An overseas security squad discovers that foreign terrorists have set their sights on China's energy lifeline.","es":"Un equipo de seguridad en el extranjero descubre que terroristas foráneos apuntan a la arteria energética de China.","zh":"长期从事海外安保的狼群小队发现，境外恐怖势力已将手伸向中国能源命脉。"},"dir":"Michael Chiang","cast":"Max Zhang, Jiang Luxia, Aarif Lee","trailer":"https://youtu.be/JFN713Y4-IA","langs":"zh","tags":[]},{"id":"f20","cats":["film"],"en":"Deep Evil","zh":"緝魔","img":"img/f/20.jpg","year":"2019","run":"107 min","genres":["crime","thriller"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"Two investigators trace a headless victim to a top plastic surgeon with a complex past.","es":"Dos investigadores rastrean a una víctima decapitada hasta un famoso cirujano plástico con un pasado complejo.","zh":"两名搜查者追查无头尸身份，线索指向一位身世复杂的顶尖整形医生。"},"dir":"Mark Lu","cast":"Yu Wei Shao, Meng Po Fu, Kaiser Chuang","trailer":"https://www.youtube.com/watch?v=Fn7jYM7pNfo","langs":"zh","tags":[]},{"id":"f21","cats":["film"],"en":"An Inspector Calls","zh":"浮華宴","img":"img/f/21.jpg","year":"2015","run":"92 min","genres":["comedy"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"An inspector investigates a suspected suicide at a wealthy family's engagement party.","es":"Un inspector investiga un posible suicidio durante la fiesta de compromiso de una familia adinerada.","zh":"探长调查豪门订婚宴上一起疑似自杀事件。"},"dir":"Raymond Wong, Herman Yau","cast":"Teresa Mo, Louis Koo, Lam Ka Tung","trailer":"https://www.youtube.com/watch?v=GsTN_1EBzBQ","langs":"zh","tags":[]},{"id":"f22","cats":["film"],"en":"Midnight Garage","zh":"三更車庫","img":"img/f/22.jpg","year":"2015","run":"108 min","genres":["horror","thriller"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"A shopping mall's underground garage has cursed parking spaces, and a security guard must stop the curse.","es":"El garaje subterráneo de un centro comercial tiene plazas malditas y un guardia de seguridad debe detener la maldición.","zh":"商场地下车库的车位被诅咒，一名保安必须设法终结这场灵异事件。"},"dir":"Yaowu Zhou","cast":"Alex Fong, Gordon Lam, Yoon So-yi","trailer":"https://youtu.be/Dwf0VKt4WTk?si=Qx0YnHrtoH3FzNZ6","langs":"zh","tags":[]},{"id":"f23","cats":["film"],"en":"Flash Point","zh":"導火線","img":"img/f/23.jpg","year":"2007","run":"88 min","genres":["action","martial"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"A hot-headed inspector takes on a violent Vietnamese-Chinese gang that threatens an undercover cop.","es":"Un inspector impulsivo se enfrenta a una violenta banda vietnamita-china que amenaza a un policía encubierto.","zh":"火爆探员对抗一伙凶悍的越南华人犯罪团伙，卧底警员与女友陷入险境。"},"dir":"Wilson Yip","cast":"Ray Lui, Louis Koo, Kent Cheng","trailer":"https://youtu.be/wF-UyoKrB1o","langs":"zh","tags":[]},{"id":"f24","cats":["film"],"en":"Dragon Tiger Gate","zh":"龍虎門","img":"img/f/24.jpg","year":"2006","run":"96 min","genres":["action","martial"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"Three young martial arts masters rise from Hong Kong's back streets to help the powerless fight injustice.","es":"Tres jóvenes maestros de artes marciales surgen de los callejones de Hong Kong para ayudar a los indefensos.","zh":"三位年轻武林高手从香港街头崛起，为弱者对抗不公。"},"dir":"Wilson Yip","cast":"Shawn Yue, Nicholas Tse, Donnie Yen","trailer":"https://youtu.be/whr26IfeolA?si=nYO5GOHCWDOPmkub","langs":"zh","tags":[]},{"id":"f25","cats":["film"],"en":"Seven Swords","zh":"七劍","img":"img/f/25.jpg","year":"2005","run":"150 min","genres":["action","epic"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"Seven warriors come together to protect a village from a diabolical general.","es":"Siete guerreros se unen para proteger una aldea de un general diabólico.","zh":"七位剑客联手，保护村庄免受残暴将军的侵害。"},"dir":"Tsui Hark","cast":"Sun Hong-Lei, Lu Yi, Leon Lai","trailer":"https://youtu.be/MQjJ17fvuFE?si=3I3IdouhxcXOXGfj","langs":"zh","tags":[]},{"id":"f26","cats":["film"],"en":"Love Trilogy","zh":"三十分鐘戀愛","img":"img/f/26.jpg","year":"2004","run":"105 min","genres":["romance"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"Three vacationing couples run into difficulties in their relationships.","es":"Tres parejas de vacaciones afrontan dificultades en su relación.","zh":"三对度假情侣，各自面对感情中的难题。"},"dir":"Derek Chiu","cast":"Lu Yi, Francis NG, Anita Yuen","trailer":"http://youtu.be/P_nPO5LxLuI","langs":"zh","tags":[]},{"id":"f27","cats":["film"],"en":"Happy Family","zh":"風流家族","img":"img/f/27.jpg","year":"2002","run":"100 min","genres":["comedy"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"A pool of family secrets overflows as two young lovers decide to marry.","es":"Un mar de secretos familiares sale a la luz cuando dos jóvenes enamorados deciden casarse.","zh":"两位年轻恋人谈婚论嫁，家族秘密随之浮出水面。"},"dir":"Herman Yau","cast":"Nick Cheung, Kenny Chung, Cecilia Yip","trailer":"https://youtu.be/Lzs2T0clb5g","langs":"zh","tags":[]},{"id":"f28","cats":["film"],"en":"The Mirror","zh":"怪談之魔鏡","img":"img/f/28.jpg","year":"1999","run":"87 min","genres":["horror"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"Three tragic stories unfold around a cursed mirror that once belonged to a murdered courtesan.","es":"Tres historias trágicas giran en torno a un espejo maldito que perteneció a una cortesana asesinada.","zh":"三个悲剧故事围绕一面魔镜展开，镜子曾属于一位被害的名妓。"},"dir":"Siu Wing","cast":"Sherming Yiu, Ruby Lam, Nicholas Tse","trailer":"https://youtu.be/vvfZineluuw","langs":"zh","tags":[]},{"id":"f29","cats":["film"],"en":"Magnificent Team","zh":"非常警察","img":"img/f/29.jpg","year":"1998","run":"92 min","genres":["action"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"A special police team is set up to wipe out crime in Hong Kong, above all a gang of brutal robbers.","es":"Se crea un equipo especial de policía para acabar con el crimen en Hong Kong, sobre todo con una banda de ladrones brutales.","zh":"警队特别行动组成立，誓要铲除香港犯罪，尤其是一伙凶残劫匪。"},"dir":"David Lam","cast":"Simon Loui, Karen Tong, Hui Shiu Hung","trailer":"http://youtu.be/df2237cbguE","langs":"zh","tags":[]},{"id":"f30","cats":["film"],"en":"Troublesome Night 4","zh":"陰陽路4：與鬼同行","img":"img/f/30.jpg","year":"1998","run":"97 min","genres":["horror"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"Comic horror tales linked by Hong Kong tourists on holiday in the Philippines.","es":"Relatos de terror cómico unidos por turistas hongkoneses de vacaciones en Filipinas.","zh":"数则喜剧式恐怖故事，主角是到菲律宾度假的香港游客。"},"dir":"Herman Yau","cast":"Wayne Lai, Simon Loui, Pauline Suen","trailer":"http://youtu.be/8IKAaPFDFLc","langs":"zh","tags":[]},{"id":"f31","cats":["film"],"en":"Troublesome Night","zh":"陰陽路","img":"img/f/31.jpg","year":"1997","run":"98 min","genres":["horror"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"Four loosely connected ghost stories unfold on haunted streets in Hong Kong.","es":"Cuatro historias de fantasmas, vagamente conectadas, transcurren en calles encantadas de Hong Kong.","zh":"四个互有关联的鬼故事，发生在香港阴森的街巷之间。"},"dir":"Victor Tam, Herman Yau, Cheng Wai Man","cast":"Sunny Chan, Simon Loui, Koo Tin Lok","trailer":"","langs":"zh","tags":[]},{"id":"f32","cats":["film"],"en":"Eighteen Springs","zh":"半生緣","img":"img/f/32.jpg","year":"1997","run":"126 min","genres":["romance"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"In 1930s Shanghai, a young office girl falls in love with a factory worker at the same company.","es":"En la Shanghái de los años treinta, una joven oficinista se enamora de un obrero de la misma empresa.","zh":"三十年代的上海，一位年轻的办公室女孩爱上了同一家公司的工厂工人。"},"dir":"Ann Hui","cast":"Wu Qiab Lian, Leon Lai, Huang Lei","trailer":"https://youtu.be/TwWQRIgMIr4","langs":"zh","tags":[]},{"id":"f33","cats":["film"],"en":"Those Were the Days","zh":"慈雲山十三太保","img":"img/f/33.jpg","year":"1995","run":"90 min","genres":["action","drama"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"A gangster gets mixed up with drugs after a friend is killed in a gang fight, then turns over a new leaf.","es":"Un gánster se mete en las drogas tras ver morir a un amigo en una pelea de bandas y luego empieza de nuevo.","zh":"黑帮分子目睹好友在斗殴中丧命后沾上毒品，最终重新做人。"},"dir":"Billy Tang","cast":"Kent Cheng, Joey Meng, Eric Mo","trailer":"https://youtu.be/sNzoCyCwyng","langs":"zh","tags":[]},{"id":"f34","cats":["film"],"en":"The Bride with White Hair","zh":"白髮魔女傳","img":"img/f/34.jpg","year":"1993","run":"89 min","genres":["action","romance"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"An unwilling heir to a martial clan falls for a killer from the evil cult his clan is at war with.","es":"El reacio heredero de un clan marcial se enamora de una asesina de la secta malvada contra la que lucha su clan.","zh":"不愿继位的武当传人，与敌对魔教的杀手相爱。"},"dir":"Ronny Yu","cast":"Leslie Cheung, Francis Ng, Elaine Lui","trailer":"http://youtu.be/rtsL42soFqQ","langs":"zh","tags":[]},{"id":"f35","cats":["film"],"en":"The Bride with White Hair II","zh":"白髮魔女傳2","img":"img/f/35.jpg","year":"1993","run":"80 min","genres":["action"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"On the wedding night, the bride with white hair kidnaps Lyre, and Kit leads a rescue party against formidable enemies.","es":"En la noche de bodas, la novia de cabello blanco secuestra a Lyre y Kit encabeza una partida de rescate.","zh":"新婚之夜，白发魔女掳走新娘，新郎率众营救，对抗强敌。"},"dir":"David Wu","cast":"Sunny Chan, Richard Sun, Meng Yee Man","trailer":"https://youtu.be/hXpRVmwazxU","langs":"zh","tags":[]},{"id":"f36","cats":["film"],"en":"Princess Fragrance","zh":"香香公主","img":"img/f/36.jpg","year":"1987","run":"87 min","genres":["action","history"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"The leader of the Red Flower Society falls for the Uyghur Princess Fragrance, but the Qianlong Emperor also desires her.","es":"El líder de la Sociedad de la Flor Roja se enamora de la princesa uigur Fragancia, a quien también desea el emperador Qianlong.","zh":"红花会总舵主爱上维吾尔香香公主，却发现乾隆皇帝也对她有意。"},"dir":"Ann Hui","cast":"Nuo Ai, Shichang Da","trailer":"https://www.imdb.com/title/tt0094343/?ref_=ext_shr_lnk","langs":"zh","tags":[]},{"id":"f37","cats":["film"],"en":"Ghost for Sale","zh":"捉鬼專門店","img":"img/f/37.jpg","year":"1991","run":"85 min","genres":["comedy","horror"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"A film crew finds real ghosts while shooting at a cemetery and tries to sell one to the highest bidder.","es":"Un equipo de rodaje encuentra fantasmas de verdad en un cementerio e intenta vender uno al mejor postor.","zh":"剧组在墓地拍戏撞见真鬼，把鬼带回城里想卖给出价最高的人。"},"dir":"Kay Lai","cast":"Wilson Lam, Shing Fu On, Ricky Hui","trailer":"http://www.youtube.com/watch?v=UsZu_zAz6ok&feature=plcp","langs":"zh","tags":[]},{"id":"f38","cats":["film"],"en":"The Romance of Book and Sword","zh":"書劍恩仇錄","img":"img/f/38.jpg","year":"1987","run":"87 min","genres":["action","drama"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"The young leader of the Red Flower Society discovers a secret about the Manchu emperor that may change China's fate.","es":"El joven líder de la Sociedad de la Flor Roja descubre un secreto del emperador manchú que puede cambiar el destino de China.","zh":"红花会少年首领发现了满清皇帝的一个秘密，足以改变中国的命运。"},"dir":"Ann Hui","cast":"Nuo Ai, Shichang Da","trailer":"https://www.imdb.com/title/tt0093962/?ref_=ext_shr_lnk","langs":"zh","tags":[]},{"id":"f39","cats":["film"],"en":"Kids from Shaolin","zh":"少林小子","img":"img/f/39.jpg","year":"1984","run":"103 min","genres":["action","martial"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"Romance blossoms between two rival families practising Shaolin and Wudang kung fu, until they face a gang of bandits together.","es":"El amor florece entre dos familias rivales de kung-fu Shaolin y Wudang, hasta que se enfrentan juntos a una banda de bandidos.","zh":"少林与武当两个对立家族的子弟萌生爱意，最终联手对抗匪帮。"},"dir":"Hsin-YenChang","cast":"Jet Li, Huang Qiuyan, Yu Hai","trailer":"https://www.imdb.com/title/tt0086301/?ref_=ext_shr_lnk","langs":"zh","tags":[]},{"id":"f40","cats":["film"],"en":"The Enigmatic Case","zh":"碧水寒山奪命金","img":"img/f/40.jpg","year":"1980","run":"87 min","genres":["action","mystery"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"An imprisoned swordsman accused of three murders is kept alive only because he knows where hidden gold lies.","es":"Un espadachín preso, acusado de tres asesinatos, sigue vivo solo porque sabe dónde está oculto un tesoro.","zh":"身陷囹圄的剑客被指杀害三人，只因知道一笔黄金的下落才得以活命。"},"dir":"Johnnie To Kei-Fung","cast":"Damian Lau Chung-Yan, Cherie Chung","trailer":"https://www.imdb.com/title/tt0080688/?ref_=ext_shr_lnk","langs":"zh","tags":[]},{"id":"f41","cats":["film"],"en":"White Haired Devil Lady","zh":"白髮魔女傳","img":"img/f/41.jpg","year":"1980","run":"90 min","genres":["drama"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"Adapted from Liang Yusheng's martial arts novel, a version more faithful to the original story.","es":"Adaptación de la novela de artes marciales de Liang Yusheng, más fiel al original.","zh":"改编自梁羽生同名武侠小说，更贴近原著。"},"dir":"Hsin-YenChang","cast":"Henry Fung, Nina Paw Hee-Ching","trailer":"https://www.imdb.com/title/tt0080410/?ref_=ext_shr_lnk","langs":"zh","tags":[]},{"id":"f42","cats":["film"],"en":"Boiil","zh":"波依拉","img":"img/f/42.jpg","year":"2023","run":"94 min","genres":["drama"],"country":"gc","lic":"pkg","status":"done","terr":"latam","lines":{"en":"The intertwined emotional journeys of people and camels, and the spirit of protecting animals.","es":"Los viajes emocionales entrelazados de personas y camellos, y el espíritu de proteger a los animales.","zh":"讲述人与骆驼、人与人之间交织的情感旅程，展现守护生灵的高尚精神。"},"dir":"Ebusi","cast":"Ji Yafu, Delihai, Natasha","trailer":"","langs":"zh","tags":[]},{"id":"al_superwings","cats":["animation"],"en":"Super Wings","zh":"超级飞侠","img":"img/al/superwings.jpg","sq":true,"year":"","eps":null,"run":"","seasons":"S1 51×11′ · S2 49×11′ · S3–S5 40×11′ · S6 40×11′ · S7 40×11 · S8 40×11′ · S9 40×11′ (2025 Q2) · S10 40×11′ (2026 Q3)","format":"3D CGI","age":"3–6","genres":["edutainment","adventure","animation3d"],"country":"cn","lic":"alpha","status":"done","terr":"iberoam","langs":"","lines":{"en":"A delivery plane and his friends bring packages to children around the world; season 9 is Super Combo.","es":"Un avión repartidor y sus amigos llevan paquetes a niños de todo el mundo; la temporada 9 es Super Combo.","zh":"送货飞机乐迪与伙伴们把包裹送到世界各地的孩子手中；第九季为“超级合体”。"},"rights":["tv","svod","toy"]},{"id":"al_balala","cats":["animation"],"en":"Balala the Fairies","zh":"巴拉拉小魔仙","img":"img/al/balala.jpg","sq":true,"year":"","eps":null,"run":"","seasons":"S8 26×23′ · S9 52×23′ · S10 52×23′ · Chinese dubbing only","format":"3D CGI","age":"5–8","genres":["fantasy","family","animation3d"],"country":"cn","lic":"alpha","status":"done","terr":"iberoam","langs":"zh","lines":{"en":"Three fairies and their elves gather scattered star petals to keep the magic world and the human world in peace.","es":"Tres hadas y sus elfos reúnen pétalos estelares dispersos para mantener la paz en el mundo mágico y el humano.","zh":"三位小魔仙与精灵们一起收集散落的星花瓣，守护魔法世界与人类世界的和平。"},"rights":["tv","svod","toy"]},{"id":"al_dinoster","cats":["animation"],"en":"Quantum Heroes: Dinoster","zh":"量子特攻：恐龙战士","img":"img/al/dinoster.jpg","sq":true,"year":"","eps":null,"run":"","seasons":"S1 52×11′ · S2 26×11′ (2026 Q1) · S3 26×11′ (2026 Q3)","format":"3D CGI","age":"6–9","genres":["adventure","comedy","animation3d"],"country":"cn","lic":"alpha","status":"done","terr":"iberoam","langs":"","lines":{"en":"A multiverse-crossing superhero protects Dinopia, a city where dinosaurs live in harmony, from villains hunting its quantum core.","es":"Un superhéroe que cruza el multiverso protege Dinopia, una ciudad donde conviven dinosaurios, de villanos que buscan su núcleo cuántico.","zh":"一位穿越多元宇宙的超级英雄，守护恐龙共存的乌托邦城“恐龙国”，抵御觊觎量子核心的反派。"},"rights":["tv","svod","toy"]},{"id":"al_nado","cats":["animation"],"en":"Infinity Nado","zh":"飓风战魂","img":"img/al/nado.jpg","sq":true,"year":"","eps":null,"run":"","seasons":"S1 52×22′ · S2–S3 40×22′ · S5 31×22′ · S6 52×11′ · S7 60×11′ (three batches, 2026 Q1 – 2027 Q1)","format":"3D CGI","age":"6–12","genres":["action","adventure","animation3d"],"country":"cn","lic":"alpha","status":"done","terr":"iberoam","langs":"","lines":{"en":"A teenager named Lin travels with his master to become World Nado champion, making friends and rivals along the way.","es":"Un adolescente llamado Lin viaja con su maestro para convertirse en campeón mundial de Nado y hace amigos y rivales por el camino.","zh":"少年林跟随师父四处历练，立志成为世界陀螺冠军，一路结识伙伴与对手。"},"rights":["tv","svod","toy"]},{"id":"al_screechers","cats":["animation"],"en":"Screechers Wild: Skygen World","zh":"声鸣战士","img":"img/al/screechers.jpg","sq":true,"year":"","eps":null,"run":"","seasons":"S1 40×22′ · S2 52×22′ · S3 26×22′ · S4 26×22′ · S5 60×13′","format":"3D CGI","age":"Tweens & teens","genres":["action","scifi","family","animation3d"],"country":"cn","lic":"alpha","status":"done","terr":"iberoam","langs":"","lines":{"en":"In Skygen World, a cyberpunk metaverse built from short video, games and shopping, a cybersecurity-themed adventure unfolds.","es":"En Skygen World, un metaverso ciberpunk que reúne vídeo corto, juegos y compras, se desarrolla una aventura sobre ciberseguridad.","zh":"在由短视频、游戏、购物融合而成的赛博朋克“元宇宙”中，展开一场以网络安全为主题的冒险。"},"rights":["tv","svod","toy"]},{"id":"al_armorhero","cats":["animation"],"en":"Armor Hero Star Ray","zh":"铠甲勇士·刑天","img":"img/al/armorhero.jpg","sq":true,"year":"","eps":null,"run":"","seasons":"S1 52×24′ · S2 60×24 · S3 52×24′ · S4 52×24′ · S5 31×22′ · S6 26×23′ · S1–S6 Chinese dubbing only","format":"3D CGI","age":"Tweens & teens","genres":["action","adventure","family","animation3d"],"country":"cn","lic":"alpha","status":"done","terr":"iberoam","langs":"zh","lines":{"en":"Star Ray Armor protects the earth and fights so the Star General can keep helping humankind realise its wishes.","es":"La armadura Star Ray protege la Tierra y combate para que el General Estelar siga ayudando a la humanidad a cumplir sus deseos.","zh":"守护地球的星耀铠甲，为让星将军继续帮助人类与银河系实现美好愿望而战。"},"rights":["tv","svod","toy"]},{"id":"al_goat","cats":["animation"],"en":"Pleasant Goat and Big Big Wolf","zh":"喜羊羊与灰太狼","img":"img/al/goat.jpg","sq":true,"year":"","eps":null,"run":"","seasons":"TV series + movie · Chinese dubbing / English scripts","format":"2D","age":"Pre-school","genres":["comedy","family","animation2d"],"country":"cn","lic":"alpha","status":"done","terr":"iberoam","langs":"zh","lines":{"en":"Since 2005, the clever Pleasant Goat and friends outwit the clumsy but persistent Big Big Wolf in comic adventures.","es":"Desde 2005, la astuta Cabra Feliz y sus amigos burlan al torpe pero tenaz Gran Gran Lobo en aventuras cómicas.","zh":"自2005年起，机灵的喜羊羊与伙伴们在青青草原上一次次智斗笨拙又执着的灰太狼。"},"rights":["tv","svod","toy"]},{"id":"bl_blossom","cats":["drama"],"en":"Meet You at the Blossom","zh":"花开有时，颓靡无声","img":"img/bl/p01.jpg","year":"","eps":{"en":"12 episodes","es":"12 episodios","zh":"12集"},"run":"45 min","genres":["bl","history","romance","drama"],"country":"cnth","lic":"lib","status":"done","terr":"world","lines":{"en":"A wealthy, charming young master dreams of a good match, and rescues a cold, beautiful “Miss” in mortal danger, only to find the beauty’s gender is a mystery and her past is tied to his family.","es":"Un joven señorito rico y encantador sueña con un buen partido y salva a una fría y bella “señorita” en peligro de muerte, pero descubre que su género es un misterio y que su pasado está ligado a su familia.","zh":"风流阔绰的金家少爷渴望一段良缘，月黑风高夜英雄救美，却发现这位冷若冰山的“怀恩姑娘”性别成谜，身世还与金家有着剪不断的关系。"},"langs":"","prem":{"en":"2026-05-08","es":"2026-05-08","zh":"2026-05-08"},"plat":{"en":"Tencent Video, iQIYI, YouTube","es":"Tencent Video, iQIYI, YouTube","zh":"Tencent Video, iQIYI, YouTube"},"dir":"Chen Yishu 陈怡妤","cast":"Li Le (as Zongzheng Huai’en) · Wang Junkai (as Jin Xiaobao)","note":{"en":"First China–Thailand co-produced period BL.","es":"Primer BL de época coproducido entre China y Tailandia.","zh":"首部中泰合制古装BL。"}},{"id":"bl_shore","cats":["drama"],"en":"To My Shore","zh":"吾岸","img":"img/bl/p02.jpg","year":"","eps":{"en":"15 episodes","es":"15 episodios","zh":"15集"},"run":"45 min","genres":["bl","drama","romance"],"country":"cn","lic":"lib","status":"done","terr":"world_nojpkr","lines":{"en":"A senior pharma executive meets a Thai business heir after a car accident. What he calls a “game” becomes obsession, and finally a love that asks for sacrifice.","es":"Un alto directivo farmacéutico conoce a un heredero tailandés tras un accidente de coche. Lo que él llama un “juego” se vuelve obsesión y, al final, un amor que exige sacrificio.","zh":"医药企业高管游书朗在车祸中邂逅泰国财阀继承人樊霄，对方以“游戏”为名的追求渐渐成了执念，最终化作一段需要牺牲的爱。"},"langs":"","prem":{"en":"2025-11-15","es":"2025-11-15","zh":"2025-11-15"},"plat":{"en":"GagaOOLala, Rakuten Viki, friDay Video","es":"GagaOOLala, Rakuten Viki, friDay Video","zh":"GagaOOLala, Rakuten Viki, friDay Video"},"dir":"Ou Tankai 欧谭凯","cast":"Yun Qi (as Fan Xiao) · Hao Yiran (as You Shulang)"},{"id":"bl_rival","cats":["drama"],"en":"My Rival and Me","zh":"对家和我","img":"img/bl/p03.jpg","year":"","eps":{"en":"11 episodes","es":"11 episodios","zh":"11集"},"run":"30 min","genres":["bl","romance","comedy"],"country":"cn","lic":"lib","status":"done","terr":"world_noyt","lines":{"en":"Two actors the fans see as sworn enemies. One secretly writes the fan fiction about their pairing; the other has loved him all along and only dares to watch over him.","es":"Dos actores a quienes los fans ven como enemigos jurados. Uno escribe en secreto el fanfic sobre ambos; el otro lo ama desde siempre y solo se atreve a cuidarlo desde lejos.","zh":"粉丝眼中水火不容的两位演员：一人偷偷沉迷自己与对家的CP文，另一人早已暗恋，只敢默默守护。"},"langs":"Mandarin","prem":{"en":"2026-10-30","es":"2026-10-30","zh":"2026-10-30"},"plat":{"en":"GagaOOLala, YouTube","es":"GagaOOLala, YouTube","zh":"GagaOOLala, YouTube"},"dir":"","cast":"Han Xiaoyao (as Gu Yiliang) · Jiang Chen (as Wei Yanzi)","note":{"en":"Showbiz rom-com, enemies to lovers. Based on a web novel that has stayed in its platform’s top 3.","es":"Comedia romántica del mundo del espectáculo, de enemigos a amantes. Basada en una novela web que se mantiene en el top 3 de su plataforma.","zh":"娱乐圈爱情喜剧，欢喜冤家。改编自长期位居平台热度前三的网络小说。"}},{"id":"bl_fall","cats":["drama"],"en":"First Fall","zh":"叶落归池","img":"img/bl/p04.jpg","year":"","eps":{"en":"13 episodes","es":"13 episodios","zh":"13集"},"run":"40 min","genres":["bl","showbiz","campus","romance"],"country":"cn","lic":"lib","status":"done","terr":"request","lines":{"en":"Schoolmates who grew close are torn apart by family collapse. Five years later they meet again at a business dinner: one a rising entertainer, the other an investor back from abroad.","es":"Dos compañeros de instituto se unen y luego los separa la ruina de una familia. Cinco años después se reencuentran en una cena de negocios: uno es artista en ascenso y el otro, inversor recién llegado del extranjero.","zh":"高中时期渐生情愫的两人因家庭变故分离。五年后商业晚宴重逢，一位已是艺人，一位是海外归来的投资人。"},"langs":"Mandarin","prem":{"en":"Upcoming","es":"Próximamente","zh":"待播"},"plat":{"en":"To be announced","es":"Por anunciar","zh":"待公布"},"dir":"","cast":"Li Haoen (as Cheng Feichi) · Wang Ye (as Ye Qin)"},{"id":"bl_wuhui","cats":["drama"],"en":"Wuhui","zh":"污秽","img":"img/bl/p05.jpg","year":"","eps":{"en":"14 episodes","es":"14 episodios","zh":"14集"},"run":"45 min","genres":["bl","drama","romance"],"country":"cn","lic":"lib","status":"done","terr":"request","lines":{"en":"Two street-level survivors share a close, complicated bond until one is claimed as the long-lost heir of a rich family. Neither is a good man, and their fight for power and control turns into love.","es":"Dos supervivientes de la calle comparten un vínculo estrecho y complicado hasta que uno es reclamado como el heredero perdido de una familia rica. Ninguno es buena persona y su lucha por el poder y el control acaba en amor.","zh":"两个底层求生的人关系亲密又复杂，直到一人被认祖归宗成为豪门少爷。两位主角都不是好人，在权力与控制的纠缠中走向彼此。"},"langs":"Mandarin","prem":{"en":"Upcoming","es":"Próximamente","zh":"待播"},"plat":{"en":"To be announced","es":"Por anunciar","zh":"待公布"},"dir":"","cast":"","note":{"en":"Villain × villain, fake-and-real young master, happy ending.","es":"Villano × villano, falso y verdadero heredero, final feliz.","zh":"双恶人强强、真假少爷、HE。"}},{"id":"bl_jwy","cats":["drama"],"en":"Journey with You","zh":"与君同","img":"img/bl/p06.jpg","year":"","eps":{"en":"8 episodes","es":"8 episodios","zh":"8集"},"run":"50 min","genres":["bl","history","romance"],"country":"cn","lic":"lib","status":"done","terr":"world_noyt_jpkr","lines":{"en":"Fifth Prince Yin Qi is lured back to the capital and dies in a trap beside his closest friend. Reborn three years earlier, he vows to change their fate, and learns the tragedy is tied to the man he loves.","es":"El quinto príncipe Yin Qi vuelve a la capital engañado y muere en una trampa junto a su mejor amigo. Renacido tres años atrás, jura cambiar su destino y descubre que la tragedia está ligada al hombre que ama.","zh":"五皇子殷祈因密信重返京城，与挚友裴砚之同陷死局。重生回三年前，他决心改写命运，却发现前世悲剧与最爱之人密切相关。"},"langs":"Mandarin","prem":{"en":"2026-05-08","es":"2026-05-08","zh":"2026-05-08"},"plat":{"en":"GagaOOLala, FriDay Video, Heavenly","es":"GagaOOLala, FriDay Video, Heavenly","zh":"GagaOOLala, FriDay Video, Heavenly"},"dir":"Reese","cast":"Tang Bide (as Yin Qi) · Wang Jinghan (as Pei Yanzhi)","note":{"en":"Period BL: rebirth, rivals to lovers.","es":"BL de época: renacimiento, de rivales a amantes.","zh":"古装耽美：重生、宿敌变恋人。"}},{"id":"bl_crush","cats":["drama"],"en":"Secret Crush on You","zh":"非你默属","img":"img/bl/p07.jpg","year":"","eps":{"en":"15 episodes","es":"15 episodios","zh":"15集"},"run":"45 min","genres":["bl","comedy","campus","romance"],"country":"th","lic":"lib","status":"done","terr":"request","lines":{"en":"A quiet young man who has long watched a third-year senior from afar finally gets close to him, but a run of misunderstandings sends his feelings back into hiding.","es":"Un joven callado que lleva tiempo mirando de lejos a un estudiante mayor por fin se acerca a él, pero una serie de malentendidos vuelve a esconder sus sentimientos.","zh":"安静内向的Toh长期暗恋三年级学长Nuea，一次偶然让两人有了交集，一连串误会却让他再次把感情藏起。"},"langs":"Thai","prem":{"en":"2022-02-11","es":"2022-02-11","zh":"2022-02-11"},"plat":{"en":"YouTube","es":"YouTube","zh":"YouTube"},"dir":"Thanamin Wongskulphat","cast":"Billy Patchanon Ounsa-ard (as Nuea) · Seng Wichai Saefant (as Toh)"},{"id":"bl_ride","cats":["drama"],"en":"My Ride","zh":"驶入心途","img":"img/bl/p08.jpg","year":"","eps":{"en":"15 episodes","es":"15 episodios","zh":"15集"},"run":"45 min","genres":["bl","comedy","drama","romance"],"country":"th","lic":"lib","status":"done","terr":"latam_etc","lines":{"en":"An ordinary physician and a heartbroken motorbike-taxi driver meet by chance, and the plain, everyday ride between driver and passenger slowly turns from friendship into love.","es":"Un médico corriente y un mototaxista con el corazón roto se conocen por casualidad, y el trayecto cotidiano entre conductor y pasajero pasa poco a poco de la amistad al amor.","zh":"平凡的内科医生与失恋的摩的司机偶然相遇，司机与乘客之间平淡的旅程，渐渐从友情变成爱情。"},"langs":"Thai","prem":{"en":"2022-02-22","es":"2022-02-22","zh":"2022-02-22"},"plat":{"en":"GagaOOLala, WeTV","es":"GagaOOLala, WeTV","zh":"GagaOOLala, WeTV"},"dir":"Saroch Nuamsamram","cast":"Fame Chawinroj Likitchareonsakul (as Tawanoak) · Fluke Jeeratch Wongpian (as Mork)"},{"id":"bl_sky","cats":["drama"],"en":"You’re My Sky","zh":"你是我的天空","img":"img/bl/p09.jpg","year":"","eps":{"en":"8 episodes","es":"8 episodios","zh":"8集"},"run":"50 min","genres":["bl","sports","campus","drama"],"country":"th","lic":"lib","status":"done","terr":"request","lines":{"en":"At a sports academy, seven young athletes chase one championship dream together, and find that love may be the biggest obstacle on the road to it.","es":"En una academia deportiva, siete jóvenes atletas persiguen juntos el sueño de un campeonato y descubren que el amor puede ser el mayor obstáculo en el camino.","zh":"在体育学院里，七位年轻运动员怀揣同一个夺冠梦想，却发现爱或许才是通往成功路上最大的障碍。"},"langs":"Thai","prem":{"en":"2022-01-08","es":"2022-01-08","zh":"2022-01-08"},"plat":{"en":"One 31, WeTV, Rakuten Viki, Rakuten TV","es":"One 31, WeTV, Rakuten Viki, Rakuten TV","zh":"One 31, WeTV, Rakuten Viki, Rakuten TV"},"dir":"Dhammarong Sermrittirong","cast":"Tae Chayapat Kongsub (as Tupfah) · Suar Kritsanapong Sriphattiyathanat (as Thorn)"},{"id":"bl_room","cats":["drama"],"en":"Something in My Room","zh":"我和我的鬼室友","img":"img/bl/p10.jpg","year":"","eps":{"en":"10 episodes","es":"10 episodios","zh":"10集"},"run":"45 min","genres":["bl","fantasy","mystery","supernatural"],"country":"th","lic":"lib","status":"done","terr":"request","lines":{"en":"A ghost with no memory has only 49 days to recover it before his soul fades. He teams up with a university student who can speak to spirits to uncover how he died.","es":"Un fantasma sin memoria tiene solo 49 días para recuperarla antes de que su alma se desvanezca. Se alía con un estudiante universitario que habla con los espíritus para descubrir cómo murió.","zh":"失忆的鬼魂只有49天找回记忆，否则灵魂消散。他与拥有通灵能力的大学生联手追查死亡真相，并产生跨越生死的爱情。"},"langs":"Thai","prem":{"en":"2022-01-19","es":"2022-01-19","zh":"2022-01-19"},"plat":{"en":"CH3Plus, YouTube, Rakuten TV","es":"CH3Plus, YouTube, Rakuten TV","zh":"CH3Plus, YouTube, Rakuten TV"},"dir":"Tee Bundit Sintanaparadee","cast":"Nut Supanut Lourhaphanich (as Phob) · Plan Thanawat Koosuwan (as Phat)"},{"id":"bl_year","cats":["drama"],"en":"The Year Book","zh":"我们的年鉴","img":"img/bl/p11.jpg","year":"","eps":{"en":"8 episodes","es":"8 episodios","zh":"8集"},"run":"45 min","genres":["bl","drama","romance","youth"],"country":"th","lic":"lib","status":"done","terr":"request","lines":{"en":"Two best friends promise to chase their dreams together, then part over a broken promise. Four years later a yearbook brings them face to face with the truth.","es":"Dos mejores amigos se prometen perseguir sus sueños juntos y se separan por una promesa rota. Cuatro años después, un anuario los pone cara a cara con la verdad.","zh":"两位挚友约定一起追梦，却因一次失约而分开。四年后，一本年鉴让他们重新面对真相。"},"langs":"Thai","prem":{"en":"2021-07-15","es":"2021-07-15","zh":"2021-07-15"},"plat":{"en":"YouTube, iQIYI, Rakuten TV, U-NEXT, Viki","es":"YouTube, iQIYI, Rakuten TV, U-NEXT, Viki","zh":"YouTube, iQIYI, Rakuten TV, U-NEXT, Viki"},"dir":"Bancha Luangakkaratorn, Nipitpon Muangsinun, Mean Phiravich Attachitsataporn","cast":"Man Supakrit Charoonmatha (as Phob) · Title Teshin Anusananan (as Nut)"},{"id":"bl_blood","cats":["drama"],"en":"Golden Blood","zh":"金色之血","img":"img/bl/p12.jpg","year":"","eps":{"en":"8 episodes","es":"8 episodios","zh":"8集"},"run":"50 min","genres":["bl","fantasy","romance","suspense"],"country":"th","lic":"lib","status":"done","terr":"request","lines":{"en":"A university student is assigned a silent bodyguard by his father. He rebels against every rule, and through trial and growth the two fall into a lasting love.","es":"Un estudiante universitario recibe de su padre un escolta silencioso. Se rebela contra cada norma y, entre pruebas y aprendizaje, ambos caen en un amor duradero.","zh":"大学生Sky被父亲安排了一位沉默的保镖Sun，他处处反抗，两人在考验与成长中收获至死不渝的爱情。"},"langs":"Thai","prem":{"en":"2021-06-24","es":"2021-06-24","zh":"2021-06-24"},"plat":{"en":"Channel 3, WeTV, YouTube","es":"Channel 3, WeTV, YouTube","zh":"Channel 3, WeTV, YouTube"},"dir":"Mike Phontharis Chotkijsadarsopon","cast":"Gun Napat Na Ranong (as Sky) · Boat Tara Tipa (as Sun)"},{"id":"bl_second","cats":["drama"],"en":"Second Chance","zh":"此情可待","img":"img/bl/p13.jpg","year":"","eps":{"en":"6 episodes","es":"6 episodios","zh":"6集"},"run":"45 min","genres":["bl","youth","romance","drama"],"country":"th","lic":"lib","status":"done","terr":"request","lines":{"en":"People carrying old wounds each wait for a second chance at love, and learn to try again.","es":"Personas con viejas heridas esperan, cada una, una segunda oportunidad en el amor y aprenden a intentarlo de nuevo.","zh":"每个背负过去伤痕的人，都在等待一次重新相爱的“第二次机会”。"},"langs":"Thai","prem":{"en":"2021-03-29","es":"2021-03-29","zh":"2021-03-29"},"plat":{"en":"LINE TV, YouTube, Viki","es":"LINE TV, YouTube, Viki","zh":"LINE TV, YouTube, Viki"},"dir":"Nut Nutthachai Khrueasena","cast":"Tong Thanayut Thakoonauttaya (as Paper) · Fluke Chinnathan Rojrawee Thanakun (as Tongfah)"},{"id":"bl_tux","cats":["drama"],"en":"The Tuxedo","zh":"裁定终身","img":"img/bl/p14.jpg","year":"","eps":null,"run":"45 min","genres":["bl","comedy","romance","drama"],"country":"th","lic":"lib","status":"done","terr":"request","lines":{"en":"A bossy heir with severe social phobia meets a gentleman designer, and their undeniable attraction becomes a romance tailored for a lifetime.","es":"Un heredero mandón con fobia social grave conoce a un diseñador caballeroso y su atracción innegable se convierte en un romance a medida para toda la vida.","zh":"专横的富二代Nawee患有严重社交恐惧，遇上绅士设计师Aioun，两人的吸引力无法抗拒，一场为一生量身定做的浪漫就此开始。"},"langs":"Thai","prem":{"en":"2022-03-05","es":"2022-03-05","zh":"2022-03-05"},"plat":{"en":"GagaOOLala, WeTV","es":"GagaOOLala, WeTV","zh":"GagaOOLala, WeTV"},"dir":"Mike Phontharis Chotkijsadarsopon","cast":"Chap Suppacheep Chanapai (as Nawee) · Green Phongsathorn Padungktiwong (as Aioun)"},{"id":"bl_roommate","cats":["drama"],"en":"Roommate the Series","zh":"室友","img":"img/bl/p15.jpg","year":"","eps":{"en":"32 episodes","es":"32 episodios","zh":"32集"},"run":"1–3 min","genres":["bl","comedy","romance"],"country":"cnth","lic":"lib","status":"done","terr":"world","lines":{"en":"Xian goes home to inherit his late mother’s flat and finds she rented its rooms to five strangers. Six people under one roof, three different love stories.","es":"Xian vuelve a casa para heredar el piso de su madre fallecida y descubre que ella alquiló las habitaciones a cinco desconocidos. Seis personas bajo un mismo techo, tres historias de amor distintas.","zh":"Xian回家继承亡母的房子，发现母亲生前已把房间租给五位陌生人。六个人同住一个屋檐下，发展出三段不同的爱情。"},"langs":"Thai","prem":{"en":"2022-10-08","es":"2022-10-08","zh":"2022-10-08"},"plat":{"en":"YouTube","es":"YouTube","zh":"YouTube"},"dir":"","cast":"Jo Kavinpat Thanahiransilp (as Time) · BeBoy Nanthakorn Sringenthap (as Xian) · and four more","note":{"en":"Vertical BL short drama, 1–3 min episodes. First China–Thailand co-produced vertical-screen BL.","es":"Microdrama vertical BL, episodios de 1–3 min. Primer BL vertical coproducido entre China y Tailandia.","zh":"竖屏BL短剧，单集1–3分钟。首部中泰合制竖屏BL。"}}];
+/* ---------- state & helpers ---------- */
+const VIEWS=["home","catalogue","mechasia","rights","animation","network","coproduction","about","contact"];
+let lang="en";
+try{const s=localStorage.getItem("bb-lang");if(s)lang=s;else{const n=(navigator.language||"en").toLowerCase();lang=n.startsWith("zh")?"zh":n.startsWith("es")||n.startsWith("pt")?"es":"en"}}catch(e){const n=(navigator.language||"en").toLowerCase();lang=n.startsWith("zh")?"zh":n.startsWith("es")?"es":"en"}
+let view="home";
+const F={q:"",cat:"all",genre:"all",terr:"all",status:"all",src:"all"};
+let contactTab="buy";
+const i=(en,es,zh)=>lang==="es"?es:lang==="zh"?zh:en;
+const pick=o=>o?(o[lang]||o.en||""):"";
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const $=s=>document.querySelector(s);
+const MAIL="distri-cicc@foxmail.com",MAIL2="moranproduction@foxmail.com",MAIL3="bellotablancafilm@gmail.com",WA="8613533059826",PHONE="+86 135 3305 9826";
+const byId=id=>ITEMS.find(x=>x.id===id);
+
+/* ---------- vocab ---------- */
+const NAV={home:["HOME","INICIO","首页"],catalogue:["CONTENT CATALOGUE","CATÁLOGO","版权目录"],mechasia:["MECHASIA & TOYS","MECHASIA Y JUGUETES","机变战队·衍生品"],rights:["RIGHTS & SALES","DERECHOS Y VENTAS","版权贸易"],animation:["ANIMATION","ANIMACIÓN","动画"],network:["DISTRIBUTION NETWORK","RED DE DISTRIBUCIÓN","发行网络"],coproduction:["CO-PRODUCTION & IP","COPRODUCCIÓN E IP","联合制作与IP"],about:["ABOUT US","NOSOTROS","关于我们"],contact:["CONTACT","CONTACTO","联系我们"]};
+const nav=k=>NAV[k][lang==="es"?1:lang==="zh"?2:0];
+const CATS=[
+ ["drama","BL Drama · Thailand & China","Series BL · Tailandia y China","耽美剧 · 泰国与中国","Boys’ Love (耽美) romance series from Thailand and China, for platforms, broadcasters and YouTube.","Series románticas Boys’ Love (耽美) de Tailandia y China, para plataformas, cadenas y YouTube.","泰国与中国的耽美（BL）爱情剧集，面向平台、电视台与YouTube。"],
+ ["animation","Animation & Family","Animación y familiar","动画与儿童家庭","Animated series, films and IP, plus family entertainment, for TV, streaming and licensing.","Series, películas e IP de animación y entretenimiento familiar para TV, streaming y licencias.","面向电视、流媒体与授权的动画剧集、电影与IP，以及儿童与家庭内容。"],
+ ["short","Vertical Drama","Series verticales","竖屏剧","3,000+ vertical micro dramas: AI vertical drama, live action for English and Spanish-speaking regions, and Chinese titles. Full list on request.","Más de 3.000 microdramas verticales: series verticales con IA, acción real en inglés y español, y títulos chinos. Lista completa bajo petición.","3000+竖屏短剧：AI竖屏剧、面向英语与西语地区的真人竖屏剧、中文竖屏剧。完整片单可索取。"],
+ ["doc","Documentary","Documental","纪录片","History, culture, society and business documentary.","Documental de historia, cultura, sociedad y empresa.","历史、文化、社会与商业纪录片。"],
+ ["variety","Variety & Formats","Entretenimiento y formatos","综艺与Format","Shows, reality and format rights.","Programas, reality y derechos de formato.","综艺、真人秀与Format版权。"],
+ ["film","Films","Cine","电影","Features from Greater China, from classics to recent releases.","Largometrajes de la Gran China, de clásicos a estrenos recientes.","大中华区电影，从经典到近年新作。"]];
+const catName=k=>{const c=CATS.find(x=>x[0]===k);return c?c[lang==="es"?2:lang==="zh"?3:1]:k};
+const GEN={action:["Action","Acción","动作"],drama:["Drama","Drama","剧情"],comedy:["Comedy","Comedia","喜剧"],romance:["Romance","Romance","爱情"],thriller:["Thriller","Thriller","惊悚"],horror:["Horror","Terror","恐怖"],crime:["Crime","Crimen","犯罪"],martial:["Martial Arts","Artes marciales","武侠功夫"],history:["History","Historia","历史"],suspense:["Suspense","Suspense","悬疑"],mystery:["Mystery","Misterio","推理"],epic:["Epic","Épica","史诗"],women:["Women's","Drama femenino","女性题材"],documentary:["Documentary","Documental","纪录片"],business:["Business & Society","Economía y sociedad","经贸与社会"],scifi:["Sci-Fi","Ciencia ficción","科幻"],fantasy:["Fantasy","Fantasía","奇幻"],adventure:["Adventure","Aventura","冒险"],family:["Family","Familiar","家庭"],edutainment:["Edutainment","Edutainment","寓教于乐"],animation2d:["2D Animation","Animación 2D","2D动画"],animation3d:["3D Animation","Animación 3D","3D动画"],bl:["BL","BL","耽美"],vertical:["Vertical screen","Pantalla vertical","竖屏"],ai:["AI content","Contenido con IA","AI内容"],campus:["Campus","Universitario","校园"],sports:["Sports","Deportes","运动"],supernatural:["Supernatural","Sobrenatural","超自然"],showbiz:["Showbiz","Mundo del espectáculo","娱乐圈"],youth:["Youth","Juvenil","青春"]};
+const gen=k=>(GEN[k]||[k,k,k])[lang==="es"?1:lang==="zh"?2:0];
+const ST={done:["Completed","Finalizado","已完成"],prod:["In production","En producción","制作中"]};
+const st=k=>ST[k][lang==="es"?1:lang==="zh"?2:0];
+const LIC={own:["Own production · BELLOTA BLANCA","Producción propia · BELLOTA BLANCA","自有制作 · 白橡树"],alpha:["Partner catalogue","Catálogo de socios","合作片库"],od:["Original Dream · Guangzhou Yuanchu Animation Co., Ltd. · presented by F5","Original Dream · Guangzhou Yuanchu Animation Co., Ltd. · presentado por F5","Original Dream · 广州原初动画有限公司 · F5出品"],lib:["Partner library","Catálogo de socios","合作片库"],pkg:["Latin America film package (Aug 2025 edition)","Paquete de cine para América Latina (ed. ago. 2025)","拉美电影片包（2025年8月版）"]};
+const lic=k=>LIC[k][lang==="es"?1:lang==="zh"?2:0];
+const CTRY={cn:["China","China","中国"],gc:["Greater China","Gran China","大中华区"],th:["Thailand","Tailandia","泰国"],cnth:["China–Thailand co-production","Coproducción China–Tailandia","中泰合拍"]};
+const ctry=k=>(CTRY[k]||[k,k,k])[lang==="es"?1:lang==="zh"?2:0];
+const TERR={latam:["Latin America","América Latina","拉丁美洲"],iberoam:["Ibero-America","Iberoamérica","伊比利亚美洲"],request:["By territory, on request","Por territorio, bajo petición","按地区洽谈"],world:["Worldwide","Todo el mundo","全球"],world_noyt:["Worldwide, excluding YouTube","Todo el mundo, excepto YouTube","全球（YouTube除外）"],world_noyt_jpkr:["Worldwide, excluding YouTube, Japan and Korea","Todo el mundo, excepto YouTube, Japón y Corea","全球（YouTube、日本、韩国除外）"],world_nojpkr:["Worldwide, excluding Japan and Korea","Todo el mundo, excepto Japón y Corea","全球（日本、韩国除外）"],latam_etc:["North America, Latin America, Korea, Hong Kong / Macau / Taiwan, Southeast Asia (excl. Thailand)","Norteamérica, América Latina, Corea, Hong Kong / Macao / Taiwán, Sudeste Asiático (excl. Tailandia)","北美、拉美、韩国、港澳台、东南亚（泰国除外）"]};
+const terr=k=>(TERR[k]||[k,k,k])[lang==="es"?1:lang==="zh"?2:0];
+const tg=it=>it.terr==="request"?"request":it.terr.startsWith("world")?"world":"latam";
+const RIGHTS={free:["Free TV","TV en abierto","免费电视"],pay:["Pay TV","TV de pago","付费电视"],tv:["TV broadcast","Emisión en TV","电视播出"],svod:["SVOD","SVOD","SVOD订阅点播"],avod:["AVOD","AVOD","AVOD广告点播"],fast:["FAST / CTV","FAST / CTV","FAST / CTV"],digital:["Digital & vertical-screen platforms","Plataformas digitales y verticales","数字与竖屏平台"],social:["Social media","Redes sociales","社交媒体"],format:["Format","Formato","Format版权"],remake:["Remake","Remake","翻拍权"],toy:["Toy distribution","Distribución de juguetes","玩具分销"],license:["IP licensing & merchandise","Licencias de IP y merchandising","IP授权与衍生品"]};
+const rt=k=>(RIGHTS[k]||[k,k,k])[lang==="es"?1:lang==="zh"?2:0];
+const LANGS={zh:["Chinese","Chino","中文"],es:["Spanish / Portuguese (broadcast)","Español / portugués (emisión)","西班牙语 / 葡萄牙语（播出）"],en:["English","Inglés","英语"],zhonly:["Chinese dubbing only","Solo doblaje en chino","仅中文配音"],Mandarin:["Mandarin Chinese","Chino mandarín","国语"],Thai:["Thai","Tailandés","泰语"]};
+const lg=k=>LANGS[k]?LANGS[k][lang==="es"?1:lang==="zh"?2:0]:(k||i("On request","Bajo petición","洽谈"));
+const title1=it=>lang==="zh"&&it.zh?it.zh:it.en;
+const title2=it=>lang==="zh"?(it.zh&&it.zh!==it.en?it.en:""):(it.zh&&it.zh!==it.en?it.zh:"");
+const isOwn=it=>it.lic==="own";
+
+/* ---------- inline pieces ---------- */
+const LOGO=`<img src="img/logo.png" alt="" width="54" height="54">`;
+function poster(it,opts={}){
+  const own=it.lic==="own";
+  const badge=it.status==="prod"?`<span class="badge prod">${esc(st("prod"))}</span>`:own?`<span class="badge">${esc(i("Own production","Producción propia","自有制作"))}</span>`:"";
+  if(it.img){
+    const sq=it.sq?` sq" style="--bgimg:url('${it.img}')`:"";
+    return `<div class="poster${sq}">${badge}<img src="${it.img}" alt="${esc(title1(it))}" loading="${opts.eager?"eager":"lazy"}" decoding="async"></div>`;
+  }
+  const h=(it.id.split("").reduce((a,c)=>a+c.charCodeAt(0),0)*37)%360;
+  const kind=it.cats[0]==="short"?"VERTICAL · 9:16":it.cats[0]==="drama"?"BL SERIES":"TITLE";
+  return `<div class="poster"><div class="art" style="--h:${h}"><i>${kind}</i><b>${esc(title1(it))}</b><small>${esc((it.genres||[]).slice(0,2).map(gen).join(" · "))}</small></div>${badge}</div>`;
+}
+function metaLine(it){
+  const bits=[];
+  if(it.year)bits.push(`<b>${esc(it.year)}</b>`);
+  const e=it.eps?pick(it.eps):"";
+  if(e)bits.push(esc(e));
+  if(it.run&&!/total/.test(it.run)&&!e.includes("30"))bits.push(esc(it.run));
+  return bits.join(" · ");
+}
+function card(it){
+  return `<button class="card" data-open="${it.id}" aria-label="${esc(title1(it))}">${poster(it)}
+  <div><div class="ctitle">${esc(title1(it))}</div>${title2(it)?`<div class="csub">${esc(title2(it))}</div>`:""}
+  <div class="csub" style="margin-top:4px">${(it.genres||[]).slice(0,2).map(gen).join(" · ")}</div>
+  <div class="csub">${metaLine(it)}</div></div></button>`;
+}
+
+/* ---------- views ---------- */
+function vHome(){
+  const wall=[[2,3,5,7,8,16,19,23],[4,12,15,20,22,24,1,11],[17,25,21,9,14,18,34,10]];
+  const col=(arr,extra)=>{const imgs=arr.map(n=>`<img src="img/f/${String(n).padStart(2,"0")}.jpg" alt="" loading="eager">`).concat(extra?[`<img src="${extra}" alt="" loading="eager">`]:[]);return `<div class="col">${imgs.join("")}${imgs.join("")}</div>`};
+  const total=ITEMS.length;
+  const feat=["sp2","mecha","bl_jwy","f02","f03","al_superwings"].map(byId);
+  return `
+  <section class="hero"><div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">${i("International Content Sales & Rights Trading","Venta Internacional de Contenidos y Comercio de Derechos","国际影视内容销售与版权贸易")}</div>
+      <h1 style="margin-top:20px">${i('<span>CHINESE CONTENT.</span><span>GLOBAL RIGHTS.</span><span>IBERO-AMERICAN REACH.</span>','<span>CONTENIDO CHINO.</span><span>DERECHOS GLOBALES.</span><span>ALCANCE IBEROAMERICANO.</span>','<span>中国内容</span><span>全球版权</span><span>伊比利亚美洲市场</span>')}</h1>
+      <div class="sub">${i("Connecting Chinese Content with the Ibero-American Market","Conectamos el contenido chino con el mercado iberoamericano","连接中国影视内容与伊比利亚美洲市场")}</div>
+      <p class="intro">${i("Connecting Chinese film, television and animation content with broadcasters, streaming platforms and distributors across Spain and Latin America.","Conectamos el cine, la televisión y la animación de China con cadenas, plataformas de streaming y distribuidores de España y América Latina.","连接中国电影、电视与动画内容，面向西班牙及拉丁美洲的电视台、流媒体平台与发行商。")}</p>
+      <div class="cta"><button class="btn gold" data-go="catalogue">${i("Explore our catalogue","Explorar el catálogo","浏览版权目录")} →</button><button class="btn" data-go="contact">${i("Contact sales","Contactar con ventas","联系商务")}</button></div>
+    </div>
+    <div class="wall" aria-hidden="true">${col(wall[0],"img/sp/s2.jpg")}${col(wall[1],"img/mc/poster.jpg")}${col(wall[2])}</div>
+  </div>
+  <div class="route"><div class="wrap route-in"><span class="path">CHINA — SPAIN — LATIN AMERICA</span>
+    <span class="terr"><b>ES</b><b>PT</b><span>MX</span><span>CO</span><span>BR</span><span>AR</span><span>CL</span><span>PE</span><span>EC</span><span>UY</span><span>PA</span></span>
+    <span class="tot">${total} ${i("featured titles · 3,000+ vertical dramas","títulos destacados · más de 3.000 series verticales","部精选作品 · 3000+竖屏剧")}</span></div></div>
+  </section>
+
+  <section class="sec"><div class="wrap who">
+    <div class="sec-head" style="margin:0"><div class="eyebrow">${i("Who we are","Quiénes somos","关于白橡树")}</div>
+      <h2>${i("A rights company with a Madrid base and a Chinese catalogue.","Una empresa de derechos con base en Madrid y un catálogo chino.","立足马德里、以中国内容为核心的版权公司。")}</h2>
+      <p class="lede">${i("BELLOTA BLANCA FILM & PRODUCCIONES S.L. was founded in 2019 to open a rights channel between Chinese producers and rights-holders and the buyers who programme Spain and Latin America. We sell and represent titles, and we produce our own: Smart Pulse, a documentary series on China–Latin America cooperation, is now in its second season.","BELLOTA BLANCA FILM & PRODUCCIONES S.L. se fundó en 2019 para abrir un canal de derechos entre productores y titulares chinos y los compradores que programan España y América Latina. Vendemos y representamos títulos, y producimos los nuestros: Smart Pulse, una serie documental sobre la cooperación China–América Latina, prepara su segunda temporada.","白橡树电影制片公司（BELLOTA BLANCA FILM & PRODUCCIONES S.L.）成立于2019年，旨在为中国制作公司与版权方，以及西班牙和拉美的采购方搭建版权渠道。我们销售并代理作品，也自主制作：关于中拉合作的纪录片系列《Smart Pulse》第二季正在制作中。")}</p></div>
+    <div class="facts"><div><b>2019</b><span>${i("Founded","Fundación","成立")}</span></div><div><b>Madrid</b><span>${i("European base","Base europea","欧洲基地")}</span></div><div><b>${total}</b><span>${i("Featured titles","Títulos destacados","精选作品")}</span></div><div><b>3,000+</b><span>${i("Vertical dramas","Series verticales","竖屏剧")}</span></div></div>
+  </div></section>
+
+  ${mechaBand()}
+
+  <section class="sec tint"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">${i("Our business","Nuestro negocio","我们的业务")}</div><h2>${i("Sell first. Represent second. Build with partners third.","Primero vender, después representar, y construir con socios.","先销售，再代理，后合作共建。")}</h2></div>
+    <div class="biz">
+      <article><span class="n">01</span><h3>${i("Content Sales","Venta de contenidos","内容销售")}</h3><p>${i("Chinese series, films, animation, vertical drama and documentary offered to broadcasters, platforms and distributors.","Series, cine, animación, series verticales y documental chinos ofrecidos a cadenas, plataformas y distribuidores.","向电视台、平台与发行商销售中国剧集、电影、动画、竖屏剧与纪录片。")}</p><ul><li>${i("TV drama & series","Series y dramas de TV","电视剧与剧集")}</li><li>${i("Films & animation","Cine y animación","电影与动画")}</li><li>${i("Vertical drama & documentary","Series verticales y documental","竖屏剧与纪录片")}</li></ul></article>
+      <article><span class="n">02</span><h3>${i("Rights Trading","Comercio de derechos","版权贸易")}</h3><p>${i("Territory-by-territory, platform-by-platform licensing, plus acquisition of international titles.","Licencias por territorio y plataforma, y adquisición de títulos internacionales.","按地区、按平台授权，并引进国际影视作品版权。")}</p><ul><li>${i("Free TV, pay TV, SVOD, AVOD, FAST","TV en abierto, de pago, SVOD, AVOD, FAST","免费/付费电视、SVOD、AVOD、FAST")}</li><li>${i("Format and remake rights","Derechos de formato y remake","Format与翻拍权")}</li><li>${i("Content acquisition for China and YouTube","Adquisición de contenidos para China y YouTube","为中国与YouTube渠道采购内容")}</li></ul></article>
+      <article><span class="n">03</span><h3>${i("International Distribution","Distribución internacional","国际发行")}</h3><p>${i("Representing Chinese producers abroad and opening buyer channels with local broadcasters, platforms and distributors.","Representamos a productores chinos en el exterior y abrimos canales de compra con cadenas, plataformas y distribuidores locales.","代表中国制作方出海发行，并与当地电视台、平台及发行商建立采购渠道。")}</p><ul><li>${i("Sales agency","Agencia de ventas","版权销售代理")}</li><li>${i("Regional licensing","Licencias regionales","区域授权")}</li><li>${i("Local-language delivery","Entrega en idioma local","本地语言交付")}</li></ul></article>
+    </div></div></section>
+
+  <section class="sec"><div class="wrap">
+    <div class="sec-head row"><div><div class="eyebrow">${i("Featured content","Contenido destacado","精选内容")}</div><h2 style="margin-top:12px">${i("Six titles to start with.","Seis títulos para empezar.","六部作品，由此开始。")}</h2></div><button class="btn" data-go="catalogue">${i("Full catalogue","Catálogo completo","完整目录")} →</button></div>
+    <div class="grid six">${feat.map(card).join("")}</div>
+    <div style="margin-top:44px">${vdBand()}</div></div></section>
+
+  <section class="sec tint"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">${i("Content categories","Categorías","内容分类")}</div><h2>${i("Browse by what you programme.","Explora según lo que programas.","按您的编排需求浏览。")}</h2></div>
+    <div class="cats">${CATS.map(c=>{const n=c[0]==="short"?"3,000+":ITEMS.filter(x=>x.cats.includes(c[0])).length;return `<button class="cat${n?"":" empty"}" data-cat="${c[0]}"><span class="ct">${esc(c[lang==="es"?2:lang==="zh"?3:1])}</span><span style="font-size:14px;color:var(--ink-soft)">${esc(c[lang==="es"?5:lang==="zh"?6:4])}</span><span class="cn">${n?n+" "+i("titles","títulos","部作品"):i("On request","Bajo petición","可洽谈")}</span></button>`}).join("")}</div></div></section>
+
+  <section class="sec"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">${i("Our markets","Nuestros mercados","目标市场")}</div><h2>${i("Spain and Latin America, reached from China.","España y América Latina, desde China.","从中国出发，抵达西班牙与拉丁美洲。")}</h2>
+      <p class="lede">${i("Our own series Smart Pulse (智汇中拉) has already reached Latin American screens. Season 1 aired in 5 countries on 10+ channels and was screened at the Bogotá Audiovisual Market.","Nuestra serie Smart Pulse ya ha llegado a las pantallas latinoamericanas. La temporada 1 se emitió en 5 países y más de 10 canales y se proyectó en el Bogotá Audiovisual Market.","我们自制的《Smart Pulse》已走上拉美荧屏：第一季在5个国家、10余个频道播出，并在波哥大视听市场展映。")}</p></div>
+    ${mapSVG()}
+    <div style="margin-top:22px"><button class="btn" data-go="network">${i("See the network","Ver la red","查看发行网络")} →</button></div></div></section>
+
+  ${wantBand()}
+
+  ${contactEntries()}`;
+}
+function contactEntries(){
+  return `<section class="sec"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">${i("Contact us","Contacto","联系我们")}</div><h2>${i("Three ways in.","Tres puertas de entrada.","三个入口。")}</h2></div>
+    <div class="three">
+      <div class="entry"><h3>${i("Buy content","Comprar contenido","购买内容")}</h3><p>${i("For broadcasters, platforms and distributors. Tell us the titles, rights, territories and platforms you need.","Para cadenas, plataformas y distribuidores. Indícanos títulos, derechos, territorios y plataformas.","面向电视台、平台与发行商。告诉我们您需要的作品、权利、地区与平台。")}</p><button class="btn gold" data-contact="buy">${i("Send an inquiry","Enviar consulta","提交询价")} →</button></div>
+      <div class="entry"><h3>${i("Submit content","Enviar contenido","提交内容")}</h3><p>${i("For Chinese producers and rights-holders who want international sales and representation.","Para productores y titulares chinos que buscan ventas internacionales y representación.","面向希望获得国际销售与代理的中国制作公司和版权方。")}</p><button class="btn gold" data-contact="submit">${i("Submit your project","Enviar proyecto","提交项目")} →</button></div>
+      <div class="entry"><h3>${i("Partner with us","Colabora con nosotros","合作洽谈")}</h3><p>${i("For overseas distributors, producers and institutions interested in long-term cooperation.","Para distribuidores, productores e instituciones interesados en cooperar a largo plazo.","面向有意长期合作的海外发行商、制作公司与机构。")}</p><button class="btn gold" data-contact="partner">${i("Start a conversation","Iniciar conversación","开启合作")} →</button></div>
+    </div></div></section>`;
+}
+function mapSVG(){
+  const c=(x,y,a,b,cc)=>`<g><circle cx="${x}" cy="${y}" r="7" fill="var(--gold)"/><circle cx="${x}" cy="${y}" r="15" fill="none" stroke="var(--gold)" stroke-opacity=".45"/><text x="${x}" y="${y-30}" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="15" letter-spacing="2.4" fill="var(--head)" font-weight="500">${a}</text><text x="${x}" y="${y+40}" text-anchor="middle" font-family="Hanken Grotesk,Noto Sans SC,sans-serif" font-size="14" fill="var(--ink-soft)">${b}</text></g>`;
+  return `<div class="map"><svg viewBox="0 0 960 230" role="img" aria-label="China, Spain, Latin America"><defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--gold)"/></marker></defs>
+  <path d="M135 112 C 250 30, 360 30, 465 108" fill="none" stroke="var(--gold)" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M495 108 C 600 30, 710 30, 825 112" fill="none" stroke="var(--gold)" stroke-width="2" marker-end="url(#ar)"/>
+  <path d="M135 126 C 330 220, 630 220, 825 126" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-dasharray="4 6" opacity=".7"/>
+  ${c(120,118,"CHINA",i("Content resources","Recursos de contenido","内容资源"))}${c(480,118,"SPAIN",i("Madrid · European base","Madrid · base europea","马德里 · 欧洲基地"))}${c(840,118,"LATIN AMERICA",i("Broadcasters, platforms, distributors","Cadenas, plataformas, distribuidores","电视台、平台、发行商"))}
+  </svg></div>`;
+}
+
+function vCatalogue(){
+  const gset=[...new Set(ITEMS.flatMap(x=>x.genres||[]))].sort((a,b)=>gen(a).localeCompare(gen(b),lang==="zh"?"zh":lang));
+  const cnt=k=>k==="all"?ITEMS.length:k==="short"?"3,000+":ITEMS.filter(x=>x.cats.includes(k)).length;
+  return `<section class="sec" style="padding-top:44px"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">${i("Content catalogue","Catálogo de contenidos","影视版权目录")}</div><h2>${i("Browse titles, check rights, send an inquiry.","Explora títulos, consulta derechos y envía tu consulta.","浏览作品、查看版权、提交询价。")}</h2>
+  <p class="lede">${i("Availability shown here is indicative. Every right, territory and window is confirmed against the signed licence for that title.","La disponibilidad mostrada es orientativa. Cada derecho, territorio y ventana se confirma con el contrato firmado de cada título.","此处展示的授权信息仅供参考，每项权利、地区与窗口期均以该作品的实际授权合同为准。")}</p></div>
+  <div class="filters">
+    <div class="tabs" role="group" aria-label="${i("Category","Categoría","分类")}">
+      <button data-cat="all" aria-pressed="${F.cat==="all"}">${i("All","Todo","全部")}<span>${cnt("all")}</span></button>
+      ${CATS.map(c=>`<button data-cat="${c[0]}" aria-pressed="${F.cat===c[0]}">${esc(c[lang==="es"?2:lang==="zh"?3:1])}<span>${cnt(c[0])}</span></button>`).join("")}
+    </div>
+    <div class="ctrls">
+      <div class="fld"><label for="f-q">${i("Search","Buscar","搜索")}</label><input id="f-q" type="search" value="${esc(F.q)}" placeholder="${i("Title, genre, director, cast","Título, género, director, reparto","片名、类型、导演、演员")}"></div>
+      <div class="fld"><label for="f-g">${i("Genre","Género","类型")}</label><select id="f-g"><option value="all">${i("All genres","Todos","全部类型")}</option>${gset.map(g=>`<option value="${g}"${F.genre===g?" selected":""}>${esc(gen(g))}</option>`).join("")}</select></div>
+      <div class="fld"><label for="f-t">${i("Territory","Territorio","地区")}</label><select id="f-t"><option value="all">${i("Any","Cualquiera","不限")}</option><option value="latam"${F.terr==="latam"?" selected":""}>${esc(terr("latam"))}</option><option value="world"${F.terr==="world"?" selected":""}>${esc(terr("world"))}</option><option value="request"${F.terr==="request"?" selected":""}>${esc(terr("request"))}</option></select></div>
+      <div class="fld"><label for="f-s">${i("Status","Estado","状态")}</label><select id="f-s"><option value="all">${i("Any","Cualquiera","不限")}</option><option value="done"${F.status==="done"?" selected":""}>${esc(st("done"))}</option><option value="prod"${F.status==="prod"?" selected":""}>${esc(st("prod"))}</option></select></div>
+      <div class="fld"><label for="f-o">${i("Source","Origen","来源")}</label><select id="f-o"><option value="all">${i("Any","Cualquiera","不限")}</option><option value="own"${F.src==="own"?" selected":""}>${i("Own production","Producción propia","自有制作")}</option><option value="partner"${F.src==="partner"?" selected":""}>${i("Partner catalogues","Catálogos de socios","合作片库")}</option></select></div>
+      <button class="link" id="f-reset" type="button">${i("Reset","Restablecer","重置")}</button>
+    </div>
+  </div>
+  ${F.cat==="short"?`<div style="margin-bottom:26px">${vdBand(true)}</div>`:""}${F.cat==="drama"?`<div style="margin-bottom:26px">${blBand()}</div>`:""}${F.cat==="short"?"":`<div id="count" class="count"></div><div id="grid" class="grid"></div>`}</div></section>`;
+}
+function filtered(){
+  const q=F.q.trim().toLowerCase();
+  return ITEMS.filter(it=>{
+    if(F.cat!=="all"&&!it.cats.includes(F.cat))return false;
+    if(F.genre!=="all"&&!(it.genres||[]).includes(F.genre))return false;
+    if(F.terr!=="all"&&tg(it)!==F.terr)return false;
+    if(F.status!=="all"&&it.status!==F.status)return false;
+    if(F.src==="own"&&!isOwn(it))return false;
+    if(F.src==="partner"&&isOwn(it))return false;
+    if(q){const hay=[it.en,it.zh,it.dir,it.cast,(it.genres||[]).map(gen).join(" "),(it.genres||[]).join(" "),pick(it.lines)].join(" ").toLowerCase();if(!hay.includes(q))return false}
+    return true;
+  });
+}
+function renderGrid(){
+  const g=$("#grid");if(!g)return;
+  const list=filtered();
+  g.innerHTML=list.length?list.map(card).join(""):`<div class="empty-state" style="grid-column:1/-1"><p>${F.cat==="variety"&&!F.q?i("Variety and format titles are available on request. Contact sales for the current list.","Los títulos de entretenimiento y formatos están disponibles bajo petición. Contacta con ventas para la lista actual.","综艺与Format作品可按需提供，请联系商务获取最新清单。"):i("No titles match these filters.","Ningún título coincide con estos filtros.","没有符合条件的作品。")}</p><p style="margin-top:14px"><button class="btn sm" data-contact="buy">${i("Ask sales","Preguntar a ventas","咨询商务")}</button></p></div>`;
+  $("#count").textContent=`${list.length} / ${ITEMS.length} ${i("titles","títulos","部作品")}`;
+}
+
+function vRights(){
+  const mods=[
+   [i("International Content Sales","Venta internacional de contenidos","国际内容销售"),i("Packages and single titles for broadcasters, streamers and distributors.","Paquetes y títulos sueltos para cadenas, plataformas y distribuidores.","面向电视台、流媒体与发行商的片包与单片销售。")],
+   [i("Content Acquisition","Adquisición de contenidos","内容采购"),i("Sourcing international titles for Chinese buyers and platforms.","Búsqueda de títulos internacionales para compradores y plataformas chinas.","为中国买家与平台引进国际影视作品。")],
+   [i("Territory Licensing","Licencias por territorio","区域授权"),i("Deals built country by country and window by window.","Acuerdos construidos país por país y ventana por ventana.","按国家、按窗口期逐一设计的授权方案。")],
+   [i("Distribution Representation","Representación de distribución","发行代理"),i("We act as sales agent for Chinese producers and rights-holders.","Actuamos como agente de ventas de productores y titulares chinos.","作为中国制作方与版权方的海外销售代理。")],
+   [i("Platform Licensing","Licencias para plataformas","平台授权"),i("Free TV, pay TV, SVOD, AVOD, FAST/CTV and digital rights.","Derechos de TV en abierto, de pago, SVOD, AVOD, FAST/CTV y digitales.","免费电视、付费电视、SVOD、AVOD、FAST/CTV与数字版权。")],
+   [i("Rights Management","Gestión de derechos","版权管理"),i("Rights chains checked against contracts, with clear availability by title.","Cadenas de derechos verificadas con contrato y disponibilidad clara por título.","依据合同核对权利链，按作品清晰呈现可授权情况。")]];
+  const steps=[[i("Browse a title","Explora un título","浏览作品"),i("Open any title in the catalogue.","Abre cualquier título del catálogo.","在目录中打开任一作品。")],[i("See the rights","Consulta los derechos","查看版权"),i("Check what is offered and where.","Revisa qué se ofrece y dónde.","了解可授权的权利与地区。")],[i("Pick territory and platform","Elige territorio y plataforma","选择地区与平台"),i("Say what you need to programme.","Indica lo que necesitas programar.","说明您的编排需求。")],[i("Send your interest","Envía tu interés","提交采购意向"),i("One short form per title.","Un formulario breve por título.","每部作品一份简短表单。")],[i("Sales follow-up","Seguimiento comercial","商务跟进"),i("Our team confirms rights and sends terms and screeners.","Nuestro equipo confirma derechos y envía condiciones y enlaces de visionado.","团队确认版权，并发送条款与审片链接。")]];
+  return `<section class="sec" style="padding-top:44px"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">${i("Rights & sales","Derechos y ventas","版权贸易")}</div><h2>${i("The core of the company: licensing Chinese content abroad.","El núcleo de la empresa: licenciar contenido chino en el exterior.","公司的核心：把中国内容授权到海外。")}</h2></div>
+    <div class="three t2">
+      <div class="entry"><h3>${i("BUY CONTENT","COMPRAR CONTENIDO","购买内容")}</h3><p>${i("For international buyers: browse the catalogue, ask about rights and negotiate.","Para compradores internacionales: explora el catálogo, consulta derechos y negocia.","面向国际买家：浏览目录、咨询版权、洽谈采购。")}</p><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:auto"><button class="btn gold" data-go="catalogue">${i("Open catalogue","Abrir catálogo","打开目录")}</button><button class="btn" data-contact="buy">${i("Inquiry","Consulta","询价")}</button></div></div>
+      <div class="entry"><h3>${i("SUBMIT YOUR CONTENT","ENVÍA TU CONTENIDO","提交您的内容")}</h3><p>${i("For production companies, animation studios and rights-holders: submit a project for international sales and representation. We also acquire content for distribution in China and on YouTube channels.","Para productoras, estudios de animación y titulares de derechos: envía un proyecto para venta internacional y representación. También adquirimos contenido para distribuirlo en China y en canales de YouTube.","面向制作公司、动画公司与版权方：提交项目，申请国际版权代理与销售合作。我们也采购内容，用于中国发行及YouTube渠道发行。")}</p><button class="btn gold" data-contact="submit" style="margin-top:auto">${i("Submit a project","Enviar proyecto","提交项目")} →</button></div>
+    </div></div></section>
+  <section class="sec tint"><div class="wrap"><div class="sec-head"><div class="eyebrow">${i("What we do","Qué hacemos","服务内容")}</div><h2>${i("Six services around one rights chain.","Seis servicios en torno a una cadena de derechos.","围绕同一条权利链的六项服务。")}</h2></div>
+    <div class="mods">${mods.map(m=>`<div class="mod"><h3>${m[0]}</h3><p>${m[1]}</p></div>`).join("")}</div></div></section>
+  <section class="sec band"><div class="wrap"><div class="sec-head"><div class="eyebrow">${i("How a deal moves","Cómo avanza un acuerdo","合作流程")}</div><h2>${i("From browsing to a signed licence.","De la exploración a la licencia firmada.","从浏览到签署授权。")}</h2></div>
+    <div class="steps">${steps.map((s,k)=>`<div class="step"><span class="n">0${k+1}</span><b>${s[0]}</b><p>${s[1]}</p></div>`).join("")}</div></div></section>
+  <section class="sec"><div class="wrap"><div class="sec-head"><div class="eyebrow">${i("Rights menu","Menú de derechos","权利类型")}</div><h2>${i("Rights we license","Derechos que licenciamos","可授权的权利类型")}</h2></div>
+    <ul class="list">${["free","pay","svod","avod","fast","digital","format","remake"].map(k=>`<li><b>${esc(rt(k))}</b> ${({free:i("Terrestrial and national broadcasters.","Cadenas terrestres y nacionales.","地面及全国性电视台。"),pay:i("Cable, satellite and operator channels.","Canales de cable, satélite y operadores.","有线、卫星与运营商频道。"),svod:i("Subscription streaming platforms.","Plataformas de streaming por suscripción.","订阅制流媒体平台。"),avod:i("Ad-supported on-demand services.","Servicios bajo demanda con publicidad.","广告支持的点播服务。"),fast:i("Free ad-supported linear channels and connected TV.","Canales lineales gratuitos con publicidad y TV conectada.","免费广告支持的线性频道与联网电视。"),digital:i("Apps, vertical-screen and online video.","Apps, pantalla vertical y vídeo online.","App、竖屏与在线视频。"),format:i("Local adaptation of a show format.","Adaptación local de un formato.","节目Format的本地化改编。"),remake:i("Local remake of a drama or film.","Remake local de una serie o película.","剧集或电影的本地翻拍。")})[k]}</li>`).join("")}</ul>
+    <p class="note" style="margin-top:22px">${i("Rights offered vary by title. All rights information is confirmed against the actual licence before any offer.","Los derechos ofrecidos varían según el título. Toda la información se confirma con la licencia real antes de cualquier oferta.","各作品可授权的权利不同，任何报价之前均以实际授权合同核实。")}</p></div></section>
+  ${wantBand()}`;
+}
+
+/* ---------- shared bands ---------- */
+const waLink=`https://wa.me/${WA}`;
+function contactLines(cls=""){
+  return `<div class="cline ${cls}"><a href="mailto:${MAIL}">${MAIL}</a><a href="mailto:${MAIL3}">${MAIL3}</a><a href="${waLink}" target="_blank" rel="noopener">WhatsApp ${PHONE}</a></div>`;
+}
+function blBand(){
+  const bl=ITEMS.filter(x=>x.id.startsWith("bl_")&&x.cats[0]==="drama");
+  const th=bl.filter(x=>x.country==="th").length, co=bl.filter(x=>x.country==="cnth").length, cn=bl.length-th-co;
+  const pts=[
+   [i("What it is","Qué es","是什么"),i("A romance genre built around the love story between two male leads. Called 耽美 (danmei) in Chinese, BL (Boys’ Love) in Japanese and international usage, and “Y series” in Thailand.","Un género romántico centrado en la historia de amor entre dos protagonistas masculinos. Se llama 耽美 (danmei) en chino, BL (Boys’ Love) en japonés y a nivel internacional, y “serie Y” en Tailandia.","以两位男主角之间的爱情故事为核心的爱情类型。中文称“耽美”，日语与国际通称BL（Boys’ Love），泰国称“Y系列”。")],
+   [i("Where it comes from","De dónde viene","从哪里来"),i("It began in Japanese manga and fan fiction, grew into a mainstream television genre in Thailand in the 2010s, and in China is often adapted from popular web novels.","Nació en el manga y el fan fiction japoneses, se convirtió en un género televisivo mayoritario en Tailandia en la década de 2010 y, en China, suele adaptarse de novelas web populares.","源于日本漫画与同人创作；2010年代在泰国发展为主流电视类型；中国的耽美剧多改编自热门网络小说。")],
+   [i("Why buyers want it","Por qué interesa a los compradores","为什么值得采购"),i("It has a devoted international fan base that follows the actors and the story across platforms. Fans watch, share and buy, so these titles do well on streaming services and YouTube.","Tiene una base de fans internacional muy fiel que sigue a los actores y la historia en todas las plataformas. Los fans ven, comparten y compran, por lo que estos títulos funcionan bien en plataformas de streaming y YouTube.","拥有忠实的国际粉丝群，会跟随演员与剧情跨平台追看。粉丝愿意观看、传播并付费，因此这类作品在流媒体平台与YouTube上表现出色。")]];
+  return `<div class="blband"><div><div class="eyebrow">${i("Genre guide","Guía del género","类型说明")}</div><h3 style="margin:10px 0 6px">${i("What is a BL (耽美) drama?","¿Qué es una serie BL (耽美)?","什么是耽美剧？")}</h3>
+   <p style="color:var(--ink-soft);font-size:15.5px;max-width:60ch">${i("Romance series about two men falling in love, made for a young, largely female and LGBTQ+ audience. This catalogue brings together the strongest titles from Thailand and China.","Series románticas sobre dos hombres que se enamoran, hechas para un público joven, mayoritariamente femenino y LGTBQ+. Este catálogo reúne los títulos más fuertes de Tailandia y China.","讲述两位男性相爱的爱情剧集，面向年轻、以女性和LGBTQ+群体为主的观众。本目录汇集泰国与中国最具实力的作品。")}</p>
+   <div class="facts-line" style="margin-top:18px"><div><b>${th}</b><span>${i("Thai titles","Títulos tailandeses","泰国作品")}</span></div><div><b>${cn}</b><span>${i("Chinese titles","Títulos chinos","中国作品")}</span></div><div><b>${co}</b><span>${i("China–Thailand co-productions","Coproducciones China–Tailandia","中泰合拍")}</span></div></div></div>
+   <div class="blpts">${pts.map(x=>`<div><h4>${x[0]}</h4><p>${x[1]}</p></div>`).join("")}</div></div>`;
+}
+function vdBand(onPage){
+  const chips=[i("AI vertical micro drama","Microdrama vertical con IA","AI竖屏剧"),i("Live-action micro drama for English and Spanish-speaking regions","Microdrama de acción real para regiones de habla inglesa e hispana","面向英语与西语地区的真人竖屏剧"),i("Chinese micro drama","Microdrama chino","中文竖屏剧")];
+  return `<div class="vband"><div class="big"><b>3,000+</b><span>${i("vertical micro dramas","microdramas verticales","部竖屏短剧")}</span></div>
+   <div><div class="eyebrow">${i("Vertical drama library · Latin America distribution","Biblioteca de series verticales · distribución en América Latina","竖屏剧片库 · 拉美发行")}</div>
+   <h3 style="margin:10px 0 8px">${i("One library, three kinds of vertical content.","Una biblioteca, tres tipos de contenido vertical.","一个片库，三类竖屏内容。")}</h3>
+   <div class="chips">${chips.map(c=>`<span class="chip g">${c}</span>`).join("")}</div>
+   <p style="margin-top:14px;color:var(--ink-soft);font-size:15.5px;max-width:64ch">${i("We distribute the library in Latin America. Contact us for the title list, with synopses, languages and available rights.","Distribuimos la biblioteca en América Latina. Contáctanos para recibir la lista de títulos, con sinopsis, idiomas y derechos disponibles.","我们在拉丁美洲发行该片库。欢迎联系索取片单，含简介、语言版本与可授权权利。")}</p>
+   <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">${onPage?"":`<button class="btn sm" data-cat="short">${i("About vertical dramas","Sobre las series verticales","了解竖屏剧")} →</button>`}<button class="btn sm gold" data-contact="buy">${i("Request the full list","Pedir la lista completa","索取片单")} →</button></div></div></div>`;
+}
+function wantBand(){
+  return `<section class="sec band"><div class="wrap want"><div><div class="eyebrow">${i("Content wanted","Buscamos contenido","征集内容")}</div>
+   <h2 style="margin-top:12px">${i("We buy and take on content too.","También compramos y distribuimos contenido.","我们也采购、也代理内容。")}</h2>
+   <p class="lede" style="margin-top:12px">${i("If you hold rights to series, films, animation or vertical dramas, we can distribute them in China or through YouTube distribution channels. Send us the title, the rights you hold and the territories you can offer.","Si tienes derechos de series, películas, animación o series verticales, podemos distribuirlos en China o a través de canales de distribución en YouTube. Envíanos el título, los derechos que posees y los territorios que puedes ofrecer.","如果您持有剧集、电影、动画或竖屏剧的版权，我们可以在中国发行，或通过YouTube发行渠道推广。请告诉我们作品名称、所持权利与可授权地区。")}</p></div>
+   <div class="want-box"><div class="chips" style="margin-bottom:16px"><span class="chip g" style="background:transparent">${i("Distribution in China","Distribución en China","中国发行")}</span><span class="chip g" style="background:transparent">${i("YouTube distribution channels","Canales de distribución en YouTube","YouTube发行渠道")}</span></div>
+   ${contactLines("on-dark")}<div style="margin-top:18px"><button class="btn gold" data-contact="submit">${i("Submit your content","Enviar contenido","提交内容")} →</button></div></div></div></section>`;
+}
+function mechaBand(){
+  const m=byId("mecha");
+  return `<section class="sec band flagship"><div class="wrap flag"><div class="flag-poster">${poster(m)}</div>
+   <div><div class="eyebrow">${i("Flagship project · global rights open","Proyecto estrella · derechos globales disponibles","重点项目 · 全球版权开放")}</div>
+   <h2 style="margin-top:12px;font-size:clamp(30px,4vw,48px)">MECHASIA: AWAKENING</h2>
+   <p class="lede" style="margin-top:12px">${i("A 3D sci-fi mecha series, 26 × 13′, with a ready-made dual-form toy line. We are pushing it worldwide for broadcast and streaming, and looking for toy and derivative partners: the toy line already sells strongly in China and Asia.","Una serie mecha de ciencia ficción en 3D, 26 × 13′, con una línea de juguetes de doble forma lista para el mercado. La impulsamos en todo el mundo para emisión y streaming, y buscamos socios de juguetes y derivados: la línea ya vende con fuerza en China y Asia.","3D科幻机甲剧集，26集 × 13分钟，配有成熟的双形态玩具线。我们面向全球推广播出与流媒体版权，并寻找玩具与衍生品合作伙伴：玩具线已在中国和亚洲取得出色销售。")}</p>
+   <div class="chips" style="margin:16px 0 22px"><span class="chip g" style="background:transparent">${i("Worldwide rights","Derechos mundiales","全球版权")}</span><span class="chip g" style="background:transparent">${i("Seeking toy & derivative partners","Buscamos socios de juguetes y derivados","寻找玩具与衍生品伙伴")}</span><span class="chip g" style="background:transparent">${i("IP licensing","Licencias de IP","IP授权")}</span><span class="chip g" style="background:transparent">${i("10th anniversary in 2026","10.º aniversario en 2026","2026年十周年")}</span></div>
+   <div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn gold" data-mtab="series">${i("Series & global rights","Serie y derechos globales","剧集与全球版权")} →</button><button class="btn" data-mtab="toys">${i("Derivatives & toy partners","Derivados y socios de juguetes","衍生品开发与玩具伙伴")}</button></div></div></div></section>`;
+}
+
+/* ---------- animation ---------- */
+function vAnimation(){
+  const alpha=ITEMS.filter(x=>x.lic==="alpha");
+  const mech=byId("mecha");
+  return `<section class="sec" style="padding-top:44px"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">${i("Animation","Animación","动画专区")}</div><h2>${i("Animation projects for television, streaming and licensing.","Proyectos de animación para televisión, streaming y licencias.","面向电视、流媒体与授权的动画项目。")}</h2>
+    <p class="lede">${i("Our flagship MECHASIA is open worldwide for broadcast and streaming, and we are looking for toy and derivative partners. The seven animated IPs below are currently offered for Ibero-America: series distribution and toy distribution.","Nuestra serie estrella MECHASIA está abierta en todo el mundo para emisión y streaming, y buscamos socios de juguetes y derivados. Los siete IP de animación de abajo se ofrecen actualmente para Iberoamérica: distribución de la serie y distribución de juguetes.","重点项目《机变战队》面向全球开放播出与流媒体授权，并寻找玩具与衍生品合作伙伴。下方七部动画IP目前面向伊比利亚美洲：剧集发行与玩具发行。")}</p></div>
+    <button class="card feat-mecha" data-go="mechasia"><div class="fm-poster">${poster(mech)}</div><div><div class="eyebrow">${i("Flagship · global rights","Estrella · derechos globales","重点项目 · 全球版权")}</div><div class="ctitle" style="font-size:28px;margin-top:8px">MECHASIA: AWAKENING</div><p style="margin-top:10px;color:var(--ink-soft);font-size:15.5px">${esc(pick(mech.lines))}</p><div class="chips" style="margin-top:14px"><span class="chip g">3D · 26 × 13′</span><span class="chip">${esc(pick(mech.audience))}</span><span class="chip">${i("Toy & derivative partners wanted","Se buscan socios de juguetes y derivados","寻找玩具与衍生品伙伴")}</span></div><p class="link" style="margin-top:16px;display:inline-block">${i("Series, global rights and derivative development","Serie, derechos globales y desarrollo de derivados","剧集、全球版权与衍生品开发")} →</p></div></button>
+    <hr style="border:0;border-top:1px solid var(--rule);margin:40px 0 34px">
+    <div class="animhero"><img src="img/al/banner.jpg" alt="Quantum Heroes: Dinoster, Infinity Nado, Balala the Fairies" loading="lazy">
+      <div><div class="eyebrow">${i("Children's & family animation","Animación infantil y familiar","儿童与家庭动画")}</div><h2 style="margin-top:10px">${i("Seven animated IPs for Ibero-America.","Siete IP de animación para Iberoamérica.","面向伊比利亚美洲的七部动画IP。")}</h2>
+      <p style="margin-top:12px;color:var(--ink-soft);max-width:56ch">${i("Action, adventure, fantasy and comedy series for pre-school to teen audiences, in 3D and 2D, with long-running seasons.","Series de acción, aventura, fantasía y comedia para audiencias desde preescolar hasta adolescentes, en 3D y 2D, con temporadas de largo recorrido.","面向学龄前到青少年观众的动作、冒险、奇幻与喜剧系列，3D与2D兼有，季数长线持续。")}</p>
+      <div class="chips" style="margin-top:16px"><span class="chip g">${i("Series distribution","Distribución de la serie","剧集发行")}</span><span class="chip g">${i("Toy distribution","Distribución de juguetes","玩具发行")}</span><span class="chip g">${i("Ibero-America","Iberoamérica","伊比利亚美洲")}</span></div></div></div>
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(150px,1fr));margin-top:30px">${alpha.map(card).join("")}</div>
+  </div></section>
+  <section class="sec band"><div class="wrap"><div class="sec-head"><div class="eyebrow">${i("Focus areas","Áreas de enfoque","重点方向")}</div><h2>${i("Where we want to place animation.","Dónde queremos colocar la animación.","我们希望落地动画的方向。")}</h2></div>
+    <div class="focus">${[i("Television distribution","Distribución en televisión","电视发行"),i("Streaming distribution","Distribución en streaming","流媒体发行"),i("Children's channels","Canales infantiles","儿童频道"),i("Family entertainment","Entretenimiento familiar","家庭娱乐"),i("Toy distribution","Distribución de juguetes","玩具发行"),i("Animation IP licensing","Licencias de IP de animación","动画IP授权"),i("Local-language adaptation","Adaptación al idioma local","本地语言改编"),i("Co-production","Coproducción","联合制作")].map(x=>`<span class="chip" style="background:transparent;color:var(--band-ink);border-color:rgba(245,243,238,.4);font-size:12.5px;padding:10px 12px">${x}</span>`).join("")}</div>
+    <div style="margin-top:28px"><button class="btn gold" data-contact="buy">${i("Ask about animation rights","Consultar derechos de animación","咨询动画版权")} →</button></div></div></section>`;
+}
+
+/* ---------- Mechasia ---------- */
+const MH=[
+ ["divine","Divine Wind","WY1001",["Sports car","Coche deportivo","跑车"],"15 cm",1,
+  ["Determined to choose his own path, he founds the Liberty’s Bounty and steps into the war between the Lumisarians and the Nocturians, becoming an enemy to both factions.","Decidido a elegir su propio camino, funda el Liberty’s Bounty y entra en la guerra entre lumisarios y nocturnos, y se convierte en enemigo de ambos bandos.","执意走自己的路，创立 Liberty’s Bounty，卷入 Lumisarians 与 Nocturians 之间的战争，成为两大阵营共同的敌人。"]],
+ ["gladius","Prince Gladius","WY1002",["Truck","Camión","卡车"],"16.6 cm",1,
+  ["A new-age hero on the surface, in truth a prince seeking revenge who carries out his plans with calm, cool-headed rationality.","Un héroe moderno en apariencia; en realidad, un príncipe que busca venganza y ejecuta sus planes con serenidad y raciocinio.","表面是新时代英雄，实则是为复仇而来的王子，冷静理性地推进自己的计划。"]],
+ ["epsilon","Epsilon","WY1003",["Train","Tren","火车"],"15 cm",1,
+  ["A young rookie who, by chance, acquires powerful technology and is swept into the middle of the action.","Un joven novato que, por azar, adquiere una tecnología poderosa y se ve arrastrado al centro de la acción.","一名年轻新人，偶然获得强大科技，被卷入风暴中心。"]],
+ ["mystic","Mystic Lock","WY1004",["Lunar rover","Vehículo lunar","月球车"],"15 cm",1,
+  ["A member of the Four Wicked Hunting Group who often vanishes without a trace. Role: sniper and necromancer.","Miembro del Grupo de Caza Perverso que a menudo desaparece sin dejar rastro. Rol: francotirador y nigromante.","“邪恶猎杀团”四人组成员，常常神出鬼没。定位：狙击手与亡灵法师。"]],
+ ["machiapter","Machiapter","WY1005",["Helicopter","Helicóptero","直升机"],"15 cm",1,
+  ["A lazy genius and a core member of the main combat faction.","Un genio perezoso y miembro clave de la facción de combate principal.","懒散的天才，主战阵营的核心成员。"]],
+ ["deathtone","Deathtone","WY1006",["Sports car","Coche deportivo","跑车"],"15 cm",2,
+  ["The comic relief. Cunning strategist of the hunting group and Epsilon’s companion, always scheming, but later reformed.","El alivio cómico. Astuto estratega del grupo de caza y compañero de Epsilon: siempre maquinando, aunque luego se redime.","搞笑担当。猎杀团里的狡猾军师，也是 Epsilon 的同伴，总爱耍心眼，后来改过自新。"]],
+ ["sidewinder","Sidewinder","WY1007",["Spaceship","Nave espacial","飞船"],"15 cm",2,
+  ["A passionate hero with a heart full of fire and a core member of the main combat faction.","Un héroe apasionado, con el corazón en llamas, y miembro clave de la facción de combate principal.","满腔热血的热情英雄，主战阵营的核心成员。"]],
+];
+const MH_PACK={"WY1002":["220 × 85 × 285","535 × 458 × 592","0.145"]};
+const mhp=n=>MH_PACK[n]||["200 × 85 × 260","535 × 418 × 540","0.121"];
+let mtab="series";
+function vMechasia(){
+  const m=byId("mecha");
+  const L3=a=>a[lang==="es"?1:lang==="zh"?2:0];
+  const tabs=[["series",i("Series & global rights","Serie y derechos globales","剧集与全球版权")],["toys",i("Derivatives & toy partners","Derivados y socios de juguetes","衍生品开发与玩具伙伴")]];
+  const hero=`<section class="sec band mhero"><div class="wrap mh-grid"><div>
+    <div class="eyebrow">${i("Flagship project · global rights open","Proyecto estrella · derechos globales disponibles","重点项目 · 全球版权开放")}</div>
+    <h1 style="margin-top:14px">MECHASIA<br><span>AWAKENING</span></h1>
+    <p class="lede" style="margin-top:16px">${esc(pick(m.lines))}</p>
+    <div class="chips" style="margin:18px 0 24px">${[i("3D realistic","3D realista","3D写实"),i("Sci-fi","Ciencia ficción","科幻"),"26 × 13′ · 338 min",i("Ages 6+","Mayores de 6 años","6岁以上"),i("Third season of the franchise","Tercera temporada de la franquicia","系列第三季"),i("IP 10th anniversary, 2026","10.º aniversario de la IP, 2026","2026年IP十周年"),i("Fan base in Asia","Base de fans en Asia","亚洲拥有粉丝基础"),i("Seeking toy & derivative partners","Buscamos socios de juguetes y derivados","寻找玩具与衍生品伙伴")].map(c=>`<span class="chip g" style="background:transparent">${c}</span>`).join("")}</div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn gold" data-contact="buy">${i("Inquire: global rights","Consultar derechos globales","咨询全球版权")} →</button><button class="btn" data-open="mecha">${i("Title sheet","Ficha del título","作品信息")}</button></div></div>
+    <div class="mh-poster">${poster(m,{eager:true})}</div></div></section>`;
+  const tabbar=`<div class="wrap" style="padding-top:34px"><div class="tabs" role="group">${tabs.map(t=>`<button data-mtab="${t[0]}" aria-pressed="${mtab===t[0]}">${t[1]}</button>`).join("")}</div></div>`;
+  let body="";
+  if(mtab==="series"){
+    const rc=[
+     [i("TV broadcast","Emisión en TV","电视播出"),i("Free TV, pay TV and children's channels, territory by territory.","TV en abierto, de pago y canales infantiles, territorio por territorio.","免费电视、付费电视与儿童频道，按地区洽谈。")],
+     [i("Streaming & digital","Streaming y digital","流媒体与数字"),i("SVOD, AVOD and FAST / CTV platforms.","Plataformas SVOD, AVOD y FAST / CTV.","SVOD、AVOD与FAST / CTV平台。")],
+     [i("IP licensing & merchandise","Licencias de IP y merchandising","IP授权与衍生品"),i("Brand owners and manufacturers who want to build on the MECHASIA IP.","Titulares de marcas y fabricantes que quieran desarrollar la IP MECHASIA.","希望基于机变战队IP开发产品的品牌方与制造商。")],
+     [i("Toy distribution","Distribución de juguetes","玩具分销"),i("Regional distributors and importers for the seven-hero line.","Distribuidores e importadores regionales para la línea de siete héroes.","面向七款英雄玩具的区域分销商与进口商。")]];
+    const facts=[[i("Episodes","Episodios","集数"),"26 × 13′"],[i("Total running time","Duración total","总时长"),"338 min"],[i("Audience","Público","受众"),pick(m.audience)],[i("Animation style","Estilo de animación","动画风格"),i("3D realistic","3D realista","3D写实")],[i("Genre","Género","类型"),i("Sci-fi","Ciencia ficción","科幻")],[i("Original language","Idioma original","原语言"),lg("zh")],[i("Dubbing / subtitles","Doblaje / subtítulos","配音 / 字幕"),i("On request","Bajo petición","按需提供")]];
+    body=`<section class="sec"><div class="wrap">
+      <div class="sec-head"><div class="eyebrow">${i("Rights offered","Derechos ofrecidos","可授权权利")}</div><h2>${i("Worldwide, territory by territory.","En todo el mundo, territorio por territorio.","面向全球，按地区洽谈。")}</h2>
+      <p class="lede">${i("We are pushing MECHASIA: AWAKENING to buyers in every region. Scope and exclusivity are confirmed per contract.","Impulsamos MECHASIA: AWAKENING entre compradores de todas las regiones. El alcance y la exclusividad se confirman por contrato.","我们面向各地区买家推广《机变战队：觉醒》。权利范围与独家性以合同确认。")}</p></div>
+      <div class="mods m4">${rc.map(r=>`<div class="mod"><h3>${r[0]}</h3><p>${r[1]}</p></div>`).join("")}</div>
+      <div style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap"><button class="btn gold" data-contact="buy">${i("Send a rights inquiry","Enviar consulta de derechos","提交版权询价")} →</button></div></div></section>
+     <section class="sec tint"><div class="wrap studio">
+      <div><div class="eyebrow">${i("The story so far","La historia hasta ahora","剧情简介")}</div><h2 style="margin-top:12px">${i("A thousand-year war, paused.","Una guerra milenaria, en pausa.","持续千年的战争，暂时停火。")}</h2>
+      <p style="margin-top:14px;color:var(--ink-soft)">${i("A thousand-year war between two mecha factions, the Lumisarians and the Nocturians, pauses when Divine Wind’s ship appears with a message of peace. Epsilon, young heir of the Nocturian ship Gear, leaves home to find his idol, is tricked by the Wicked Hunting Group and dragged into a gang war, and Prince Gladius arrives in pursuit. When Epsilon claims an ancient Star Disc, predators close in from every side, and a long-missing teacher returns, ready to reveal the secret that overturned the star region.","Una guerra milenaria entre dos facciones de mechas, lumisarios y nocturnos, se detiene cuando aparece la nave de Divine Wind con un mensaje de paz. Epsilon, joven heredero de la nave nocturna Gear, deja su hogar para buscar a su ídolo, cae en la trampa del Grupo de Caza Perverso y es arrastrado a una guerra de bandas; el príncipe Gladius llega en su persecución. Cuando Epsilon se hace con un antiguo Disco Estelar, los depredadores acuden de todas partes y regresa un maestro desaparecido hace tiempo, dispuesto a revelar el secreto que dio la vuelta a la región estelar.","两大机甲阵营 Lumisarians 与 Nocturians 之间持续千年的战争，因 Divine Wind 带着和平讯息的飞船出现而暂歇。Nocturians 飞船 Gear 的年轻继承人 Epsilon 为寻找偶像离家出走，被“邪恶猎杀团”设计卷入帮派之争，Gladius 王子随后追至，三方冲突升级。Epsilon 意外得到远古星盘，各方猎手蜂拥而至，而失踪已久的恩师归来，准备揭开颠覆星域的秘密。")}</p>
+      <div class="facts-line" style="margin-top:24px"><div><b>2026</b><span>${i("IP 10th anniversary","10.º aniversario de la IP","IP十周年")}</span></div><div><b>Asia</b><span>${i("Established fan base","Base de fans consolidada","拥有一定粉丝基础")}</span></div><div><b>4.71%</b><span>${i("Peak TVRR, #1 in channel","TVRR máx., n.º 1 del canal","最高TVRR，频道第一")}</span></div></div>
+      <p class="fine">${i("Historical broadcast data from prior Chinese TV broadcasts of the franchise; channel-level detail on request.","Datos históricos de emisiones anteriores de la franquicia en TV china; detalle por canal bajo petición.","该系列此前在中国电视台播出的历史数据；分频道明细可按需提供。")}</p></div>
+      <div><dl class="spec" style="margin:0">${facts.map(f=>`<dt>${f[0]}</dt><dd>${esc(f[1])}</dd>`).join("")}</dl></div></div></section>
+     <section class="sec"><div class="wrap"><div class="sec-head" style="margin-bottom:22px"><div class="eyebrow">${i("Stills","Imágenes","剧照")}</div></div>
+      <div class="gallery">${[1,2,3,4,5,6].map(n=>`<img src="img/mc/still${n}.jpg" alt="MECHASIA: AWAKENING still ${n}" loading="lazy">`).join("")}</div></div></section>
+     <section class="sec tint"><div class="wrap studio" style="align-items:center"><div><div class="eyebrow">${i("Producer","Productor","制作方")}</div><h2 style="margin-top:10px">Original Dream</h2>
+      <p style="margin-top:6px;font:500 13px var(--mono);color:var(--ink-soft)">Guangzhou Yuanchu Animation Co., Ltd.${lang==="zh"?" · 广州原初动画有限公司":""} · F5</p></div>
+      <div><p style="color:var(--ink-soft)">${i("A film and animation company that joins toy products, IP content and digital assets: content drives product, product spreads content. Credits include MECHASIA, Fruity Robo, Arc of War and Dragon Force.","Una compañía de cine y animación que une juguetes, contenido de IP y activos digitales: el contenido impulsa el producto y el producto difunde el contenido. Entre sus créditos figuran MECHASIA, Fruity Robo, Arc of War y Dragon Force.","一家融合玩具产品、IP内容与数字资产的影视动画公司，奉行“内容驱动产品、产品传播内容”。代表作包括《机变战队》《Fruity Robo》《Arc of War》《Dragon Force》。")}</p>
+      <div class="facts-line"><div><b>4,000+</b><span>${i("Minutes produced","Minutos producidos","累计制作分钟")}</span></div><div><b>50+</b><span>${i("Digital artists","Artistas digitales","数字艺术家")}</span></div><div><b>300+</b><span>${i("Projects","Proyectos","项目")}</span></div></div></div></div></section>`;
+  }else{
+    const TH=[
+     ["sportscar",["Sports car","Coche deportivo","跑车"],["divine","deathtone"],"WY1001 · WY1006","15 cm",
+      ["Speed and rebellion. Two heroes share this form: Divine Wind, the free-spirited captain who becomes an enemy to both factions, and Deathtone, the scheming comic relief who later reforms.","Velocidad y rebeldía. Dos héroes comparten esta forma: Divine Wind, el capitán libre que se enfrenta a ambos bandos, y Deathtone, el alivio cómico intrigante que luego se redime.","速度与叛逆。两位英雄共用这一形态：不受约束、同时成为两大阵营之敌的 Divine Wind，以及爱耍心眼、后来改过自新的搞笑担当 Deathtone。"]],
+     ["truck",["Truck","Camión","卡车"],["gladius"],"WY1002","16.6 cm",
+      ["Heavy-duty presence. Prince Gladius, the cool-headed avenger behind a hero’s mask, is the tallest figure in the range at 16.6 cm.","Presencia de gran potencia. El príncipe Gladius, el vengador sereno tras la máscara de héroe, es la figura más alta de la gama con 16,6 cm.","重型气场。藏在英雄面具后的冷静复仇者 Gladius 王子，是整个系列中最高的一款，达16.6厘米。"]],
+     ["train",["Train","Tren","火车"],["epsilon"],"WY1003","15 cm",
+      ["The story’s heart. Epsilon, the young rookie who by chance claims powerful technology, is the character children follow from the first episode.","El corazón de la historia. Epsilon, el joven novato que por azar obtiene una tecnología poderosa, es el personaje al que los niños siguen desde el primer episodio.","故事的核心。偶然获得强大科技的年轻新人 Epsilon，是孩子们从第一集起就追随的主角。"]],
+     ["lunar",["Lunar rover","Vehículo lunar","月球车"],["mystic"],"WY1004","15 cm",
+      ["The mysterious one. Mystic Lock, sniper and necromancer of the Wicked Hunting Group, who often vanishes without a trace.","El misterioso. Mystic Lock, francotirador y nigromante del Grupo de Caza Perverso, que a menudo desaparece sin dejar rastro.","神秘担当。“邪恶猎杀团”的狙击手与亡灵法师 Mystic Lock，常常神出鬼没。"]],
+     ["heli",["Helicopter","Helicóptero","直升机"],["machiapter"],"WY1005","15 cm",
+      ["Takes to the air. Machiapter, the lazy genius and core member of the main combat faction.","Se lanza al aire. Machiapter, el genio perezoso y miembro clave de la facción de combate principal.","翱翔天际。懒散的天才、主战阵营的核心成员 Machiapter。"]],
+     ["ship",["Spaceship","Nave espacial","飞船"],["sidewinder"],"WY1007","15 cm",
+      ["Takes the range into space. Sidewinder, the passionate hero with a heart full of fire and a core fighter of the main faction.","Lleva la gama al espacio. Sidewinder, el héroe apasionado con el corazón en llamas y combatiente clave de la facción principal.","把系列带入太空。满腔热血的热情英雄 Sidewinder，主战阵营的核心战士。"]]];
+    const waveOf=n=>MH.find(h=>h[0]===n)[5];
+    const rows=MH.map(h=>{const p=mhp(h[2]);return `<tr><td>${h[2]}</td><td><b>${h[1]}</b></td><td>${L3(h[3])}</td><td>${h[4]}</td><td>${p[0]}</td><td>24</td><td>${p[1]}</td><td>${p[2]}</td><td>${h[5]}</td></tr>`}).join("");
+    const models=[
+     [i("Distribution partner","Socio de distribución","分销伙伴"),i("Regional distributors and importers who bring the full seven-hero range to their market: open-window colour boxes, 24 pieces per master carton, ages 6+.","Distribuidores e importadores regionales que llevan la gama completa de siete héroes a su mercado: cajas de color con ventana, 24 piezas por caja máster, mayores de 6 años.","把完整七款英雄系列带入本地市场的区域分销商与进口商：开窗彩盒，每外箱24件，适龄6岁以上。")],
+     [i("IP licensing","Licencias de IP","IP授权"),i("Brand owners and manufacturers who want to license the MECHASIA: AWAKENING IP and make or sell products for their own territory.","Titulares de marcas y fabricantes que quieren licenciar la IP de MECHASIA: AWAKENING y fabricar o vender productos en su territorio.","希望获得《机变战队：觉醒》IP授权，在本地区生产或销售产品的品牌方与制造商。")],
+     [i("Derivative development","Desarrollo de derivados","衍生品开发"),i("Partners who want to co-develop new MECHASIA products and line extensions beyond the current seven figures, backed by the series on screen.","Socios que quieren codesarrollar nuevos productos y extensiones de línea de MECHASIA más allá de las siete figuras actuales, respaldados por la serie en pantalla.","希望与我们共同开发新的机变战队产品与系列延伸、突破现有七款玩具的合作伙伴，并有剧集内容的支持。")]];
+    body=`<section class="sec"><div class="wrap">
+      <div class="sec-head"><div class="eyebrow">${i("Derivative development · iUBEST toy line","Desarrollo de derivados · línea de juguetes iUBEST","衍生品开发 · iUBEST玩具线")}</div><h2>${i("We are looking for toy and derivative partners.","Buscamos socios de juguetes y derivados.","我们正在寻找玩具与衍生品合作伙伴。")}</h2>
+      <p class="lede">${i("MECHASIA already has a dual-form toy line with strong sales in China and Asia, built around six vehicle themes. We now want partners to take it to the rest of the world and to develop new products around the series.","MECHASIA ya cuenta con una línea de juguetes de doble forma con grandes ventas en China y Asia, construida en torno a seis temas de vehículos. Ahora buscamos socios que la lleven al resto del mundo y desarrollen nuevos productos en torno a la serie.","机变战队已有一条围绕六大座驾主题打造、在中国和亚洲销售成绩出色的双形态玩具线。现在我们希望找到合作伙伴，把它带到世界其他地区，并围绕剧集开发新的产品。")}</p></div>
+      <div class="facts-line" style="margin-top:0"><div><b>6</b><span>${i("Vehicle themes","Temas de vehículo","座驾主题")}</span></div><div><b>7</b><span>${i("Collectible heroes","Héroes coleccionables","收藏英雄")}</span></div><div><b>${i("China & Asia","China y Asia","中国与亚洲")}</b><span>${i("Proven sales","Ventas probadas","已验证销售")}</span></div><div><b>6+</b><span>${i("Age grading","Edad recomendada","适龄")}</span></div><div><b>24</b><span>${i("Pcs per carton","Piezas por caja","每箱件数")}</span></div></div></div></section>
+     <section class="sec tint"><div class="wrap">
+      <div class="sec-head"><div class="eyebrow">${i("The six themed toys","Los seis juguetes temáticos","六大主题玩具")}</div><h2>${i("Six themes. Seven heroes. Two forms each.","Seis temas. Siete héroes. Dos formas cada uno.","六大主题，七位英雄，各有两种形态。")}</h2>
+      <p class="lede">${i("Every figure is a robot hero and a vehicle in one. The vehicle gives each toy its theme, and each theme gives a hero his place in the story. Wave 1 is the five launch characters; wave 2 adds two more so shops can build one shelf from the full seven.","Cada figura es un héroe robot y un vehículo a la vez. El vehículo da a cada juguete su tema y cada tema da a un héroe su lugar en la historia. La oleada 1 son los cinco personajes de lanzamiento; la oleada 2 añade dos más para que las tiendas monten un lineal con los siete.","每一款都是机器人英雄与座驾合二为一。座驾决定了玩具的主题，主题也让每位英雄在故事里各有定位。第一批为五款首发角色，第二批再加两款，零售商可用全部七款陈列一整个货架。")}</p></div>
+      <div class="hcards">${TH.map((t,n)=>`<article class="hcard"><div class="himg ${t[2].length>1?"two":""}">${t[2].map(k=>`<img src="img/mc/${k}.jpg" alt="${esc(MH.find(h=>h[0]===k)[1])}" loading="lazy">`).join("")}</div><div><div class="hno">${i("Theme","Tema","主题")} ${n+1} · ${t[3]}</div><h3>${L3(t[1])}</h3><div class="chips" style="margin:8px 0 10px">${t[2].map(k=>`<span class="chip g">${esc(MH.find(h=>h[0]===k)[1])}</span>`).join("")}<span class="chip">${t[4]}</span><span class="chip">${i("Wave","Oleada","第")} ${[...new Set(t[2].map(waveOf))].join("/")}${lang==="zh"?" 批":""}</span></div><p>${esc(L3(t[5]))}</p></div></article>`).join("")}</div></div></section>
+     <section class="sec"><div class="wrap"><div class="sec-head"><div class="eyebrow">${i("How we can work together","Cómo podemos colaborar","合作方式")}</div><h2>${i("Three ways in.","Tres formas de entrar.","三种合作方式。")}</h2>
+      <p class="lede">${i("The series and the toys are sold together. A broadcaster or platform carrying MECHASIA gives the toy line a screen, and the toy line gives the series a shelf.","La serie y los juguetes se venden juntos. Una cadena o plataforma que emite MECHASIA da pantalla a la línea de juguetes, y la línea de juguetes da estantería a la serie.","剧集与玩具捆绑推广：电视台或平台播出机变战队，为玩具提供屏幕；玩具产品则为剧集提供货架。")}</p></div>
+      <div class="mods">${models.map(m=>`<div class="mod"><h3>${m[0]}</h3><p>${m[1]}</p></div>`).join("")}</div></div></section>
+     <section class="sec tint"><div class="wrap studio" style="align-items:center"><div><div class="eyebrow">${i("Retail packaging","Embalaje comercial","零售包装")}</div><h2 style="margin-top:10px">${i("The figure sells itself.","La figura se vende sola.","让玩具自己说话。")}</h2>
+      <ul class="list" style="grid-template-columns:1fr;margin-top:18px"><li><b>${i("Open-window colour box","Caja de color con ventana","开窗彩盒")}</b> ${i("shows the figure on shelf","muestra la figura en el lineal","货架上直接展示玩具")}</li><li><b>${i("Dual-form artwork","Arte de doble forma","双形态画面")}</b> ${i("robot and vehicle with a call-out","robot y vehículo con distintivo","机器人与座驾画面，附双形态标识")}</li><li><b>${i("Range panel","Panel de gama","系列侧面板")}</b> ${i("side panel shows the whole collection","el lateral muestra toda la colección","侧面展示整个系列角色")}</li><li><b>${i("Age grading 6+","Edad 6+","适龄6岁以上")}</b> ${i("on every box, 24 pcs per master carton","en cada caja, 24 piezas por caja máster","每盒标注，每外箱24件")}</li></ul></div>
+      <img src="img/mc/packaging.jpg" alt="MECHASIA: AWAKENING retail packaging" loading="lazy" style="width:100%;border-radius:2px"></div></section>
+     <section class="sec"><div class="wrap"><div class="sec-head"><div class="eyebrow">${i("Trade information","Información comercial","贸易信息")}</div><h2>${i("Specifications at a glance.","Especificaciones de un vistazo.","规格一览。")}</h2></div>
+      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>${i("Item no.","Ref.","货号")}</th><th>${i("Character","Personaje","角色")}</th><th>${i("Alt. form","Forma alt.","第二形态")}</th><th>${i("Height","Altura","高度")}</th><th>${i("Pack size (mm)","Envase (mm)","彩盒尺寸 (mm)")}</th><th>${i("Pcs/ctn","Uds/caja","件/箱")}</th><th>${i("Carton (mm)","Caja (mm)","外箱 (mm)")}</th><th>m³</th><th>${i("Wave","Oleada","批次")}</th></tr></thead><tbody>${rows}</tbody></table></div>
+      <p class="fine" style="margin-top:12px">${i("Prices, EAN / barcodes, weights and shipping terms on request.","Precios, EAN / códigos de barras, pesos y condiciones de envío bajo petición.","价格、EAN条码、重量与运输条款可按需提供。")}</p></div></section>
+     <section class="sec band"><div class="wrap"><div class="eyebrow">${i("Talk to us","Hable con nosotros","联系我们")}</div><h2 style="margin-top:10px">${i("Distributor, licensee or developer?","¿Distribuidor, licenciatario o desarrollador?","分销商、授权方还是产品开发方？")}</h2><div style="margin-top:16px">${contactLines("on-dark")}</div><div style="margin-top:18px"><button class="btn gold" data-contact="partner">${i("Start a conversation","Iniciar conversación","开启合作")} →</button></div></div></section>`;
+  }
+  return hero+tabbar+body;
+}
+
+/* ---------- about ---------- */
+function vAbout(){
+  return `<section class="sec" style="padding-top:44px"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">${i("About us","Nosotros","关于我们")}</div><h2>${i("Connecting China, Spain and Latin America through content and rights.","Conectando China, España y América Latina a través de contenidos y derechos.","以内容与版权，连接中国、西班牙与拉丁美洲。")}</h2></div>
+    <div class="people"><div><h3>${i("Company profile","Perfil de la empresa","公司简介")}</h3>
+      <p style="margin-top:14px;color:var(--ink-soft)">${i("BELLOTA BLANCA FILM & PRODUCCIONES S.L. (白橡树电影制片公司) is a Madrid-registered company that sells, represents and produces audiovisual content between China and the Spanish- and Portuguese-speaking worlds. We partner with China’s leading production companies and take their content to film festivals and markets. Together with our Chinese company XIN MOTION PICTURE in Shanghai, we work on both sides of the market. Our first priority is rights sales. Representation, acquisition, co-production and IP development follow.","BELLOTA BLANCA FILM & PRODUCCIONES S.L. (白橡树电影制片公司) es una empresa con sede en Madrid que vende, representa y produce contenido audiovisual entre China y el mundo hispano y lusófono. Nos asociamos con las principales productoras de China y llevamos sus contenidos a festivales de cine y mercados. Junto con nuestra empresa china XIN MOTION PICTURE, en Shanghái, trabajamos en ambos lados del mercado. Nuestra primera prioridad es la venta de derechos. Después vienen la representación, la adquisición, la coproducción y el desarrollo de IP.","白橡树电影制片公司（BELLOTA BLANCA FILM & PRODUCCIONES S.L.）是一家位于马德里的公司，在中国与西语、葡语世界之间销售、代理并制作影视内容。我们联合中国的头部制作公司，将其内容带到电影节与影视市场。我们在上海设有中国公司 XIN MOTION PICTURE，业务覆盖市场两端。我们的首要业务是版权销售，其后依次是代理、采购、联合制作与IP开发。")}</p>
+      <h3 style="margin-top:30px">${i("Our companies","Nuestras empresas","旗下公司")}</h3>
+      <dl class="spec" style="margin-top:12px"><dt>${i("Spain","España","西班牙")}</dt><dd><b>BELLOTA BLANCA FILM & PRODUCCIONES S.L.</b><br>${i("Madrid · international rights sales and representation","Madrid · venta y representación internacional de derechos","马德里 · 国际版权销售与代理")}</dd>
+      <dt>${i("China","China","中国")}</dt><dd><b>XIN MOTION PICTURE</b><br>${i("Shanghai · documentaries, film co-production and AI vertical content","Shanghái · documentales, coproducción de cine y contenido vertical con IA","上海 · 纪录片、电影联合制作与AI竖屏内容")}</dd>
+      <dt>${i("China","China","中国")}</dt><dd><b>${i("AI Content Factory Base","Base de producción de contenido con IA","AI内容工厂基地")}</b><br>${i("Guangzhou · we develop and produce AI content in vertical and horizontal formats. Sample reels on request.","Cantón (Guangzhou) · desarrollamos y producimos contenido con IA en formato vertical y horizontal. Muestras bajo petición.","广州 · 开发并制作AI内容，含竖屏与横屏。可联系索取样片。")}<br><button class="btn sm gold" style="margin-top:12px" data-contact="buy">${i("Request sample reels","Pedir muestras","索取样片")} →</button></dd></dl></div>
+      <div><h3>${i("Where we work","Dónde trabajamos","业务网络")}</h3>
+      <ul class="list" style="grid-template-columns:1fr;margin-top:12px"><li><b>${i("China business network","Red de negocio en China","中国业务网络")}</b> ${i("leading production companies, animation groups, rights-holders","principales productoras, grupos de animación, titulares de derechos","头部制作公司、动画集团、版权方")}</li><li><b>${i("Festivals & markets","Festivales y mercados","电影节与市场")}</b> ${i("film festivals and content markets","festivales de cine y mercados de contenidos","电影节与影视内容市场")}</li><li><b>${i("Spain business base","Base de negocio en España","西班牙业务基地")}</b> Madrid</li><li><b>${i("Latin American market network","Red de mercados latinoamericanos","拉美市场网络")}</b> ${i("broadcasters, platforms, distributors","cadenas, plataformas, distribuidores","电视台、平台、发行商")}</li></ul></div></div></div></section>`;
+}
+
+function vNetwork(){
+  const mk=(c,live)=>`<span class="${live?"live":""}">${c}</span>`;
+  return `<section class="sec" style="padding-top:44px"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">${i("Distribution network","Red de distribución","国际发行网络")}</div><h2>${i("China — Spain — Latin America.","China — España — América Latina.","中国 — 西班牙 — 拉丁美洲。")}</h2>
+    <p class="lede">${i("Content comes from China, deals are made from Madrid, and the buyers are in Iberia and Latin America. Markets in gold have already received our own programming; the full list of countries is available on request. The rest are markets we are working toward.","El contenido viene de China, los acuerdos se cierran desde Madrid y los compradores están en Iberia y América Latina. Los mercados en dorado ya han recibido programación propia. El resto son mercados hacia los que trabajamos.","内容来自中国，交易在马德里达成，买家在伊比利亚与拉丁美洲。金色标记的市场已播出过我们自制的节目，其余为我们正在拓展的目标市场。")}</p></div>
+    ${mapSVG()}
+    <div class="regions">
+      <div class="region"><div class="eyebrow">IBERIA</div><h3>Spain / Portugal</h3><div class="mk">${mk("Spain")}${mk("Portugal")}</div><p style="font-size:14.5px;color:var(--ink-soft)">${i("Spain is our operating base. Portugal is a target market.","España es nuestra base operativa. Portugal es un mercado objetivo.","西班牙为我们的运营基地，葡萄牙为目标市场。")}</p></div>
+      <div class="region"><div class="eyebrow">LATIN AMERICA</div><h3>${i("Latin America","América Latina","拉丁美洲")}</h3><div class="mk">${mk("Colombia",1)}${mk("Peru",1)}${mk("Mexico")}${mk("Brazil")}${mk("Argentina")}${mk("Chile")}${mk("Ecuador")}${mk("Uruguay")}${mk("Panama")}</div><p style="font-size:14.5px;color:var(--ink-soft)">${i("Brazil is run as a separate Portuguese-language market, with Portuguese catalogue and sales material planned.","Brasil se trabaja como mercado independiente en portugués, con catálogo y material de ventas en portugués previstos.","巴西作为独立的葡语市场运营，计划增加葡语目录与商务资料。")}</p></div>
+      <div class="region"><div class="eyebrow">GLOBAL MARKETS</div><h3>${i("Other markets","Otros mercados","其他市场")}</h3><div class="mk">${mk("US Hispanic")}${mk(i("Other territories","Otros territorios","其他地区"))}</div><p style="font-size:14.5px;color:var(--ink-soft)">${i("The US Spanish-language market is the next stage of expansion.","El mercado hispano de EE. UU. es la siguiente fase de expansión.","美国西语市场是后续拓展方向。")}</p></div>
+    </div>
+    <div class="legend"><span><i style="background:var(--gold)"></i>${i("Smart Pulse Season 1 broadcast","Emisión de Smart Pulse temporada 1","《Smart Pulse》第一季播出")}</span><span><i style="border:1px dashed var(--ink-soft)"></i>${i("Target market, no partnership implied","Mercado objetivo, sin alianza implícita","目标市场，不代表合作关系")}</span></div>
+  </div></section>
+  <section class="sec tint"><div class="wrap"><div class="sec-head"><div class="eyebrow">${i("Network layers","Capas de la red","网络构成")}</div><h2>${i("Five layers behind each deal.","Cinco capas detrás de cada acuerdo.","每笔交易背后的五个层面。")}</h2></div>
+    <div class="mods">${[
+     [i("Chinese content resources","Recursos de contenido chino","中国内容资源网络"),i("Producers, animation groups and partner libraries that supply titles.","Productoras, grupos de animación y catálogos de socios que aportan títulos.","提供作品的制作公司、动画集团与合作片库。")],
+     [i("Spain business base","Base de negocio en España","西班牙业务基地"),i("Madrid office for contracts, buyer relations and European events.","Oficina en Madrid para contratos, relación con compradores y eventos europeos.","马德里办公室，负责合同、买家关系与欧洲展会。")],
+     [i("Latin American buyers","Compradores latinoamericanos","拉美采购与发行网络"),i("Broadcasters, platforms and local distributors we are building relationships with.","Cadenas, plataformas y distribuidores locales con los que construimos relaciones.","我们正在建立联系的电视台、平台与本地发行商。")],
+     [i("TV and streaming channels","Canales de TV y streaming","电视与流媒体渠道"),i("Smart Pulse Season 1 aired in 5 countries on 10+ channels; Season 2 adds streaming and social.","Smart Pulse temporada 1 se emitió en 5 países y más de 10 canales; la 2 suma streaming y redes.","《智汇中拉》第一季在5个国家、10余个频道播出，第二季增加流媒体与社交渠道。")],
+     [i("Rights markets","Mercados de derechos","国际版权交易市场"),i("Presence at industry markets such as the Bogotá Audiovisual Market.","Presencia en mercados del sector como el Bogotá Audiovisual Market.","参加波哥大视听市场等行业交易会。")],
+    ].map(m=>`<div class="mod"><h3>${m[0]}</h3><p>${m[1]}</p></div>`).join("")}</div></div></section>`;
+}
+
+function vCoprod(){
+  const mods=[[i("International Co-production","Coproducción internacional","国际联合制作"),i("Shared creative and financial responsibility across borders.","Responsabilidad creativa y financiera compartida entre países.","跨国分担创作与融资责任。")],[i("Chinese–Spanish projects","Proyectos chino–españoles","中西合作项目"),i("Projects developed between Madrid and China.","Proyectos desarrollados entre Madrid y China.","在马德里与中国之间共同开发的项目。")],[i("Chinese–Latin American projects","Proyectos chino–latinoamericanos","中拉合作项目"),i("Stories and productions built with Latin American partners.","Historias y producciones con socios latinoamericanos.","与拉美伙伴共同打造的故事与制作。")],[i("IP development","Desarrollo de IP","IP开发"),i("Building a property across screen, product and licensing.","Construir una propiedad a través de pantalla, producto y licencias.","打通屏幕、产品与授权的IP开发。")],[i("Format adaptation","Adaptación de formatos","Format改编"),i("Local versions of shows and formats.","Versiones locales de programas y formatos.","节目与Format的本地化版本。")],[i("Remake opportunities","Oportunidades de remake","翻拍机会"),i("Local remakes of successful series and films.","Remakes locales de series y películas de éxito.","成功剧集与电影的本地翻拍。")],[i("Animation co-production","Coproducción de animación","动画联合制作"),i("Co-developed animated series and films.","Series y películas de animación desarrolladas en conjunto.","联合开发的动画剧集与电影。")]];
+  const sp=byId("sp2");
+  return `<section class="sec" style="padding-top:44px"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">${i("Co-production & IP","Coproducción e IP","联合制作与IP")}</div><h2>${i("Building new projects with partners.","Construyendo nuevos proyectos con socios.","与伙伴共同打造新项目。")}</h2>
+    <p class="lede">${i("Co-production supports our sales business. We take on a small number of projects where a partner brings finance, access or a local audience.","La coproducción apoya nuestro negocio de ventas. Asumimos pocos proyectos en los que un socio aporta financiación, acceso o audiencia local.","联合制作是销售业务的补充。我们只参与少数项目，通常是合作方能带来资金、渠道或本地观众。")}</p></div>
+    <ul class="list">${mods.map(m=>`<li><b>${m[0]}</b><br><span style="color:var(--ink-soft);font-size:14.5px">${m[1]}</span></li>`).join("")}</ul></div></section>
+  <section class="sec tint"><div class="wrap"><div class="studio" style="align-items:center"><div><div class="eyebrow">${i("In practice","En la práctica","实例")}</div><h2 style="margin-top:12px">Smart Pulse · ${i("Season 2","Temporada 2","第二季")}</h2>
+    <p class="lede" style="margin-top:14px">${i("A China–Latin America documentary built with partners on both sides. Latin American hosts visit Chinese-invested companies at home, then travel to China to see where the technology starts. Production begins in 2026; broadcast follows in 2027 in Spanish and Portuguese.","Un documental China–América Latina construido con socios de ambos lados. Presentadores latinoamericanos visitan en su país a empresas con capital chino y luego viajan a China para ver dónde nace la tecnología. La producción empieza en 2026 y la emisión llega en 2027, en español y portugués.","一部与中拉双方伙伴共同打造的纪录片。拉美主持人先在本国走访中资企业，再前往中国，探访技术的源头。2026年开拍，2027年以西语和葡语播出。")}</p>
+    <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap"><button class="btn" data-open="sp2">${i("Open title","Abrir ficha","查看详情")}</button><button class="btn gold" data-contact="partner">${i("Propose a project","Proponer un proyecto","提出合作项目")} →</button></div></div>
+    <div class="gallery"><img src="img/sp/h1.jpg" alt="" loading="lazy"><img src="img/sp/h2.jpg" alt="" loading="lazy"><img src="img/sp/h3.jpg" alt="" loading="lazy"><img src="img/sp/h4.jpg" alt="" loading="lazy"><img src="img/sp/key.jpg" alt="" loading="lazy"></div></div></div></section>`;
+}
+
+function formFields(kind,preset={}){
+  const rights=["free","pay","svod","avod","fast","digital","format","remake","license"].map(k=>`<label><input type="checkbox" name="rights" value="${k}"${(preset.rights||[]).includes(k)?" checked":""}>${esc(rt(k))}</label>`).join("");
+  const plat=[[i("Broadcaster","Cadena de TV","电视台"),"Broadcaster"],[i("Streaming platform","Plataforma de streaming","流媒体平台"),"Streaming"],[i("Distributor","Distribuidor","发行商"),"Distributor"],[i("FAST / AVOD","FAST / AVOD","FAST / AVOD"),"FAST/AVOD"],[i("Other","Otro","其他"),"Other"]].map(p=>`<label><input type="checkbox" name="platform" value="${p[1]}">${p[0]}</label>`).join("");
+  const f=(id,label,type="text",req=false,full=false,val="")=>`<div class="fld${full?" full":""}"><label for="${id}">${label}${req?" *":""}</label>${type==="textarea"?`<textarea id="${id}" name="${id}"${req?" required":""}>${esc(val)}</textarea>`:`<input id="${id}" name="${id}" type="${type}"${req?" required":""} value="${esc(val)}" ${type==="email"?'autocomplete="email"':""}>`}</div>`;
+  const common=f("q-name",i("Name","Nombre","姓名"),"text",true)+f("q-company",i("Company","Empresa","公司"),"text",true)+f("q-country",i("Country","País","国家"),"text",true)+f("q-email",i("Business email","Correo profesional","工作邮箱"),"email",true)+f("q-pos",i("Position","Cargo","职位"));
+  if(kind==="submit")return common+f("q-title",i("Project title","Título del proyecto","项目名称"),"text",true)+f("q-info",i("Format, episodes, runtime","Formato, episodios, duración","类型、集数、时长"))+f("q-held",i("Rights you hold","Derechos que posee","您持有的权利"))+f("q-terr",i("Territories to offer","Territorios a ofrecer","可授权地区"))+f("q-link",i("Link to materials","Enlace a materiales","资料链接"),"text",false,true)+f("q-msg",i("Message","Mensaje","留言"),"textarea",false,true);
+  if(kind==="partner")return common+f("q-type",i("Type of organisation","Tipo de organización","机构类型"),"text",false,true)+f("q-msg",i("How would you like to work together?","¿Cómo te gustaría colaborar?","希望如何合作？"),"textarea",true,true);
+  return common+f("q-title",i("Interested project","Proyecto de interés","感兴趣的项目"),"text",false,true,preset.title||"")+`<div class="fld full"><label>${i("Rights required","Derechos requeridos","所需权利")}</label><div class="checks">${rights}</div></div>`+f("q-terr",i("Territory","Territorio","地区"),"text",false,false,preset.terr||"")+`<div class="fld"><label>${i("Platform","Plataforma","平台")}</label><div class="checks">${plat}</div></div>`+f("q-msg",i("Message","Mensaje","留言"),"textarea",false,true);
+}
+function formHTML(kind,preset){
+  return `<form class="form" id="inq-form" data-kind="${kind}" novalidate>${formFields(kind,preset)}<div class="full" style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><button class="btn gold" type="submit">${i("Prepare inquiry","Preparar consulta","生成询价")} →</button><span class="fine">${i("We use your details only to reply to this inquiry.","Usamos tus datos solo para responder a esta consulta.","您的信息仅用于回复本次询价。")}</span></div><div class="full" id="inq-out"></div></form>`;
+}
+function vContact(){
+  const tabs=[["buy",i("Buy content","Comprar contenido","购买内容")],["submit",i("Submit content","Enviar contenido","提交内容")],["partner",i("Partner with us","Colabora con nosotros","合作洽谈")]];
+  const sub={buy:i("For broadcasters, platforms and distributors.","Para cadenas, plataformas y distribuidores.","面向电视台、平台与发行商。"),submit:i("For Chinese production companies and rights-holders.","Para productoras y titulares de derechos chinos.","面向中国制作公司与版权方。"),partner:i("For overseas distributors, producers and institutions.","Para distribuidores, productores e instituciones del exterior.","面向海外发行商、制作公司与机构。")};
+  return `<section class="sec" style="padding-top:44px"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">${i("Contact","Contacto","商务联系")}</div><h2>${i("Tell us what you want to buy, sell or build.","Cuéntanos qué quieres comprar, vender o construir.","告诉我们您想购买、销售或共建什么。")}</h2></div>
+    <div class="cform"><div>
+      <div class="tabs" style="margin-bottom:8px">${tabs.map(t=>`<button data-ctab="${t[0]}" aria-pressed="${contactTab===t[0]}">${t[1]}</button>`).join("")}</div>
+      <p class="fine" style="margin-bottom:22px">${sub[contactTab]}</p>
+      <div id="cform-host">${formHTML(contactTab,{})}</div></div>
+    <aside class="addr"><div><b>${i("Company","Empresa","公司")}</b>BELLOTA BLANCA FILM & PRODUCCIONES S.L.<br>白橡树电影制片公司</div><div><b>${i("Office","Oficina","办公地点")}</b>Madrid, Spain</div><div><b>${i("Sales & distribution","Ventas y distribución","销售与发行")}</b><span class="sel">${MAIL}</span> <button class="link" data-copy="${MAIL}" style="margin-left:8px">${i("Copy","Copiar","复制")}</button></div><div><b>${i("Founder & partnerships","Fundadora y alianzas","创始人与合作")}</b><span class="sel">${MAIL2}</span> <button class="link" data-copy="${MAIL2}" style="margin-left:8px">${i("Copy","Copiar","复制")}</button></div><div><b>${i("General enquiries","Consultas generales","综合咨询")}</b><span class="sel">${MAIL3}</span> <button class="link" data-copy="${MAIL3}" style="margin-left:8px">${i("Copy","Copiar","复制")}</button></div><div><b>WhatsApp</b><a href="${waLink}" target="_blank" rel="noopener" style="color:var(--gold-ink)">${PHONE}</a></div><div><b>${i("WeChat","WeChat","微信")}</b>363141461 · moranproduction</div><div><b>${i("Contact","Contacto","联系人")}</b>Moran 默然</div><div><b>${i("Languages","Idiomas","语言")}</b>English · Español · 中文</div></aside></div></div></section>`;
+}
+
+function footer(){
+  return `<footer class="foot"><div class="wrap"><div class="foot-grid">
+  <div><img src="img/logo.png" width="96" height="96" alt="BELLOTA BLANCA FILM & PRODUCCIONES S.L." style="display:block;margin-bottom:18px"><div class="tag">Connecting China, Spain and Latin America through Content & Rights.</div></div>
+  <div><h4>${i("Explore","Explorar","导航")}</h4>${["catalogue","mechasia","rights","animation","network"].map(v=>`<button class="fl" data-go="${v}">${nav(v)}</button>`).join("")}</div>
+  <div><h4>${i("Company","Empresa","公司")}</h4>${["coproduction","about","contact"].map(v=>`<button class="fl" data-go="${v}">${nav(v)}</button>`).join("")}${["Privacy Policy","Cookie Policy","Legal Notice","Terms of Use"].map((x,k)=>`<button class="fl" data-legal="${k}">${[i("Privacy Policy","Política de privacidad","隐私政策"),i("Cookie Policy","Política de cookies","Cookie政策"),i("Legal Notice","Aviso legal","法律声明"),i("Terms of Use","Condiciones de uso","使用条款")][k]}</button>`).join("")}</div></div>
+  <p class="fine">© BELLOTA BLANCA FILM & PRODUCCIONES S.L. · Madrid, Spain · ${MAIL} · ${MAIL3} · WhatsApp ${PHONE}<br>${i("Titles, artwork and trademarks belong to their respective owners. Availability is indicative and subject to contract.","Los títulos, imágenes y marcas pertenecen a sus respectivos titulares. La disponibilidad es orientativa y está sujeta a contrato.","作品、图片与商标归各自权利人所有。授权情况仅供参考，以合同为准。")}</p></div></footer>`;
+}
+
+/* ---------- detail modal ---------- */
+function openTitle(id){
+  const it=byId(id);if(!it)return;
+  const rights=(it.rights||[]);
+  const dd=(k,v)=>v?`<dt>${k}</dt><dd>${v}</dd>`:"";
+  const spec=[
+    dd(i("Genre","Género","类型"),`<div class="chips">${(it.genres||[]).map(g=>`<span class="chip">${esc(gen(g))}</span>`).join("")}</div>`),
+    dd(i("Country of origin","País de origen","制作国家"),esc(ctry(it.country))),
+    dd(i("Licensor / producer","Titular / productor","版权方 / 制作方"),esc(lic(it.lic))),
+    it.year?dd(i("Year","Año","年份"),esc(it.year)):"",
+    it.prem?dd(i("Premiere","Estreno","首播"),esc(pick(it.prem))):"",
+    it.plat?dd(i("Broadcast platforms","Plataformas de emisión","播出平台"),esc(pick(it.plat))):"",
+    it.format?dd(i("Format","Formato","形式"),esc(it.format+" · "+it.age)):"",
+    it.eps?dd(i("Episodes","Episodios","集数"),esc(pick(it.eps))):"",
+    it.run?dd(i("Running time","Duración","时长"),esc(it.run.replace("total",i("total","en total","合计")))):"",
+    it.audience?dd(i("Audience","Público","受众"),esc(pick(it.audience))):"",
+    dd(i("Original language","Idioma original","原语言"),esc(lg(it.langs))),
+    dd(i("Available subtitles","Subtítulos disponibles","可提供字幕"),it.subs?esc(pick(it.subs)):esc(i("Spanish / English on request","Español / inglés bajo petición","西语 / 英语字幕按需提供"))),
+    dd(i("Production status","Estado de producción","制作状态"),esc(st(it.status))),
+    it.dir?dd(i("Director","Director","导演"),esc(it.dir)):"",
+    it.cast?dd(i("Cast","Reparto","主演"),esc(it.cast)):"",
+    it.seasons?dd(i("Seasons","Temporadas","季数"),`<div class="seasons">${esc(it.seasons)}</div>`):"",
+    dd(i("Rights available","Derechos disponibles","可授权权利"),rights.length?`<div class="chips">${rights.map(r=>`<span class="chip g">${esc(rt(r))}</span>`).join("")}</div><p class="fine" style="margin-top:8px">${i("Scope and exclusivity confirmed per contract.","Alcance y exclusividad confirmados por contrato.","范围与独家性以合同确认。")}</p>`:esc(i("Available on request, confirmed per contract.","Disponible bajo petición, confirmado por contrato.","可洽谈，以合同确认。"))),
+    dd(i("Available territories","Territorios disponibles","可授权地区"),esc(terr(it.terr))),
+  ].join("");
+  const el=document.createElement("div");el.className="scrim";el.id="modal";el.setAttribute("role","dialog");el.setAttribute("aria-modal","true");el.setAttribute("aria-label",title1(it));
+  el.innerHTML=`<div class="panel"><button class="x" data-close aria-label="${i("Close","Cerrar","关闭")}">×</button><div class="pan-grid">${poster(it,{eager:true})}
+   <div class="pan-main"><div><div class="eyebrow">${esc((it.cats||[]).map(catName).join(" · "))}</div><h2 style="margin-top:10px">${esc(title1(it))}</h2>${title2(it)?`<div class="pan-sub">${esc(title2(it))}</div>`:""}${it.sub?`<div class="pan-sub">${esc(pick(it.sub))}</div>`:""}</div>
+   <div><div class="eyebrow" style="margin-bottom:6px">${i("Logline","Sinopsis breve","一句话简介")}</div><p style="font-size:17px">${esc(pick(it.lines))}</p></div>
+   ${it.note?`<p style="color:var(--ink-soft)">${esc(pick(it.note))}</p>`:""}
+   <dl class="spec">${spec}</dl>
+   <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center"><button class="btn gold" data-inq>${i("Inquire about this title","Consultar este título","咨询此作品")} →</button>${it.id==="mecha"?`<button class="btn" data-go="mechasia">${i("Series, rights & toy partners","Serie, derechos y socios de juguetes","剧集、版权与玩具伙伴")} →</button>`:""}${it.trailer?`<a class="btn" href="${esc(it.trailer)}" target="_blank" rel="noopener">${i("Trailer","Tráiler","预告片")} ↗</a>`:""}</div>
+   <div class="inq" id="inq" hidden>${formHTML("buy",{title:title1(it),terr:terr(it.terr),rights:rights.filter(r=>["svod","avod","fast","digital"].includes(r))})}</div></div></div></div>`;
+  document.body.appendChild(el);document.body.style.overflow="hidden";
+  el.querySelector(".x").focus();
+}
+function closeModal(){const m=$("#modal");if(m){m.remove();document.body.style.overflow=""}}
+function openLegal(k){
+  const names=[i("Privacy Policy","Política de privacidad","隐私政策"),i("Cookie Policy","Política de cookies","Cookie政策"),i("Legal Notice","Aviso legal","法律声明"),i("Terms of Use","Condiciones de uso","使用条款")];
+  const el=document.createElement("div");el.className="scrim";el.id="modal";el.setAttribute("role","dialog");el.setAttribute("aria-modal","true");
+  el.innerHTML=`<div class="panel" style="width:min(560px,100%)"><button class="x" data-close aria-label="Close">×</button><div style="padding:34px"><div class="eyebrow">BELLOTA BLANCA</div><h2 style="font-size:28px;margin:10px 0 14px">${names[k]}</h2><p style="color:var(--ink-soft)">${i("The final text is supplied by legal counsel before launch and covers EU data protection (GDPR) and cookie requirements. Questions in the meantime:","El texto definitivo lo aporta el asesor legal antes del lanzamiento y cubre la protección de datos de la UE (RGPD) y los requisitos de cookies. Mientras tanto:","正式文本将在上线前由法律顾问提供，涵盖欧盟数据保护（GDPR）与Cookie要求。在此之前如有疑问：")} <b class="mono">${MAIL}</b></p></div></div>`;
+  document.body.appendChild(el);document.body.style.overflow="hidden";el.querySelector(".x").focus();
+}
+
+/* ---------- inquiry submit ---------- */
+function handleSubmit(form){
+  const kind=form.dataset.kind;const out=form.querySelector("#inq-out");
+  const fd=new FormData(form);const g=k=>(fd.get(k)||"").toString().trim();
+  const req=[...form.querySelectorAll("[required]")].filter(x=>!x.value.trim());
+  const email=g("q-email");
+  if(req.length||(email&&!/^\S+@\S+\.\S+$/.test(email))){
+    out.innerHTML=`<p class="err">${i("Please complete the required fields and use a valid email.","Completa los campos obligatorios e indica un correo válido.","请填写必填项并使用有效邮箱。")}</p>`;(req[0]||form.querySelector("#q-email")).focus();return;
+  }
+  const L=[];
+  const head={buy:"Rights inquiry",submit:"Content submission",partner:"Partnership proposal"}[kind];
+  L.push(`${head}${g("q-title")?" — "+g("q-title"):""}`,"");
+  L.push(`Name: ${g("q-name")}`,`Company: ${g("q-company")}`,`Country: ${g("q-country")}`,`Email: ${email}`);
+  if(g("q-pos"))L.push(`Position: ${g("q-pos")}`);
+  if(kind==="buy"){const r=fd.getAll("rights").map(rt);const p=fd.getAll("platform");if(g("q-title"))L.push(`Interested project: ${g("q-title")}`);if(r.length)L.push(`Rights required: ${r.join(", ")}`);if(g("q-terr"))L.push(`Territory: ${g("q-terr")}`);if(p.length)L.push(`Platform: ${p.join(", ")}`)}
+  if(kind==="submit"){["q-info","q-held","q-terr","q-link"].forEach((k,n)=>{if(g(k))L.push(`${["Format / episodes / runtime","Rights held","Territories to offer","Materials"][n]}: ${g(k)}`)})}
+  if(kind==="partner"&&g("q-type"))L.push(`Organisation type: ${g("q-type")}`);
+  if(g("q-msg"))L.push("","Message:",g("q-msg"));
+  const body=L.join("\n");const subj=head+(g("q-title")?" — "+g("q-title"):"");
+  out.innerHTML=`<div class="result"><b style="font-family:var(--display);font-size:20px">${i("Your inquiry is ready to send","Tu consulta está lista para enviar","您的询价已生成")}</b><p class="fine">${i("This preview site has no mail server, so nothing has been sent yet. Copy the message and email it to","Esta vista previa no tiene servidor de correo, así que todavía no se ha enviado nada. Copia el mensaje y envíalo a","此预览站没有邮件服务器，目前尚未发送任何内容。请复制下方内容并发送至")} <b>${MAIL}</b>.</p><pre id="inq-text">${esc(body)}</pre><div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn sm gold" type="button" data-copy-pre>${i("Copy message","Copiar mensaje","复制内容")}</button><a class="btn sm" href="mailto:${MAIL}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}">${i("Open in mail app","Abrir en correo","在邮件应用中打开")}</a></div></div>`;
+  out.scrollIntoView({block:"nearest",behavior:"smooth"});
+}
+function copyText(t,btn){
+  const done=()=>{if(btn){const o=btn.textContent;btn.textContent=i("Copied","Copiado","已复制");setTimeout(()=>btn.textContent=o,1600)}};
+  const fb=()=>{try{const r=document.createRange();const p=$("#inq-text");if(p){r.selectNodeContents(p);const s=getSelection();s.removeAllRanges();s.addRange(r)}}catch(e){}};
+  try{navigator.clipboard.writeText(t).then(done,fb)}catch(e){fb()}
+}
+
+/* ---------- render & events ---------- */
+function setLang(l){lang=l;try{localStorage.setItem("bb-lang",l)}catch(e){}document.documentElement.lang=l==="zh"?"zh-CN":l;render()}
+function go(v,scrollTop=true){if(!VIEWS.includes(v))v="home";view=v;if(location.hash.slice(1)!==v){location.hash=v}render();if(scrollTop)window.scrollTo({top:0,behavior:"instant"})}
+function render(){
+  document.documentElement.lang=lang==="zh"?"zh-CN":lang;
+  const views={home:vHome,catalogue:vCatalogue,mechasia:vMechasia,rights:vRights,animation:vAnimation,network:vNetwork,coproduction:vCoprod,about:vAbout,contact:vContact};
+  const open=$("#nav")&&$("#nav").classList.contains("open");
+  $("#app").innerHTML=`<header class="mast"><div class="wrap"><div class="mast-top"><button class="brand" data-go="home" aria-label="BELLOTA BLANCA">${LOGO}<span><b>BELLOTA BLANCA</b><small>International Content Sales &amp; Rights Trading</small></span></button>
+   <div class="mast-right"><div class="lang" role="group" aria-label="Language">${[["en","EN"],["es","ES"],["zh","中文"]].map(l=>`<button data-lang="${l[0]}" aria-pressed="${lang===l[0]}">${l[1]}</button>`).join("")}</div>
+   <button class="contact-link" data-go="contact">${i("Contact sales","Contactar ventas","联系商务")}</button><button class="btn gold sm" data-go="catalogue">${i("Explore content","Explorar contenido","浏览内容")}</button>
+   <button class="burger" id="burger" aria-label="Menu" aria-expanded="${!!open}">☰</button></div></div>
+   <nav class="nav${open?" open":""}" id="nav" aria-label="Main">${VIEWS.map(v=>`<button data-go="${v}"${v===view?' aria-current="page"':""}>${nav(v)}</button>`).join("")}</nav></div></header>
+   <main>${views[view]()}</main>${footer()}`;
+  if(view==="catalogue")renderGrid();
+  document.title="BELLOTA BLANCA";
+}
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-go],[data-open],[data-mtab],[data-lang],[data-cat],[data-contact],[data-ctab],[data-close],[data-inq],[data-legal],[data-copy],[data-copy-pre],#burger,#f-reset,.scrim");
+  if(!t)return;
+  if(t.classList.contains("scrim")){if(e.target===t)closeModal();return}
+  if(t.dataset.close!==undefined){closeModal();return}
+  if(t.id==="burger"){$("#nav").classList.toggle("open");t.setAttribute("aria-expanded",$("#nav").classList.contains("open"));return}
+  if(t.dataset.lang){setLang(t.dataset.lang);return}
+  if(t.dataset.go){closeModal();$("#nav")&&$("#nav").classList.remove("open");go(t.dataset.go);return}
+  if(t.dataset.open){openTitle(t.dataset.open);return}
+  if(t.dataset.mtab){mtab=t.dataset.mtab;closeModal();if(view!=="mechasia"){go("mechasia")}else{render()}return}
+  if(t.dataset.contact){closeModal();contactTab=t.dataset.contact;go("contact");return}
+  if(t.dataset.ctab){contactTab=t.dataset.ctab;render();return}
+  if(t.dataset.cat){F.cat=t.dataset.cat;closeModal();if(view!=="catalogue"){go("catalogue")}else{render()}return}
+  if(t.dataset.inq!==undefined){const b=$("#inq");b.hidden=false;t.hidden=true;b.querySelector("input").focus();b.scrollIntoView({block:"nearest",behavior:"smooth"});return}
+  if(t.dataset.legal){openLegal(+t.dataset.legal);return}
+  if(t.dataset.copy){copyText(t.dataset.copy,t);return}
+  if(t.dataset.copyPre!==undefined){copyText($("#inq-text").textContent,t);return}
+  if(t.id==="f-reset"){Object.assign(F,{q:"",cat:"all",genre:"all",terr:"all",status:"all",src:"all"});render();return}
+});
+document.addEventListener("input",e=>{if(e.target.id==="f-q"){F.q=e.target.value;renderGrid()}});
+document.addEventListener("change",e=>{const m={"f-g":"genre","f-t":"terr","f-s":"status","f-o":"src"}[e.target.id];if(m){F[m]=e.target.value;renderGrid()}});
+document.addEventListener("submit",e=>{if(e.target.id==="inq-form"){e.preventDefault();handleSubmit(e.target)}});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+window.addEventListener("hashchange",()=>{const v=location.hash.slice(1);if(VIEWS.includes(v)&&v!==view){view=v;render();window.scrollTo(0,0)}});
+{const v=location.hash.slice(1);if(VIEWS.includes(v))view=v}
+render();
+
+</script>
+</body></html>
