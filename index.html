@@ -424,14 +424,20 @@ main>.sec:first-child:not(.band){background:
 .vband,.blband,.feat-mecha,.want-box{box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 14px 34px -22px rgba(16,47,75,.35)}
 .vband,.blband{background:linear-gradient(135deg,var(--surface),color-mix(in srgb,var(--surface) 80%,var(--gold) 6%))}
 /* founder */
-.founder{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;align-items:start}
-.fgal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.fgal figure{margin:0;position:relative;overflow:hidden;border-radius:2px;background:var(--surface-2)}
-.fgal figure:first-child{grid-row:span 2}
-.fgal img{width:100%;height:100%;min-height:150px;aspect-ratio:4/3;object-fit:cover;display:block}
-.fgal figure:first-child img{aspect-ratio:auto;object-position:center 30%}
-.fgal figcaption{position:absolute;left:0;right:0;bottom:0;padding:6px 10px;font:500 10.5px/1.35 var(--mono);letter-spacing:.06em;color:#fff;background:linear-gradient(transparent,rgba(9,27,43,.85))}
+.founder{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:48px;align-items:start}
+.aicic-logo{display:block;width:100%;max-width:360px;margin-top:26px;border-radius:2px;box-shadow:0 10px 24px -18px rgba(9,27,43,.6)}
+.fgal{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:12px}
+.fgal figure{margin:0;min-width:0}
+.fgal .fp img,.fgal .fb img{width:100%;height:100%;object-fit:cover;border-radius:2px;display:block;box-shadow:0 12px 26px -18px rgba(9,27,43,.6)}
+.fgal .fp img{aspect-ratio:1/1;object-position:center 30%}
+.fgal .fb{position:relative}
+.fgal .fb img{position:absolute;inset:0;object-position:top}
+.fev{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:4px}
+.fev figure{display:flex;flex-direction:column;gap:6px}
+.fev img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:2px;display:block}
+.fev figcaption{font:500 10px/1.35 var(--mono);letter-spacing:.05em;color:var(--ink-soft)}
 @media (max-width:1020px){.founder{grid-template-columns:1fr;gap:28px}}
+@media (max-width:760px){.fev{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* AI studio */
 .subnav{background:var(--surface-2);border-bottom:1px solid var(--rule);padding:12px 0}
 .rights-sec{border-top:1px solid var(--rule)}
@@ -1016,15 +1022,20 @@ function vMechasia(){
 
 /* ---------- about ---------- */
 function founder(){
-  const ph=[["f1",i("Speaking at an international media forum","Intervención en un foro internacional de medios","在国际媒体论坛发言")],["f2",i("Television interview","Entrevista para televisión","接受电视采访")],["f3",i("On set","En rodaje","拍摄现场")],["f4",i("Chinese New Year special on Colombian television, 2026","Especial de Año Nuevo Chino en la televisión colombiana, 2026","哥伦比亚电视台中国春节特别节目 · 2026")],["f5",i("Chamber of Commerce of Gran Canaria, 2024","Cámara de Comercio de Gran Canaria, 2024","大加那利岛商会 · 2024")]];
+  const ev=[["ev-hainan",i("Hainan Island International Film Festival","Festival Internacional de Cine de la Isla de Hainan","海南岛国际电影节")],["ev-shanghai",i("“Focus on Spain” forum, Shanghai","Foro «Foco en España», Shanghái","“聚焦西班牙”论坛 · 上海")],["ev-silkroad",i("Silk Road Industry Alliance roundtable","Mesa redonda de la Alianza Industrial de la Ruta de la Seda","丝路产业联盟圆桌会议")],["ev-tv",i("Live television panel","Tertulia en directo para televisión","电视直播访谈")]];
   return `<section class="sec tint" id="founder"><div class="wrap founder">
     <div><div class="eyebrow">${i("Founder","Fundadora","创始人")}</div>
      <h2 style="margin-top:12px">Moran S.</h2>
      <p class="pan-sub" style="margin-top:6px">${i("Founder of BELLOTA BLANCA and AICIC","Fundadora de BELLOTA BLANCA y de AICIC","白橡树电影与AICIC创始人")}</p>
-     <p class="lede" style="margin-top:18px">${i("Moran S. is an audiovisual producer who works between China, Spain and Latin America. She founded BELLOTA BLANCA in Madrid in 2019 and went on to found AICIC, the Ibero-America–China Audiovisual Industry Association, which brings producers, platforms and institutions from more than 20 countries together through industry forums, rights trading and co-production.","Moran S. es productora audiovisual y trabaja entre China, España y América Latina. Fundó BELLOTA BLANCA en Madrid en 2019 y, más tarde, AICIC, la Asociación Iberoamérica–China de la Industria Audiovisual, que reúne a productoras, plataformas e instituciones de más de 20 países mediante foros sectoriales, comercialización de derechos y coproducción.","Moran S. 是一位往返于中国、西班牙与拉丁美洲之间的影视制片人。她于2019年在马德里创立白橡树电影，随后创立AICIC（伊比利亚美洲—中国视听产业协会），通过行业论坛、版权贸易与联合制作，连接20多个国家的制作公司、平台与机构。")}</p>
+     <p class="lede" style="margin-top:18px">${i("Moran S. is an audiovisual producer who works between China, Spain and Latin America. She founded BELLOTA BLANCA in Madrid in 2019 and went on to found AICIC, the Ibero-America–China Film Industries Association, which brings producers, platforms and institutions from more than 20 countries together through industry forums, rights trading and co-production.","Moran S. es productora audiovisual y trabaja entre China, España y América Latina. Fundó BELLOTA BLANCA en Madrid en 2019 y, más tarde, AICIC, la Asociación de las Industrias Cinematográficas Iberoamérica–China, que reúne a productoras, plataformas e instituciones de más de 20 países mediante foros sectoriales, comercialización de derechos y coproducción.","Moran S. 是一位往返于中国、西班牙与拉丁美洲之间的影视制片人。她于2019年在马德里创立白橡树电影，随后创立AICIC（伊比利亚美洲—中国电影产业协会），通过行业论坛、版权贸易与联合制作，连接20多个国家的制作公司、平台与机构。")}</p>
      <p style="margin-top:14px;color:var(--ink-soft)">${i("She has represented the Chinese industry at MIP Cancún and Iberseries & Platino Industria, and works in Chinese, Spanish and English.","Ha representado a la industria china en MIP Cancún y en Iberseries & Platino Industria, y trabaja en chino, español e inglés.","她曾代表中国影视行业出席墨西哥MIP Cancún与马德里Iberseries & Platino Industria，工作语言为中文、西班牙语与英语。")}</p>
-     <div class="facts-line"><div><b>2019</b><span>BELLOTA BLANCA</span></div><div><b>AICIC</b><span>${i("Founder","Fundadora","创始人")}</span></div><div><b>20+</b><span>${i("Countries in the network","países en la red","个国家合作网络")}</span></div></div></div>
-    <div class="fgal">${ph.map(x=>`<figure><img src="img/founder/${x[0]}.jpg" alt="${esc(x[1])}" loading="lazy" decoding="async"><figcaption>${esc(x[1])}</figcaption></figure>`).join("")}</div>
+     <div class="facts-line"><div><b>2019</b><span>BELLOTA BLANCA</span></div><div><b>AICIC</b><span>${i("Founder","Fundadora","创始人")}</span></div><div><b>20+</b><span>${i("Countries in the network","países en la red","个国家合作网络")}</span></div></div>
+     <img class="aicic-logo" src="img/founder/aicic-logo.jpg" alt="AICIC · Asociación de las Industrias Cinematográficas Iberoamérica–China" loading="lazy" decoding="async"></div>
+    <div class="fgal">
+     <figure class="fp"><img src="img/founder/portrait.jpg" alt="Moran S." loading="lazy" decoding="async"></figure>
+     <figure class="fb"><img src="img/founder/aicic-banner.jpg" alt="${esc(i("AICIC: Chinese film and TV content, straight to the Ibero-American market","AICIC: contenido audiovisual chino, directo al mercado iberoamericano","AICIC：中国影视内容直通伊比利亚美洲市场"))}" loading="lazy" decoding="async"></figure>
+     <div class="fev">${ev.map(x=>`<figure><img src="img/founder/${x[0]}.jpg" alt="${esc(x[1])}" loading="lazy" decoding="async"><figcaption>${esc(x[1])}</figcaption></figure>`).join("")}</div>
+    </div>
   </div></section>`;
 }
 function vAbout(){

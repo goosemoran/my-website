@@ -423,14 +423,20 @@ main>.sec:first-child:not(.band){background:
 .vband,.blband,.feat-mecha,.want-box{box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 14px 34px -22px rgba(16,47,75,.35)}
 .vband,.blband{background:linear-gradient(135deg,var(--surface),color-mix(in srgb,var(--surface) 80%,var(--gold) 6%))}
 /* founder */
-.founder{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;align-items:start}
-.fgal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.fgal figure{margin:0;position:relative;overflow:hidden;border-radius:2px;background:var(--surface-2)}
-.fgal figure:first-child{grid-row:span 2}
-.fgal img{width:100%;height:100%;min-height:150px;aspect-ratio:4/3;object-fit:cover;display:block}
-.fgal figure:first-child img{aspect-ratio:auto;object-position:center 30%}
-.fgal figcaption{position:absolute;left:0;right:0;bottom:0;padding:6px 10px;font:500 10.5px/1.35 var(--mono);letter-spacing:.06em;color:#fff;background:linear-gradient(transparent,rgba(9,27,43,.85))}
+.founder{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:48px;align-items:start}
+.aicic-logo{display:block;width:100%;max-width:360px;margin-top:26px;border-radius:2px;box-shadow:0 10px 24px -18px rgba(9,27,43,.6)}
+.fgal{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:12px}
+.fgal figure{margin:0;min-width:0}
+.fgal .fp img,.fgal .fb img{width:100%;height:100%;object-fit:cover;border-radius:2px;display:block;box-shadow:0 12px 26px -18px rgba(9,27,43,.6)}
+.fgal .fp img{aspect-ratio:1/1;object-position:center 30%}
+.fgal .fb{position:relative}
+.fgal .fb img{position:absolute;inset:0;object-position:top}
+.fev{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:4px}
+.fev figure{display:flex;flex-direction:column;gap:6px}
+.fev img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:2px;display:block}
+.fev figcaption{font:500 10px/1.35 var(--mono);letter-spacing:.05em;color:var(--ink-soft)}
 @media (max-width:1020px){.founder{grid-template-columns:1fr;gap:28px}}
+@media (max-width:760px){.fev{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* AI studio */
 .subnav{background:var(--surface-2);border-bottom:1px solid var(--rule);padding:12px 0}
 .rights-sec{border-top:1px solid var(--rule)}
