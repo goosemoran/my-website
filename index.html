@@ -423,6 +423,15 @@ main>.sec:first-child:not(.band){background:
   linear-gradient(160deg,#0A2238 0%,#0E2D4A 60%,#081B2D 100%)}
 .vband,.blband,.feat-mecha,.want-box{box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 14px 34px -22px rgba(16,47,75,.35)}
 .vband,.blband{background:linear-gradient(135deg,var(--surface),color-mix(in srgb,var(--surface) 80%,var(--gold) 6%))}
+/* founder */
+.founder{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;align-items:start}
+.fgal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.fgal figure{margin:0;position:relative;overflow:hidden;border-radius:2px;background:var(--surface-2)}
+.fgal figure:first-child{grid-row:span 2}
+.fgal img{width:100%;height:100%;min-height:150px;aspect-ratio:4/3;object-fit:cover;display:block}
+.fgal figure:first-child img{aspect-ratio:auto;object-position:center 30%}
+.fgal figcaption{position:absolute;left:0;right:0;bottom:0;padding:6px 10px;font:500 10.5px/1.35 var(--mono);letter-spacing:.06em;color:#fff;background:linear-gradient(transparent,rgba(9,27,43,.85))}
+@media (max-width:1020px){.founder{grid-template-columns:1fr;gap:28px}}
 /* AI studio */
 .subnav{background:var(--surface-2);border-bottom:1px solid var(--rule);padding:12px 0}
 .rights-sec{border-top:1px solid var(--rule)}
@@ -1006,6 +1015,18 @@ function vMechasia(){
 }
 
 /* ---------- about ---------- */
+function founder(){
+  const ph=[["f1",i("Speaking at an international media forum","Intervención en un foro internacional de medios","在国际媒体论坛发言")],["f2",i("Television interview","Entrevista para televisión","接受电视采访")],["f3",i("On set","En rodaje","拍摄现场")],["f4",i("Chinese New Year special on Colombian television, 2026","Especial de Año Nuevo Chino en la televisión colombiana, 2026","哥伦比亚电视台中国春节特别节目 · 2026")],["f5",i("Chamber of Commerce of Gran Canaria, 2024","Cámara de Comercio de Gran Canaria, 2024","大加那利岛商会 · 2024")]];
+  return `<section class="sec tint" id="founder"><div class="wrap founder">
+    <div><div class="eyebrow">${i("Founder","Fundadora","创始人")}</div>
+     <h2 style="margin-top:12px">Moran S.</h2>
+     <p class="pan-sub" style="margin-top:6px">${i("Founder of BELLOTA BLANCA and AICIC","Fundadora de BELLOTA BLANCA y de AICIC","白橡树电影与AICIC创始人")}</p>
+     <p class="lede" style="margin-top:18px">${i("Moran S. is an audiovisual producer who works between China, Spain and Latin America. She founded BELLOTA BLANCA in Madrid in 2019 and went on to found AICIC, the Ibero-America–China Audiovisual Industry Association, which brings producers, platforms and institutions from more than 20 countries together through industry forums, rights trading and co-production.","Moran S. es productora audiovisual y trabaja entre China, España y América Latina. Fundó BELLOTA BLANCA en Madrid en 2019 y, más tarde, AICIC, la Asociación Iberoamérica–China de la Industria Audiovisual, que reúne a productoras, plataformas e instituciones de más de 20 países mediante foros sectoriales, comercialización de derechos y coproducción.","Moran S. 是一位往返于中国、西班牙与拉丁美洲之间的影视制片人。她于2019年在马德里创立白橡树电影，随后创立AICIC（伊比利亚美洲—中国视听产业协会），通过行业论坛、版权贸易与联合制作，连接20多个国家的制作公司、平台与机构。")}</p>
+     <p style="margin-top:14px;color:var(--ink-soft)">${i("She has represented the Chinese industry at MIP Cancún and Iberseries & Platino Industria, and works in Chinese, Spanish and English.","Ha representado a la industria china en MIP Cancún y en Iberseries & Platino Industria, y trabaja en chino, español e inglés.","她曾代表中国影视行业出席墨西哥MIP Cancún与马德里Iberseries & Platino Industria，工作语言为中文、西班牙语与英语。")}</p>
+     <div class="facts-line"><div><b>2019</b><span>BELLOTA BLANCA</span></div><div><b>AICIC</b><span>${i("Founder","Fundadora","创始人")}</span></div><div><b>20+</b><span>${i("Countries in the network","países en la red","个国家合作网络")}</span></div></div></div>
+    <div class="fgal">${ph.map(x=>`<figure><img src="img/founder/${x[0]}.jpg" alt="${esc(x[1])}" loading="lazy" decoding="async"><figcaption>${esc(x[1])}</figcaption></figure>`).join("")}</div>
+  </div></section>`;
+}
 function vAbout(){
   return `<section class="sec" style="padding-top:44px"><div class="wrap">
     <div class="sec-head"><div class="eyebrow">${i("About us","Nosotros","关于我们")}</div><h2>${i("Connecting China, Spain and Latin America through content and rights.","Conectamos China, España y América Latina a través de contenidos y derechos.","以内容与版权，连接中国、西班牙与拉丁美洲。")}</h2></div>
@@ -1016,7 +1037,7 @@ function vAbout(){
       <dt>${i("China","China","中国")}</dt><dd><b>XIN MOTION PICTURE</b><br>${i("Shanghai · documentaries, film co-production and AI vertical content","Shanghái · documentales, coproducción de cine y contenido vertical con IA","上海 · 纪录片、电影联合制作与AI竖屏内容")}</dd>
       <dt>${i("China","China","中国")}</dt><dd><b>${i("AI Content Factory Base","Base de producción de contenido con IA","AI内容工厂基地")}</b><br>${i("Guangzhou · we develop and produce AI content in vertical and horizontal formats. Sample reels on request.","Cantón (Guangzhou) · desarrollamos y producimos contenido con IA en formato vertical y horizontal. Muestras bajo petición.","广州 · 开发并制作AI内容，含竖屏与横屏。可联系索取样片。")}<br><button class="btn sm gold" style="margin-top:12px" data-go="ai">${i("See AI Studio","Ver AI Studio","查看AI定制")} →</button></dd></dl></div>
       <div><h3>${i("Where we work","Dónde trabajamos","业务网络")}</h3>
-      <ul class="list" style="grid-template-columns:1fr;margin-top:12px"><li><b>${i("China business network","Red de negocio en China","中国业务网络")}</b> ${i("leading production companies, animation groups, rights-holders","principales productoras, grupos de animación, titulares de derechos","头部制作公司、动画集团、版权方")}</li><li><b>${i("Festivals & markets","Festivales y mercados","电影节与市场")}</b> ${i("film festivals and content markets","festivales de cine y mercados de contenidos","电影节与影视内容市场")}</li><li><b>${i("Spain business base","Base de operaciones en España","西班牙业务基地")}</b> Madrid</li><li><b>${i("Latin American market network","Red de mercados latinoamericanos","拉美市场网络")}</b> ${i("broadcasters, platforms, distributors","cadenas, plataformas, distribuidores","电视台、平台、发行商")}</li></ul></div></div></div></section>`+vRights().replace('<section class="sec" style="padding-top:44px">','<section class="sec rights-sec" id="rights">');
+      <ul class="list" style="grid-template-columns:1fr;margin-top:12px"><li><b>${i("China business network","Red de negocio en China","中国业务网络")}</b> ${i("leading production companies, animation groups, rights-holders","principales productoras, grupos de animación, titulares de derechos","头部制作公司、动画集团、版权方")}</li><li><b>${i("Festivals & markets","Festivales y mercados","电影节与市场")}</b> ${i("film festivals and content markets","festivales de cine y mercados de contenidos","电影节与影视内容市场")}</li><li><b>${i("Spain business base","Base de operaciones en España","西班牙业务基地")}</b> Madrid</li><li><b>${i("Latin American market network","Red de mercados latinoamericanos","拉美市场网络")}</b> ${i("broadcasters, platforms, distributors","cadenas, plataformas, distribuidores","电视台、平台、发行商")}</li></ul></div></div></div></section>`+founder()+vRights().replace('<section class="sec" style="padding-top:44px">','<section class="sec rights-sec" id="rights">');
 }
 
 function vNetwork(){
