@@ -1,5 +1,5 @@
 /* ---------- state & helpers ---------- */
-const VIEWS=["home","catalogue","mechasia","rights","animation","network","coproduction","about","contact"];
+const VIEWS=["home","catalogue","mechasia","ai","rights","animation","network","coproduction","about","contact"];
 let lang="en";
 try{const s=localStorage.getItem("bb-lang");if(s)lang=s;else{const n=(navigator.language||"en").toLowerCase();lang=n.startsWith("zh")?"zh":n.startsWith("es")||n.startsWith("pt")?"es":"en"}}catch(e){const n=(navigator.language||"en").toLowerCase();lang=n.startsWith("zh")?"zh":n.startsWith("es")?"es":"en"}
 let view="home";
@@ -13,7 +13,7 @@ const MAIL="distri-cicc@foxmail.com",MAIL2="moranproduction@foxmail.com",MAIL3="
 const byId=id=>ITEMS.find(x=>x.id===id);
 
 /* ---------- vocab ---------- */
-const NAV={home:["HOME","INICIO","首页"],catalogue:["CONTENT CATALOGUE","CATÁLOGO","版权目录"],mechasia:["MECHASIA & TOYS","MECHASIA Y JUGUETES","机变战队·衍生品"],rights:["RIGHTS & SALES","DERECHOS Y VENTAS","版权贸易"],animation:["ANIMATION","ANIMACIÓN","动画"],network:["DISTRIBUTION NETWORK","RED DE DISTRIBUCIÓN","发行网络"],coproduction:["CO-PRODUCTION & IP","COPRODUCCIÓN E IP","联合制作与IP"],about:["ABOUT US","NOSOTROS","关于我们"],contact:["CONTACT","CONTACTO","联系我们"]};
+const NAV={home:["HOME","INICIO","首页"],catalogue:["CONTENT CATALOGUE","CATÁLOGO","版权目录"],mechasia:["MECHASIA & TOYS","MECHASIA Y JUGUETES","机变战队·衍生品"],ai:["AI STUDIO","ESTUDIO IA","AI定制"],rights:["RIGHTS & SALES","DERECHOS Y VENTAS","版权贸易"],animation:["ANIMATION","ANIMACIÓN","动画"],network:["DISTRIBUTION NETWORK","RED DE DISTRIBUCIÓN","发行网络"],coproduction:["CO-PRODUCTION & IP","COPRODUCCIÓN E IP","联合制作与IP"],about:["ABOUT US","NOSOTROS","关于我们"],contact:["CONTACT","CONTACTO","联系我们"]};
 const nav=k=>NAV[k][lang==="es"?1:lang==="zh"?2:0];
 const CATS=[
  ["drama","BL Drama · Thailand & China","Series BL · Tailandia y China","耽美剧 · 泰国与中国","Boys’ Love (耽美) romance series from Thailand and China, for platforms, broadcasters and YouTube.","Series románticas Boys’ Love (耽美) de Tailandia y China, para plataformas, cadenas y YouTube.","泰国与中国的耽美（BL）爱情剧集，面向平台、电视台与YouTube。"],
@@ -100,6 +100,8 @@ function vHome(){
   </div></section>
 
   ${mechaBand()}
+
+  ${aiBand()}
 
   <section class="sec tint"><div class="wrap">
     <div class="sec-head"><div class="eyebrow">${i("Our business","Nuestro negocio","我们的业务")}</div><h2>${i("Sell first. Represent second. Build with partners third.","Primero vender, después representar, y construir con socios.","先销售，再代理，后合作共建。")}</h2></div>
@@ -247,6 +249,13 @@ function wantBand(){
    <div class="want-box"><div class="chips" style="margin-bottom:16px"><span class="chip g" style="background:transparent">${i("Distribution in China","Distribución en China","中国发行")}</span><span class="chip g" style="background:transparent">${i("YouTube distribution channels","Canales de distribución en YouTube","YouTube发行渠道")}</span></div>
    ${contactLines("on-dark")}<div style="margin-top:18px"><button class="btn gold" data-contact="submit">${i("Submit your content","Enviar contenido","提交内容")} →</button></div></div></div></section>`;
 }
+function aiBand(){
+  return `<section class="sec"><div class="wrap"><div class="vband aiband"><div class="aistack" aria-hidden="true">${[1,11,8].map(n=>`<img src="img/ai/c${String(n).padStart(2,"0")}.jpg" alt="" loading="lazy">`).join("")}</div>
+   <div><div class="eyebrow">${i("New · AI Studio","Novedad · AI Studio","新业务 · AI定制")}</div>
+   <h3 style="margin:10px 0 8px">${i("Need new content? We make AI series and films to order.","¿Necesitas contenido nuevo? Hacemos series y películas con IA a medida.","需要新内容？我们按需定制AI剧集与影片。")}</h3>
+   <p style="color:var(--ink-soft);font-size:15.5px;max-width:64ch">${i("150+ AI dramas already delivered for overseas platforms, in vertical and horizontal formats, with bilingual, English and textless versions. Our Guangzhou production base takes commissions from platforms, broadcasters and brands worldwide.","Más de 150 dramas con IA ya entregados a plataformas internacionales, en vertical y horizontal, con versiones bilingüe, en inglés y sin texto. Nuestra base de producción en Cantón acepta encargos de plataformas, cadenas y marcas de todo el mundo.","已为海外平台交付150+部AI短剧，竖屏横屏皆可，提供双语、纯英与无字幕版本。广州制作基地承接全球平台、电视台与品牌的定制项目。")}</p>
+   <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap"><button class="btn sm gold" data-go="ai">${i("See our AI work","Ver nuestro trabajo con IA","查看AI作品")} →</button><button class="btn sm" data-contact="ai">${i("Commission a project","Encargar un proyecto","定制项目")}</button></div></div></div></div></section>`;
+}
 function mechaBand(){
   const m=byId("mecha");
   return `<section class="sec band flagship"><div class="wrap flag"><div class="flag-poster">${poster(m)}</div>
@@ -389,7 +398,7 @@ function vAbout(){
       <h3 style="margin-top:30px">${i("Our companies","Nuestras empresas","旗下公司")}</h3>
       <dl class="spec" style="margin-top:12px"><dt>${i("Spain","España","西班牙")}</dt><dd><b>BELLOTA BLANCA FILM & PRODUCCIONES S.L.</b><br>${i("Madrid · international rights sales and representation","Madrid · venta y representación internacional de derechos","马德里 · 国际版权销售与代理")}</dd>
       <dt>${i("China","China","中国")}</dt><dd><b>XIN MOTION PICTURE</b><br>${i("Shanghai · documentaries, film co-production and AI vertical content","Shanghái · documentales, coproducción de cine y contenido vertical con IA","上海 · 纪录片、电影联合制作与AI竖屏内容")}</dd>
-      <dt>${i("China","China","中国")}</dt><dd><b>${i("AI Content Factory Base","Base de producción de contenido con IA","AI内容工厂基地")}</b><br>${i("Guangzhou · we develop and produce AI content in vertical and horizontal formats. Sample reels on request.","Cantón (Guangzhou) · desarrollamos y producimos contenido con IA en formato vertical y horizontal. Muestras bajo petición.","广州 · 开发并制作AI内容，含竖屏与横屏。可联系索取样片。")}<br><button class="btn sm gold" style="margin-top:12px" data-contact="buy">${i("Request sample reels","Pedir muestras","索取样片")} →</button></dd></dl></div>
+      <dt>${i("China","China","中国")}</dt><dd><b>${i("AI Content Factory Base","Base de producción de contenido con IA","AI内容工厂基地")}</b><br>${i("Guangzhou · we develop and produce AI content in vertical and horizontal formats. Sample reels on request.","Cantón (Guangzhou) · desarrollamos y producimos contenido con IA en formato vertical y horizontal. Muestras bajo petición.","广州 · 开发并制作AI内容，含竖屏与横屏。可联系索取样片。")}<br><button class="btn sm gold" style="margin-top:12px" data-go="ai">${i("See AI Studio","Ver AI Studio","查看AI定制")} →</button></dd></dl></div>
       <div><h3>${i("Where we work","Dónde trabajamos","业务网络")}</h3>
       <ul class="list" style="grid-template-columns:1fr;margin-top:12px"><li><b>${i("China business network","Red de negocio en China","中国业务网络")}</b> ${i("leading production companies, animation groups, rights-holders","principales productoras, grupos de animación, titulares de derechos","头部制作公司、动画集团、版权方")}</li><li><b>${i("Festivals & markets","Festivales y mercados","电影节与市场")}</b> ${i("film festivals and content markets","festivales de cine y mercados de contenidos","电影节与影视内容市场")}</li><li><b>${i("Spain business base","Base de negocio en España","西班牙业务基地")}</b> Madrid</li><li><b>${i("Latin American market network","Red de mercados latinoamericanos","拉美市场网络")}</b> ${i("broadcasters, platforms, distributors","cadenas, plataformas, distribuidores","电视台、平台、发行商")}</li></ul></div></div></div></section>`;
 }
@@ -436,6 +445,7 @@ function formFields(kind,preset={}){
   const f=(id,label,type="text",req=false,full=false,val="")=>`<div class="fld${full?" full":""}"><label for="${id}">${label}${req?" *":""}</label>${type==="textarea"?`<textarea id="${id}" name="${id}"${req?" required":""}>${esc(val)}</textarea>`:`<input id="${id}" name="${id}" type="${type}"${req?" required":""} value="${esc(val)}" ${type==="email"?'autocomplete="email"':""}>`}</div>`;
   const common=f("q-name",i("Name","Nombre","姓名"),"text",true)+f("q-company",i("Company","Empresa","公司"),"text",true)+f("q-country",i("Country","País","国家"),"text",true)+f("q-email",i("Business email","Correo profesional","工作邮箱"),"email",true)+f("q-pos",i("Position","Cargo","职位"));
   if(kind==="submit")return common+f("q-title",i("Project title","Título del proyecto","项目名称"),"text",true)+f("q-info",i("Format, episodes, runtime","Formato, episodios, duración","类型、集数、时长"))+f("q-held",i("Rights you hold","Derechos que posee","您持有的权利"))+f("q-terr",i("Territories to offer","Territorios a ofrecer","可授权地区"))+f("q-link",i("Link to materials","Enlace a materiales","资料链接"),"text",false,true)+f("q-msg",i("Message","Mensaje","留言"),"textarea",false,true);
+  if(kind==="ai")return common+f("q-type",i("Project type (series, brand film, museum, tourism…)","Tipo de proyecto (serie, película de marca, museo, turismo…)","项目类型（剧集、品牌片、文博、文旅…）"),"text",true,true)+f("q-info",i("Format and episodes (e.g. vertical, 30 × 2′)","Formato y episodios (p. ej. vertical, 30 × 2′)","画幅与集数（如竖屏 30集×2分钟）"))+f("q-langs",i("Languages","Idiomas","语言"))+f("q-terr",i("Target market / audience","Mercado / público objetivo","目标市场 / 受众"))+f("q-dead",i("Deadline and budget range","Plazo y rango de presupuesto","工期与预算范围"))+f("q-msg",i("Story, references or brief","Historia, referencias o briefing","故事、参考或需求说明"),"textarea",true,true);
   if(kind==="partner")return common+f("q-type",i("Type of organisation","Tipo de organización","机构类型"),"text",false,true)+f("q-msg",i("How would you like to work together?","¿Cómo te gustaría colaborar?","希望如何合作？"),"textarea",true,true);
   return common+f("q-title",i("Interested project","Proyecto de interés","感兴趣的项目"),"text",false,true,preset.title||"")+`<div class="fld full"><label>${i("Rights required","Derechos requeridos","所需权利")}</label><div class="checks">${rights}</div></div>`+f("q-terr",i("Territory","Territorio","地区"),"text",false,false,preset.terr||"")+`<div class="fld"><label>${i("Platform","Plataforma","平台")}</label><div class="checks">${plat}</div></div>`+f("q-msg",i("Message","Mensaje","留言"),"textarea",false,true);
 }
@@ -443,8 +453,8 @@ function formHTML(kind,preset){
   return `<form class="form" id="inq-form" data-kind="${kind}" novalidate>${formFields(kind,preset)}<div class="full" style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><button class="btn gold" type="submit">${i("Prepare inquiry","Preparar consulta","生成询价")} →</button><span class="fine">${i("We use your details only to reply to this inquiry.","Usamos tus datos solo para responder a esta consulta.","您的信息仅用于回复本次询价。")}</span></div><div class="full" id="inq-out"></div></form>`;
 }
 function vContact(){
-  const tabs=[["buy",i("Buy content","Comprar contenido","购买内容")],["submit",i("Submit content","Enviar contenido","提交内容")],["partner",i("Partner with us","Colabora con nosotros","合作洽谈")]];
-  const sub={buy:i("For broadcasters, platforms and distributors.","Para cadenas, plataformas y distribuidores.","面向电视台、平台与发行商。"),submit:i("For Chinese production companies and rights-holders.","Para productoras y titulares de derechos chinos.","面向中国制作公司与版权方。"),partner:i("For overseas distributors, producers and institutions.","Para distribuidores, productores e instituciones del exterior.","面向海外发行商、制作公司与机构。")};
+  const tabs=[["buy",i("Buy content","Comprar contenido","购买内容")],["submit",i("Submit content","Enviar contenido","提交内容")],["partner",i("Partner with us","Colabora con nosotros","合作洽谈")],["ai",i("Commission AI content","Encargar contenido con IA","定制AI内容")]];
+  const sub={buy:i("For broadcasters, platforms and distributors.","Para cadenas, plataformas y distribuidores.","面向电视台、平台与发行商。"),submit:i("For Chinese production companies and rights-holders.","Para productoras y titulares de derechos chinos.","面向中国制作公司与版权方。"),partner:i("For overseas distributors, producers and institutions.","Para distribuidores, productores e instituciones del exterior.","面向海外发行商、制作公司与机构。"),ai:i("For platforms, broadcasters, brands and institutions that want AI series or films made to order.","Para plataformas, cadenas, marcas e instituciones que quieren series o películas con IA a medida.","面向希望定制AI剧集或影片的平台、电视台、品牌与机构。")};
   return `<section class="sec" style="padding-top:44px"><div class="wrap">
     <div class="sec-head"><div class="eyebrow">${i("Contact","Contacto","商务联系")}</div><h2>${i("Tell us what you want to buy, sell or build.","Cuéntanos qué quieres comprar, vender o construir.","告诉我们您想购买、销售或共建什么。")}</h2></div>
     <div class="cform"><div>
@@ -457,7 +467,7 @@ function vContact(){
 function footer(){
   return `<footer class="foot"><div class="wrap"><div class="foot-grid">
   <div><img src="img/logo.png" width="96" height="96" alt="BELLOTA BLANCA FILM & PRODUCCIONES S.L." style="display:block;margin-bottom:18px"><div class="tag">Connecting China, Spain and Latin America through Content & Rights.</div></div>
-  <div><h4>${i("Explore","Explorar","导航")}</h4>${["catalogue","mechasia","rights","animation","network"].map(v=>`<button class="fl" data-go="${v}">${nav(v)}</button>`).join("")}</div>
+  <div><h4>${i("Explore","Explorar","导航")}</h4>${["catalogue","mechasia","ai","rights","animation","network"].map(v=>`<button class="fl" data-go="${v}">${nav(v)}</button>`).join("")}</div>
   <div><h4>${i("Company","Empresa","公司")}</h4>${["coproduction","about","contact"].map(v=>`<button class="fl" data-go="${v}">${nav(v)}</button>`).join("")}${["Privacy Policy","Cookie Policy","Legal Notice","Terms of Use"].map((x,k)=>`<button class="fl" data-legal="${k}">${[i("Privacy Policy","Política de privacidad","隐私政策"),i("Cookie Policy","Política de cookies","Cookie政策"),i("Legal Notice","Aviso legal","法律声明"),i("Terms of Use","Condiciones de uso","使用条款")][k]}</button>`).join("")}</div></div>
   <p class="fine">© BELLOTA BLANCA FILM & PRODUCCIONES S.L. · Madrid, Spain · ${MAIL} · ${MAIL3} · WhatsApp ${PHONE}<br>${i("Titles, artwork and trademarks belong to their respective owners. Availability is indicative and subject to contract.","Los títulos, imágenes y marcas pertenecen a sus respectivos titulares. La disponibilidad es orientativa y está sujeta a contrato.","作品、图片与商标归各自权利人所有。授权情况仅供参考，以合同为准。")}</p></div></footer>`;
 }
@@ -516,12 +526,13 @@ function handleSubmit(form){
     out.innerHTML=`<p class="err">${i("Please complete the required fields and use a valid email.","Completa los campos obligatorios e indica un correo válido.","请填写必填项并使用有效邮箱。")}</p>`;(req[0]||form.querySelector("#q-email")).focus();return;
   }
   const L=[];
-  const head={buy:"Rights inquiry",submit:"Content submission",partner:"Partnership proposal"}[kind];
+  const head={buy:"Rights inquiry",submit:"Content submission",partner:"Partnership proposal",ai:"AI production brief"}[kind];
   L.push(`${head}${g("q-title")?" — "+g("q-title"):""}`,"");
   L.push(`Name: ${g("q-name")}`,`Company: ${g("q-company")}`,`Country: ${g("q-country")}`,`Email: ${email}`);
   if(g("q-pos"))L.push(`Position: ${g("q-pos")}`);
   if(kind==="buy"){const r=fd.getAll("rights").map(rt);const p=fd.getAll("platform");if(g("q-title"))L.push(`Interested project: ${g("q-title")}`);if(r.length)L.push(`Rights required: ${r.join(", ")}`);if(g("q-terr"))L.push(`Territory: ${g("q-terr")}`);if(p.length)L.push(`Platform: ${p.join(", ")}`)}
   if(kind==="submit"){["q-info","q-held","q-terr","q-link"].forEach((k,n)=>{if(g(k))L.push(`${["Format / episodes / runtime","Rights held","Territories to offer","Materials"][n]}: ${g(k)}`)})}
+  if(kind==="ai"){["q-type","q-info","q-langs","q-terr","q-dead"].forEach((k,n)=>{if(g(k))L.push(`${["Project type","Format / episodes","Languages","Target market","Deadline / budget"][n]}: ${g(k)}`)})}
   if(kind==="partner"&&g("q-type"))L.push(`Organisation type: ${g("q-type")}`);
   if(g("q-msg"))L.push("","Message:",g("q-msg"));
   const body=L.join("\n");const subj=head+(g("q-title")?" — "+g("q-title"):"");
@@ -539,7 +550,7 @@ function setLang(l){lang=l;try{localStorage.setItem("bb-lang",l)}catch(e){}docum
 function go(v,scrollTop=true){if(!VIEWS.includes(v))v="home";view=v;if(location.hash.slice(1)!==v){location.hash=v}render();if(scrollTop)window.scrollTo({top:0,behavior:"instant"})}
 function render(){
   document.documentElement.lang=lang==="zh"?"zh-CN":lang;
-  const views={home:vHome,catalogue:vCatalogue,mechasia:vMechasia,rights:vRights,animation:vAnimation,network:vNetwork,coproduction:vCoprod,about:vAbout,contact:vContact};
+  const views={home:vHome,catalogue:vCatalogue,mechasia:vMechasia,ai:vAI,rights:vRights,animation:vAnimation,network:vNetwork,coproduction:vCoprod,about:vAbout,contact:vContact};
   const open=$("#nav")&&$("#nav").classList.contains("open");
   $("#app").innerHTML=`<header class="mast"><div class="wrap"><div class="mast-top"><button class="brand" data-go="home" aria-label="BELLOTA BLANCA">${LOGO}<span><b>BELLOTA BLANCA</b><small>International Content Sales &amp; Rights Trading</small></span></button>
    <div class="mast-right"><div class="lang" role="group" aria-label="Language">${[["en","EN"],["es","ES"],["zh","中文"]].map(l=>`<button data-lang="${l[0]}" aria-pressed="${lang===l[0]}">${l[1]}</button>`).join("")}</div>
@@ -551,7 +562,7 @@ function render(){
   document.title="BELLOTA BLANCA";
 }
 document.addEventListener("click",e=>{
-  const t=e.target.closest("[data-go],[data-open],[data-mtab],[data-lang],[data-cat],[data-contact],[data-ctab],[data-close],[data-inq],[data-legal],[data-copy],[data-copy-pre],#burger,#f-reset,.scrim");
+  const t=e.target.closest("[data-go],[data-open],[data-ai],[data-mtab],[data-lang],[data-cat],[data-contact],[data-ctab],[data-close],[data-inq],[data-legal],[data-copy],[data-copy-pre],#burger,#f-reset,.scrim");
   if(!t)return;
   if(t.classList.contains("scrim")){if(e.target===t)closeModal();return}
   if(t.dataset.close!==undefined){closeModal();return}
@@ -559,6 +570,7 @@ document.addEventListener("click",e=>{
   if(t.dataset.lang){setLang(t.dataset.lang);return}
   if(t.dataset.go){closeModal();$("#nav")&&$("#nav").classList.remove("open");go(t.dataset.go);return}
   if(t.dataset.open){openTitle(t.dataset.open);return}
+  if(t.dataset.ai){openAI(+t.dataset.ai);return}
   if(t.dataset.mtab){mtab=t.dataset.mtab;closeModal();if(view!=="mechasia"){go("mechasia")}else{render()}return}
   if(t.dataset.contact){closeModal();contactTab=t.dataset.contact;go("contact");return}
   if(t.dataset.ctab){contactTab=t.dataset.ctab;render();return}
