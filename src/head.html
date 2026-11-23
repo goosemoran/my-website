@@ -569,7 +569,11 @@ main>.sec:first-child:not(.band){background:
 @media (max-width:1020px){.founder{grid-template-columns:1fr;gap:26px}.fgal{max-width:520px}.fev{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:760px){.fev{grid-template-columns:repeat(2,minmax(0,1fr))}.aicic-logo{width:170px}}
 /* AI studio */
-.aipill{display:inline-flex;align-items:center;gap:10px;margin-bottom:22px;padding:6px 14px 6px 6px;border:1px solid color-mix(in srgb,var(--gold) 60%,transparent);border-radius:99px;background:color-mix(in srgb,var(--gold) 10%,transparent);color:#fff;font:500 13px/1.3 var(--body);text-align:left;cursor:pointer;transition:background .2s}
+.aipill{display:flex;flex-direction:column;align-items:flex-start;gap:8px;width:100%;max-width:560px;margin-bottom:26px;padding:16px 20px;border:1px solid color-mix(in srgb,var(--gold) 60%,transparent);border-radius:10px;background:color-mix(in srgb,var(--gold) 10%,transparent);color:#fff;font:500 14px/1.5 var(--body);text-align:left;cursor:pointer;transition:background .2s}
+.aipill .aitop{display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.aipill em{font:600 14px/1.3 var(--mono);font-style:normal;color:var(--gold)}
+.aipill strong{font-size:clamp(24px,3vw,32px);line-height:1.15;font-weight:700;color:#fff}
+.aipill .aidesc{color:rgba(255,255,255,.82);font-size:14.5px}
 .aipill:hover{background:color-mix(in srgb,var(--gold) 24%,transparent)}
 .aipill b{background:var(--gold);color:#0b1622;font:700 11px/1 var(--mono);letter-spacing:.08em;padding:5px 8px;border-radius:99px}
 
@@ -614,12 +618,8 @@ main>.sec:first-child:not(.band){background:
 .promo figcaption span{font-size:14.5px;color:var(--ink-soft)}
 .aiwall{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:8px}
 .aiwall img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:2px}
-.desk{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:34px}
-.desk figure:first-child{grid-column:span 2;grid-row:span 2}
-.desk img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top left;border-radius:2px;border:1px solid var(--rule);background:#0d1117}
-.desk figure:first-child img{aspect-ratio:auto;height:100%;object-position:center}
-.desk figure:nth-child(n+6){grid-column:span 2}
-.desk figure:nth-child(n+6) img{aspect-ratio:21/9;object-position:center}
+.desk{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:34px}
+.desk img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:center;border-radius:2px;border:1px solid var(--rule);background:#0d1117}
 .desk figcaption{font:500 11px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
 .stills{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
 .stills img{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:2px}
@@ -640,9 +640,6 @@ main>.sec:first-child:not(.band){background:
   .aiwall{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
   .promo{grid-template-columns:1fr}
   .desk{grid-template-columns:1fr}
-  .desk figure:nth-child(n+6){grid-column:auto}
-  .desk figure:first-child{grid-column:auto;grid-row:auto}
-  .desk figure:first-child img{aspect-ratio:16/10;height:auto}
   .aistack{height:190px;width:200px}
 }
 </style>

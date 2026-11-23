@@ -570,7 +570,11 @@ main>.sec:first-child:not(.band){background:
 @media (max-width:1020px){.founder{grid-template-columns:1fr;gap:26px}.fgal{max-width:520px}.fev{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:760px){.fev{grid-template-columns:repeat(2,minmax(0,1fr))}.aicic-logo{width:170px}}
 /* AI studio */
-.aipill{display:inline-flex;align-items:center;gap:10px;margin-bottom:22px;padding:6px 14px 6px 6px;border:1px solid color-mix(in srgb,var(--gold) 60%,transparent);border-radius:99px;background:color-mix(in srgb,var(--gold) 10%,transparent);color:#fff;font:500 13px/1.3 var(--body);text-align:left;cursor:pointer;transition:background .2s}
+.aipill{display:flex;flex-direction:column;align-items:flex-start;gap:8px;width:100%;max-width:560px;margin-bottom:26px;padding:16px 20px;border:1px solid color-mix(in srgb,var(--gold) 60%,transparent);border-radius:10px;background:color-mix(in srgb,var(--gold) 10%,transparent);color:#fff;font:500 14px/1.5 var(--body);text-align:left;cursor:pointer;transition:background .2s}
+.aipill .aitop{display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.aipill em{font:600 14px/1.3 var(--mono);font-style:normal;color:var(--gold)}
+.aipill strong{font-size:clamp(24px,3vw,32px);line-height:1.15;font-weight:700;color:#fff}
+.aipill .aidesc{color:rgba(255,255,255,.82);font-size:14.5px}
 .aipill:hover{background:color-mix(in srgb,var(--gold) 24%,transparent)}
 .aipill b{background:var(--gold);color:#0b1622;font:700 11px/1 var(--mono);letter-spacing:.08em;padding:5px 8px;border-radius:99px}
 
@@ -615,12 +619,8 @@ main>.sec:first-child:not(.band){background:
 .promo figcaption span{font-size:14.5px;color:var(--ink-soft)}
 .aiwall{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:8px}
 .aiwall img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:2px}
-.desk{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:34px}
-.desk figure:first-child{grid-column:span 2;grid-row:span 2}
-.desk img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top left;border-radius:2px;border:1px solid var(--rule);background:#0d1117}
-.desk figure:first-child img{aspect-ratio:auto;height:100%;object-position:center}
-.desk figure:nth-child(n+6){grid-column:span 2}
-.desk figure:nth-child(n+6) img{aspect-ratio:21/9;object-position:center}
+.desk{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:34px}
+.desk img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:center;border-radius:2px;border:1px solid var(--rule);background:#0d1117}
 .desk figcaption{font:500 11px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
 .stills{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
 .stills img{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:2px}
@@ -641,9 +641,6 @@ main>.sec:first-child:not(.band){background:
   .aiwall{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
   .promo{grid-template-columns:1fr}
   .desk{grid-template-columns:1fr}
-  .desk figure:nth-child(n+6){grid-column:auto}
-  .desk figure:first-child{grid-column:auto;grid-row:auto}
-  .desk figure:first-child img{aspect-ratio:16/10;height:auto}
   .aistack{height:190px;width:200px}
 }
 </style>
@@ -667,11 +664,11 @@ const AI_CASES=[
  {en:"Rise of the Blood Moon Queen",zh:"血月女王的崛起",tags:["fantasy","revenge"],st:6,l:T("Awakened under the blood moon, she claims the throne. A dark visual world, with the moon, the throne and the castle consistent throughout.","Despierta bajo la luna de sangre y reclama el trono. Un universo visual oscuro, con la luna, el trono y el castillo coherentes en toda la serie.","血月之下觉醒，一路登上王座。暗黑美学贯穿始终，血月、王座与城堡符号全程统一。")},
  {en:"Agent Returns",zh:"特工归来",tags:["action","revenge"],st:6,l:T("To save her son, a suburban mother switches back to elite agent.","Para salvar a su hijo, una madre de familia vuelve a ser agente de élite.","为了儿子，家庭主妇切换回顶级特工。")},
  {en:"Whoever I Marry Rules Olympus",zh:"我嫁谁，谁就是奥林匹斯之主",tags:["fantasy","romance"],st:6,l:T("Whoever marries her takes the throne of Olympus.","Quien se case con ella reinará en el Olimpo.","她嫁给谁，谁就是奥林匹斯之主。")},
- {en:"The Black Swan",zh:"黑天鹅",tags:["saga","thriller"],eps:"30",st:6,l:T("A high-society drama of power and family secrets, graded cold and high-contrast. Delivered in bilingual, English-only and textless versions with SRT files.","Un drama de alta sociedad sobre poder y secretos familiares, con un etalonaje frío y contrastado. Entregado en versión bilingüe, solo en inglés y sin texto, con archivos SRT.","豪门权谋正剧，冷峻影调强张力。双语 / 纯英 / 无字幕三版本，附SRT字幕交付。")},
+ {en:"The Black Swan",zh:"黑天鹅",tags:["saga","thriller"],eps:"30",st:6,l:T("A high-society drama of power and family secrets, graded cold and high-contrast.","Un drama de alta sociedad sobre poder y secretos familiares, con un etalonaje frío y contrastado.","豪门权谋正剧，冷峻影调强张力。")},
  {en:"The True Heiress",zh:"被当孤女的女继承人",tags:["saga","revenge"],eps:"30",st:6,l:T("Raised as an orphan, she strikes back the day her identity is revealed: the core genre for paid platforms abroad.","Criada como huérfana, contraataca el día en que se revela su identidad: el género estrella de las plataformas de pago internacionales.","被当作孤女长大的她，在身份揭晓那天开始反击——海外付费平台的核心赛道。")},
  {en:"The Disabled Duke",zh:"我的残疾公爵为我站了起来",tags:["fantasy","romance"],eps:"38",st:5,l:T("A fantasy romance of healing and court intrigue. Characters and sets hold steady across all 38 episodes.","Un romance de fantasía entre la sanación y la intriga cortesana. Personajes y escenarios coherentes en los 38 episodios.","西幻言情长篇，治愈与权谋双线。全38集人物与场景资产保持一致。")},
  {en:"The Night of Forbidden Desire",zh:"禁忌欲望之夜",tags:["romance","thriller"],eps:"38",st:6,l:T("An emotional drama whose intensity rises episode after episode, without a dip across 38 episodes.","Un drama emocional cuya intensidad crece episodio a episodio, sin decaer en 38 capítulos.","强情节情感长篇，38集情绪强度逐级递进、不掉线。")},
- {en:"The Fog Detective",zh:"迷雾侦探",tags:["mystery","crime"],eps:"38",st:6,l:T("A mystery series made end to end on our pipeline: script, assets, final cut and rights package, all on file.","Una serie de misterio hecha de principio a fin en nuestro flujo de trabajo: guion, recursos, montaje final y paquete de derechos, todo archivado.","悬疑推理全流程范本：剧本、资产、成片与版权四件套完整归档。")},
+ {en:"The Fog Detective",zh:"迷雾侦探",tags:["mystery","crime"],eps:"38",st:6,l:T("A mystery series made end to end on our pipeline, from script and visual assets to final cut.","Una serie de misterio hecha de principio a fin en nuestro flujo de trabajo, del guion y los recursos visuales al montaje final.","悬疑推理题材，从剧本、视觉资产到成片全流程制作。")},
  {en:"The Stylist · The Fallen Saint",zh:"裁缝的秘密 · 堕落圣女",tags:["revenge","vampire","fantasy"],eps:"20 × 2",st:6,l:T("Two series: a tailor whose craft becomes her weapon, and a vampire fantasy in which a fallen saint turns the tables.","Dos series: una costurera cuyo oficio se convierte en su arma, y una fantasía de vampiros en la que una santa caída se cobra su venganza.","两部系列剧：以裁缝手艺为武器的逆袭，与吸血鬼西幻中堕落圣女的反杀。")}
 ];
 const AI_PROMO=[
@@ -683,11 +680,6 @@ const AI_PROMO=[
  {t:T("Corporate film in drama form","Película corporativa en formato drama","企业宣传片 · 短剧形式"),d:T("A company story told as a 30-episode drama; episode 1 sets up the characters and the conflict.","La historia de una empresa contada como un drama de 30 episodios; el episodio 1 presenta personajes y conflicto.","以30集短剧讲述企业故事，第一集建立人物关系与核心冲突。")}
 ];
 const AI_DESK=[
- ["t01",T("Script desk · sign-in","Mesa de guion · acceso","剧匠 · 登录入口")],
- ["t07",T("Prompt desk · scene and dialogue breakdown","Mesa de prompts · desglose de escenas y diálogos","词匠 · 拆场与台词")],
- ["t08",T("Prompt desk · style options","Mesa de prompts · opciones de estilo","词匠 · 风格选项")],
- ["t11",T("Prompt desk · shot list","Mesa de prompts · lista de planos","词匠 · 分镜明细")],
- ["t12",T("Prompt desk · pacing and style","Mesa de prompts · ritmo y estilo","词匠 · 风格节奏")],
  ["t16",T("Node workflow · full pipeline","Flujo de nodos · cadena completa","节点工作流 · 管线全景")],
  ["t17",T("Node workflow · character generation","Flujo de nodos · generación de personajes","节点工作流 · 角色生成")]
 ];
@@ -718,26 +710,26 @@ function openReel(n){
   const el=document.createElement("div");el.className="scrim";el.id="modal";el.setAttribute("role","dialog");el.setAttribute("aria-modal","true");el.setAttribute("aria-label",pick(r.g));
   el.innerHTML=`<div class="panel reelpanel"><button class="x" data-close aria-label="${i("Close","Cerrar","关闭")}">×</button>
    <video src="img/ai/v/d${n}.mp4" poster="img/ai/v/p${n}.jpg" controls autoplay playsinline></video>
-   <div class="reelcap"><div class="eyebrow">${i("AI Studio · produced by us","AI Studio · producción propia","AI工作室 · 自主制作")}</div><h3>${esc(pick(r.g))}</h3>
-   <p>${i("Made end to end in our Guangzhou studio: script, AI-generated cast and sets, edit, sound and bilingual subtitles.","Hecho de principio a fin en nuestro estudio de Cantón: guion, reparto y escenarios generados con IA, montaje, sonido y subtítulos bilingües.","全流程由广州工作室完成：剧本、AI生成演员与场景、剪辑、声音与双语字幕。")}</p>
+   <div class="reelcap"><div class="eyebrow">${i("Sample library","Biblioteca de muestras","样片库")}</div><h3>${esc(pick(r.g))}</h3>
+   <p>${i("Made end to end: script, AI-generated cast and sets, edit, sound, and subtitles in the languages you need.","Hecho de principio a fin: guion, reparto y escenarios generados con IA, montaje, sonido y subtítulos en los idiomas que necesites.","全流程制作：剧本、AI生成演员与场景、剪辑、声音，字幕语言按需配置。")}</p>
    <button class="btn gold sm" data-contact="ai">${i("Get a quote","Pedir presupuesto","获取报价")} →</button></div></div>`;
   document.body.appendChild(el);document.body.style.overflow="hidden";el.querySelector(".x").focus();
 }
 function vAI(){
   const svc=[
-   [i("AI drama series","Series dramáticas con IA","AI短剧正剧"),i("Scripted series with dialogue and full character arcs, vertical 9:16 or horizontal 16:9, from 20 to 40 episodes, in any genre from romance to fantasy and mystery.","Series de ficción con diálogos y arcos de personaje completos, en vertical 9:16 u horizontal 16:9, de 20 a 40 episodios, en cualquier género: romance, fantasía o misterio.","对白驱动、人物弧光完整的正剧，竖屏9:16或横屏16:9，20–40集，覆盖言情、西幻、悬疑等各类题材。")],
+   [i("AI series","Series con IA","AI剧集内容"),i("Scripted series with dialogue and full character arcs, vertical 9:16 or horizontal 16:9, from 20 to 40 episodes, in any genre from romance to fantasy and mystery.","Series de ficción con diálogos y arcos de personaje completos, en vertical 9:16 u horizontal 16:9, de 20 a 40 episodios, en cualquier género: romance, fantasía o misterio.","对白驱动、人物弧光完整的正剧，竖屏9:16或横屏16:9，20–40集，覆盖言情、西幻、悬疑等各类题材。")],
    [i("Brand, museum & tourism films","Películas de marca, museos y turismo","品牌、文博与文旅宣传片"),i("Campaign films and short series for brands, museums, theme parks and destinations, delivered in 1080p with your branding.","Películas y miniseries para marcas, museos, parques temáticos y destinos, entregadas en 1080p con tu marca.","为品牌、博物馆、主题乐园与目的地定制宣传片和短剧，1080P带品牌标识交付。")],
    [i("Script & storyboard development","Desarrollo de guion y storyboard","剧本与分镜开发"),i("Original scripts or adaptations of your IP, with a shot-by-shot storyboard approved before production starts.","Guiones originales o adaptaciones de tu IP, con un storyboard plano a plano aprobado antes de producir.","原创剧本或您的IP改编，开拍前逐镜确认分镜。")],
-   [i("Release-ready delivery","Entrega lista para emisión","可直接上线的交付"),i("Every title ships in bilingual, English-only and textless versions with SRT files, plus a titled poster, stills and rights documentation.","Cada título se entrega en versión bilingüe, solo en inglés y sin texto, con archivos SRT, además de cartel con título, fotogramas y documentación de derechos.","每部作品标配双语 / 纯英 / 无字幕三版本+SRT字幕，附带片名海报、剧照截帧与版权证明。")]];
+   [i("Languages & subtitles on demand","Idiomas y subtítulos a medida","语言字幕按需配置"),i("Choose the languages and subtitle versions your market needs, and we prepare the final cut to match.","Elige los idiomas y las versiones de subtítulos que necesita tu mercado y preparamos el montaje final en consecuencia.","根据目标市场自由选择语言与字幕版本，我们按需制作成片。")]];
   const steps=[
    [i("Brief","Briefing","需求沟通"),i("Audience, market, genre, format, episodes, languages and deadline.","Público, mercado, género, formato, episodios, idiomas y plazo.","受众、市场、题材、画幅、集数、语言与工期。")],
    [i("Script & look","Guion y estética","剧本与美术"),i("Script, character sheets and visual style for your approval.","Guion, fichas de personaje y estilo visual para tu aprobación.","剧本、人物设定与视觉风格，经您确认。")],
    [i("Pilot","Piloto","样片"),i("A first episode or sample cut before full production.","Un primer episodio o montaje de muestra antes de la producción completa.","正式量产前先交付第一集或样片。")],
    [i("Production","Producción","量产制作"),i("Storyboard, generation, edit, grade, sound and subtitles.","Storyboard, generación, montaje, color, sonido y subtítulos.","分镜、生成、剪辑、调色、声音与字幕。")],
-   [i("Delivery","Entrega","交付"),i("Masters in every version, artwork and rights documentation.","Másteres en todas las versiones, gráficos y documentación de derechos.","全版本成片母带、宣传物料与版权文件。")]];
+   [i("Delivery","Entrega","交付"),i("Final cut in the languages and versions you need.","Montaje final en los idiomas y versiones que necesites.","按所需语言与版本交付成片。")]];
   const tools=[
-   [i("Script desk","Mesa de guion","剧匠 · 剧本"),i("A five-role writing pipeline (writer, evaluator, proofreader, reviser, chief editor) across 17 genres, with hard quality gates before a script is released.","Un flujo de escritura con cinco funciones (guionista, evaluación, corrección, revisión y edición final) en 17 géneros, con controles de calidad obligatorios antes de aprobar cada guion.","写手、评估、校对、返修、主编终审五角色管线，覆盖17类题材，剧本发出前须通过硬性质检。")],
-   [i("Prompt desk","Mesa de prompts","词匠 · 分镜与提示词"),i("Turns each scene into a structured shot list (shot size, camera, duration, dialogue) and bilingual prompts, with shot-by-shot fine-tuning.","Convierte cada escena en una lista de planos estructurada (tamaño, cámara, duración, diálogo) y prompts bilingües, con ajuste plano a plano.","将每场戏拆成结构化镜头清单（景别、运镜、时长、台词归属），输出中英对照提示词，并可逐镜微调。")],
+   [i("Script desk","Mesa de guion","剧本工作台"),i("A five-role writing pipeline (writer, evaluator, proofreader, reviser, chief editor) across 17 genres, with hard quality gates before a script is released.","Un flujo de escritura con cinco funciones (guionista, evaluación, corrección, revisión y edición final) en 17 géneros, con controles de calidad obligatorios antes de aprobar cada guion.","写手、评估、校对、返修、主编终审五角色管线，覆盖17类题材，剧本发出前须通过硬性质检。")],
+   [i("Prompt desk","Mesa de prompts","分镜与提示词"),i("Turns each scene into a structured shot list (shot size, camera, duration, dialogue) and bilingual prompts, with shot-by-shot fine-tuning.","Convierte cada escena en una lista de planos estructurada (tamaño, cámara, duración, diálogo) y prompts bilingües, con ajuste plano a plano.","将每场戏拆成结构化镜头清单（景别、运镜、时长、台词归属），输出中英对照提示词，并可逐镜微调。")],
    [i("Node workflows","Flujos de nodos","节点式生成工作流"),i("ComfyUI pipelines with ControlNet and post-processing keep characters, sets and colour consistent from shot to shot.","Flujos ComfyUI con ControlNet y posprocesado que mantienen personajes, escenarios y color coherentes plano a plano.","ComfyUI 工作流配合 ControlNet 与后处理，保证人物、场景与色彩逐镜一致。")]];
   const edu=[
    [i("Online courses","Cursos en línea","网络课程"),i("Recorded lessons with live online sessions for students, creators and freelancers: from your first AI storyboard to a finished short-drama episode.","Clases grabadas y sesiones en directo para estudiantes, creadores y profesionales independientes: del primer storyboard con IA a un episodio de microdrama terminado.","录播课程结合线上直播答疑，面向学生、创作者与自由职业者：从第一张AI分镜，到完成一集短剧成片。"),i("For individuals and schools","Para particulares y centros educativos","适合个人与院校")],
@@ -746,11 +738,11 @@ function vAI(){
   const topics=[i("Storyboarding and shot composition","Storyboard y composición de planos","分镜与构图"),i("Turning a director’s style into prompts","Traducir el estilo de un director en prompts","导演风格转化为提示词"),i("Character consistency","Coherencia de personajes","人物一致性"),i("Character arcs and conflict","Arcos de personaje y conflicto","人物弧光与冲突升级"),i("Narrative pacing","Ritmo narrativo","叙事节奏"),i("Visual styles for AI drama","Estilos visuales para drama con IA","AI短剧视觉风格"),i("Market data and genres","Datos de mercado y géneros","市场数据与题材"),i("Editing, subtitles and delivery","Montaje, subtítulos y entrega","剪辑、字幕与交付"),i("Business models and monetisation","Modelos de negocio y monetización","商业变现路径")];
   const wall=Array.from({length:63},(_,k)=>`<img src="img/ai/w${pad(k+1)}.jpg" alt="" loading="lazy" decoding="async">`).join("");
   return `<section class="sec band aihero"><div class="wrap"><div class="sec-head" style="max-width:860px">
-    <div class="eyebrow">${i("AI Studio · Guangzhou production base","AI Studio · base de producción en Cantón","AI工作室 · 广州制作基地")}</div>
-    <h1 style="margin-top:8px">${i("AI drama and video, made to order.","Drama y vídeo con IA, hechos a medida.","AI短剧与影像，按需定制。")}</h1>
-    <p class="lede">${i("Our AI content factory in Guangzhou writes, generates and delivers drama series and branded films for international platforms, broadcasters and brands. Tell us the audience and the format; we deliver release-ready episodes. We also train teams to work this way.","Nuestra fábrica de contenido con IA en Cantón escribe, genera y entrega series dramáticas y películas de marca para plataformas, cadenas y marcas de todo el mundo. Cuéntanos el público y el formato y te entregamos episodios listos para emitir. También formamos a equipos para trabajar así.","我们位于广州的AI内容工厂，为国际平台、电视台与品牌编写、生成并交付短剧与品牌影片。告诉我们受众与形式，我们交付可直接上线的成片；我们也为团队提供AIGC培训。")}</p>
+    <div class="eyebrow">${i("Custom AI content","Contenido con IA a medida","AI内容定制")}</div>
+    <h1 style="margin-top:8px">${i("AI content, made to order.","Contenido con IA, hecho a medida.","AI内容，按需定制。")}</h1>
+    <p class="lede">${i("We write, generate and deliver series and branded films for international platforms, broadcasters and brands. Tell us the audience and the format; we deliver release-ready episodes. We also train teams to work this way.","Escribimos, generamos y entregamos series y películas de marca para plataformas, cadenas y marcas de todo el mundo. Cuéntanos el público y el formato y te entregamos episodios listos para emitir. También formamos a equipos para trabajar así.","我们为国际平台、电视台与品牌编写、生成并交付剧集与品牌影片。告诉我们受众与形式，我们交付可直接上线的成片；我们也为团队提供AIGC培训。")}</p>
     <div class="cta" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px"><button class="btn gold" data-contact="ai">${i("Commission a project","Encargar un proyecto","定制项目")} →</button><button class="btn" data-contact="ai">${i("Request sample reels","Pedir muestras","索取样片")}</button><a class="btn" href="#ai-training" data-jump="ai-training">${i("Training & courses","Formación y cursos","培训与课程")}</a></div></div>
-    <div class="facts-line on-dark"><div><b>150+</b><span>${i("AI dramas delivered for overseas platforms","dramas con IA entregados a plataformas internacionales","部出海AI短剧已交付")}</span></div><div><b>100+</b><span>${i("Scripted titles since April 2026","títulos de ficción desde abril de 2026","部正剧 · 2026年4月起")}</span></div><div><b>9:16 · 16:9</b><span>${i("Vertical & horizontal","Vertical y horizontal","竖屏与横屏")}</span></div><div><b>3 + SRT</b><span>${i("Versions per title: bilingual, English, textless","versiones por título: bilingüe, inglés, sin texto","每部三版本：双语、纯英、无字幕")}</span></div></div>
+    <div class="facts-line on-dark"><div><b>1000+</b><span>${i("AI titles delivered","títulos con IA entregados","AI内容已交付")}</span></div><div><b>${i("Efficient","Eficiente","高效量产")}</b><span>${i("In-house tools speed up every step, from script to final cut","herramientas propias que agilizan cada paso, del guion al montaje final","自研工具链，从剧本到成片全流程提效")}</span></div><div><b>9:16 · 16:9</b><span>${i("Vertical & horizontal","Vertical y horizontal","竖屏与横屏")}</span></div><div><b>${i("Multilingual","Multilingüe","多语言")}</b><span>${i("Languages and subtitles to suit your needs","idiomas y subtítulos según tus necesidades","语言与字幕按需配置")}</span></div></div>
   </div></section>
 
   <section class="sec tint" id="ai-reel"><div class="wrap">
@@ -762,7 +754,7 @@ function vAI(){
     <div class="mods m4">${svc.map((s,k)=>`<div class="mod"><span class="eyebrow">0${k+1}</span><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join("")}</div></div></section>
 
   <section class="sec tint" id="ai-works"><div class="wrap">
-    <div class="sec-head row"><div><div class="eyebrow">${i("Selected work","Trabajos seleccionados","精选作品")}</div><h2 style="margin-top:12px">${i("Sixteen series we have produced.","Dieciséis series que hemos producido.","我们制作的十六部剧集。")}</h2><p class="lede" style="margin-top:12px">${i("Each delivered with final cut, artwork and rights. Open a title to see stills.","Cada una entregada con montaje final, gráficos y derechos. Abre un título para ver fotogramas.","每部均交付成片、物料与版权。点击作品查看剧照。")}</p></div><button class="btn gold" data-contact="ai">${i("Ask for screeners","Pedir screeners","索取样片")} →</button></div>
+    <div class="sec-head row"><div><div class="eyebrow">${i("Sample library","Biblioteca de muestras","样片库")}</div><h2 style="margin-top:12px">${i("Browse samples by genre and style.","Explora muestras por género y estilo.","按题材与风格浏览样片。")}</h2><p class="lede" style="margin-top:12px">${i("These samples show our range and visual quality. Open one to see stills.","Estas muestras enseñan nuestra variedad y calidad visual. Abre una para ver fotogramas.","样片仅用于展示题材范围与画面质量。点击查看剧照。")}</p></div><button class="btn gold" data-contact="ai">${i("Ask for screeners","Pedir screeners","索取样片")} →</button></div>
     <div class="grid aigrid">${AI_CASES.map(aiCard).join("")}</div></div></section>
 
   <section class="sec"><div class="wrap">
@@ -770,7 +762,7 @@ function vAI(){
     <div class="promo">${AI_PROMO.map((p,k)=>`<figure><img src="img/ai/p${k+1}.jpg" alt="${esc(pick(p.t))}" loading="lazy" decoding="async"><figcaption><b>${esc(pick(p.t))}</b><span>${esc(pick(p.d))}</span></figcaption></figure>`).join("")}</div></div></section>
 
   <section class="sec tint"><div class="wrap">
-    <div class="sec-head"><div class="eyebrow">${i("Works wall","Muro de trabajos","作品墙")}</div><h2>${i("More titles, all with titled key art.","Más títulos, todos con cartel oficial.","更多作品，均配带片名正式海报。")}</h2></div>
+    <div class="sec-head"><div class="eyebrow">${i("Works wall","Muro de trabajos","作品墙")}</div><h2>${i("More samples across genres and styles.","Más muestras de distintos géneros y estilos.","更多题材与风格样片。")}</h2></div>
     <div class="aiwall" aria-hidden="true">${wall}</div></div></section>
 
   <section class="sec"><div class="wrap">
@@ -800,11 +792,10 @@ function openAI(n){
   const stills=Array.from({length:c.st},(_,k)=>`<img src="img/ai/c${pad(n+1)}-${k+1}.jpg" alt="${esc(c.en)} · ${k+1}" loading="lazy" decoding="async">`).join("");
   const el=document.createElement("div");el.className="scrim";el.id="modal";el.setAttribute("role","dialog");el.setAttribute("aria-modal","true");el.setAttribute("aria-label",t1);
   el.innerHTML=`<div class="panel"><button class="x" data-close aria-label="${i("Close","Cerrar","关闭")}">×</button><div class="pan-grid"><div class="poster"><img src="img/ai/c${pad(n+1)}.jpg" alt="${esc(c.en)}"></div>
-   <div class="pan-main"><div><div class="eyebrow">${i("AI Studio · produced by us","AI Studio · producción propia","AI工作室 · 自主制作")}</div><h2 style="margin-top:10px">${esc(t1)}</h2><div class="pan-sub">${esc(t2)}</div></div>
+   <div class="pan-main"><div><div class="eyebrow">${i("Sample library","Biblioteca de muestras","样片库")}</div><h2 style="margin-top:10px">${esc(t1)}</h2><div class="pan-sub">${esc(t2)}</div></div>
    <p style="font-size:17px">${esc(pick(c.l))}</p>
    <dl class="spec"><dt>${i("Genre","Género","类型")}</dt><dd><div class="chips">${c.tags.map(t=>`<span class="chip">${esc(pick(AI_TAG[t]))}</span>`).join("")}</div></dd>
    ${c.eps?`<dt>${i("Episodes","Episodios","集数")}</dt><dd>${esc(c.eps)}</dd>`:""}
-   <dt>${i("Delivered","Entregado","交付内容")}</dt><dd>${i("Final cut · artwork · rights documentation","Montaje final · gráficos · documentación de derechos","成片 · 物料 · 版权证明")}</dd>
    <dt>${i("Visual system","Sistema visual","视觉体系")}</dt><dd>${i("Character design · set design · unified grade","Diseño de personajes · escenografía · color unificado","人物设定 · 场景美术 · 调色统一")}</dd></dl>
    <div class="stills">${stills}</div>
    <div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn gold" data-contact="ai">${i("Commission something like this","Encargar algo similar","定制类似作品")} →</button></div></div></div></div>`;
@@ -893,12 +884,12 @@ function vHome(){
   return `
   <section class="hero"><div class="wrap hero-grid">
     <div>
-      <button class="aipill" data-go="ai"><b>AI</b><span>${i("New: AI drama made to order · 150+ delivered","Novedad: drama con IA a medida · más de 150 entregados","新业务：AI短剧定制 · 已交付150+部")}</span> →</button>
+      <button class="aipill" data-go="ai"><span class="aitop"><b>${i("NEW","NUEVO","新业务")}</b><em>${i("1000+ delivered","Más de 1000 entregados","已交付 1000+")}</em></span><strong>${i("Custom AI Content","Contenido con IA a medida","AI内容定制")} →</strong><span class="aidesc">${i("Series, brand films and tourism content, made to your brief from script to final cut, with subtitles in the languages you need.","Series, películas de marca y contenido turístico a medida, del guion al montaje final, con subtítulos en los idiomas que necesites.","剧集、品牌片与文旅内容，从剧本到成片一站式定制，语言字幕按需配置。")}</span></button>
       <div class="eyebrow">${i("International Content Sales & Rights Trading","Venta internacional de contenidos y comercialización de derechos","国际影视内容销售与版权贸易")}</div>
       <h1 style="margin-top:20px">${i('<span>CHINESE CONTENT.</span><span>GLOBAL RIGHTS.</span><span>IBERO-AMERICAN REACH.</span>','<span>CONTENIDO CHINO.</span><span>DERECHOS GLOBALES.</span><span>ALCANCE IBEROAMERICANO.</span>','<span>中国内容</span><span>全球版权</span><span>伊比利亚美洲市场</span>')}</h1>
       <div class="sub">${i("Connecting Chinese Content with the Ibero-American Market","Conectamos el contenido chino con el mercado iberoamericano","连接中国影视内容与伊比利亚美洲市场")}</div>
       <p class="intro">${i("Connecting Chinese film, television and animation content with broadcasters, streaming platforms and distributors across Spain and Latin America.","Conectamos el cine, la televisión y la animación de China con cadenas, plataformas de streaming y distribuidores de España y América Latina.","连接中国电影、电视与动画内容，面向西班牙及拉丁美洲的电视台、流媒体平台与发行商。")}</p>
-      <div class="cta"><button class="btn gold" data-go="catalogue">${i("Explore our catalogue","Explorar el catálogo","浏览版权目录")} →</button><button class="btn" data-go="ai">${i("AI production","Producción con IA","AI定制制作")} →</button></div>
+      <div class="cta"><button class="btn gold" data-go="catalogue">${i("Explore our catalogue","Explorar el catálogo","浏览版权目录")} →</button><button class="btn" data-go="ai">${i("Custom AI content","Contenido con IA a medida","AI内容定制")} →</button></div>
     </div>
     <div class="wall" aria-hidden="true">${col(wall[0],"img/sp/s2.jpg")}${col(wall[1],"img/mc/poster.jpg")}${col(wall[2])}</div>
   </div>
@@ -1067,8 +1058,8 @@ function wantBand(){
 function aiBand(){
   return `<section class="sec band aihome"><div class="wrap">
    <div class="sec-head row"><div><div class="eyebrow">${i("AI Studio · made in China, at scale","AI Studio · producción a escala en China","AI工作室 · 中国规模化AI内容制作")}</div>
-    <h2 style="margin-top:12px">${i("We produce AI drama for the world.","Producimos drama con IA para todo el mundo.","我们为全球市场制作AI短剧。")}</h2>
-    <p class="lede" style="margin-top:12px">${i("150+ AI dramas delivered to overseas platforms from our Guangzhou production base, in vertical and horizontal formats, with bilingual, English and textless versions. Platforms, broadcasters and brands commission series and films from us.","Más de 150 dramas con IA entregados a plataformas internacionales desde nuestra base de producción en Cantón, en vertical y horizontal, en versión bilingüe, en inglés y sin texto. Plataformas, cadenas y marcas nos encargan series y películas.","广州制作基地已为海外平台交付150+部AI短剧，竖屏横屏皆可，提供双语、纯英与无字幕版本。全球平台、电视台与品牌向我们定制剧集与影片。")}</p></div>
+    <h2 style="margin-top:12px">${i("Custom AI content for the world.","Contenido con IA a medida para todo el mundo.","面向全球市场的AI内容定制。")}</h2>
+    <p class="lede" style="margin-top:12px">${i("1000+ AI titles delivered, in vertical and horizontal formats, with languages and subtitles to suit your needs. Platforms, broadcasters and brands commission series and films from us.","Más de 1000 títulos con IA entregados, en vertical y horizontal, con idiomas y subtítulos según tus necesidades. Plataformas, cadenas y marcas nos encargan series y películas.","已交付1000+AI内容，竖屏横屏皆可，语言字幕按需配置。全球平台、电视台与品牌向我们定制剧集与影片。")}</p></div>
     <div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn gold" data-go="ai">${i("See all AI work","Ver todo el trabajo con IA","查看全部AI作品")} →</button><button class="btn" data-contact="ai">${i("Commission a project","Encargar un proyecto","定制项目")}</button></div></div>
    ${reelCards()}${qualityNote()}</div></section>`;
 }
@@ -1241,7 +1232,7 @@ function vAbout(){
       <h3 style="margin-top:30px">${i("Our companies","Nuestras empresas","旗下公司")}</h3>
       <dl class="spec" style="margin-top:12px"><dt>${i("Spain","España","西班牙")}</dt><dd><b>BELLOTA BLANCA FILM & PRODUCCIONES S.L.</b><br>${i("Madrid · international rights sales and representation","Madrid · venta y representación internacional de derechos","马德里 · 国际版权销售与代理")}</dd>
       <dt>${i("China","China","中国")}</dt><dd><b>XIN MOTION PICTURE</b><br>${i("Shanghai · documentaries, film co-production and AI vertical content","Shanghái · documentales, coproducción de cine y contenido vertical con IA","上海 · 纪录片、电影联合制作与AI竖屏内容")}</dd>
-      <dt>${i("China","China","中国")}</dt><dd><b>${i("AI Content Factory Base","Base de producción de contenido con IA","AI内容工厂基地")}</b><br>${i("Guangzhou · we develop and produce AI content in vertical and horizontal formats. Sample reels on request.","Cantón (Guangzhou) · desarrollamos y producimos contenido con IA en formato vertical y horizontal. Muestras bajo petición.","广州 · 开发并制作AI内容，含竖屏与横屏。可联系索取样片。")}<br><button class="btn sm gold" style="margin-top:12px" data-go="ai">${i("See AI Studio","Ver AI Studio","查看AI定制")} →</button></dd></dl></div>
+      <dt>${i("China","China","中国")}</dt><dd><b>${i("Custom AI Content","Contenido con IA a medida","AI内容定制")}</b><br>${i("We develop and produce AI content in vertical and horizontal formats. Sample reels on request.","Desarrollamos y producimos contenido con IA en formato vertical y horizontal. Muestras bajo petición.","开发并制作AI内容，含竖屏与横屏。可联系索取样片。")}<br><button class="btn sm gold" style="margin-top:12px" data-go="ai">${i("See AI Studio","Ver AI Studio","查看AI定制")} →</button></dd></dl></div>
       <div><h3>${i("Where we work","Dónde trabajamos","业务网络")}</h3>
       <ul class="list" style="grid-template-columns:1fr;margin-top:12px"><li><b>${i("China business network","Red de negocio en China","中国业务网络")}</b> ${i("leading production companies, animation groups, rights-holders","principales productoras, grupos de animación, titulares de derechos","头部制作公司、动画集团、版权方")}</li><li><b>${i("Festivals & markets","Festivales y mercados","电影节与市场")}</b> ${i("film festivals and content markets","festivales de cine y mercados de contenidos","电影节与影视内容市场")}</li><li><b>${i("Spain business base","Base de operaciones en España","西班牙业务基地")}</b> Madrid</li><li><b>${i("Latin American market network","Red de mercados latinoamericanos","拉美市场网络")}</b> ${i("broadcasters, platforms, distributors","cadenas, plataformas, distribuidores","电视台、平台、发行商")}</li></ul></div></div></div></section>`+founder()+vRights().replace('<section class="sec" style="padding-top:44px">','<section class="sec rights-sec" id="rights">');
 }
