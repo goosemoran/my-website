@@ -43,6 +43,32 @@ function aiCard(c,n){
   return `<button class="card" data-ai="${n}" aria-label="${esc(lang==="zh"?c.zh:c.en)}"><div class="poster"><span class="badge">AI</span><img src="img/ai/c${pad(n+1)}.jpg" alt="${esc(c.en)}" loading="lazy" decoding="async"></div>
   <div><div class="ctitle">${esc(lang==="zh"?c.zh:c.en)}</div><div class="csub">${esc(lang==="zh"?c.en:c.zh)}</div><div class="csub" style="margin-top:4px">${esc(meta)}</div></div></button>`;
 }
+const AI_REEL=[
+ {g:T("Sci-fi thriller","Thriller de ciencia ficción","科幻惊悚"),d:"3:57"},
+ {g:T("Sports & action drama","Drama deportivo y de acción","运动动作剧"),d:"2:27"},
+ {g:T("Family drama","Drama familiar","家庭情感剧"),d:"1:53"},
+ {g:T("Romantic thriller","Romance y suspense","爱情悬疑"),d:"1:54"}];
+function reelCards(){
+  return `<div class="reels">${AI_REEL.map((r,k)=>`<button class="reel" data-reel="${k+1}" aria-label="${esc(i("Play sample: ","Ver muestra: ","播放样片：")+pick(r.g))}">
+   <video src="img/ai/v/t${k+1}.mp4" poster="img/ai/v/p${k+1}.jpg" muted loop playsinline autoplay preload="metadata" aria-hidden="true"></video>
+   <span class="rplay" aria-hidden="true">▶</span>
+   <span class="rlab"><b>${esc(pick(r.g))}</b><i>9:16 · ${r.d} · ${i("with sound","con sonido","有声")}</i></span></button>`).join("")}</div>`;
+}
+function qualityNote(){
+  return `<div class="qnote"><div><b>${i("Want this quality for your project, or a lighter model tier for a smaller budget?","¿Quieres esta calidad para tu proyecto, o un modelo más ligero para un presupuesto menor?","想要同等质量，或用更低成本的模型版本控制预算？")}</b>
+   <p>${i("Email us with your format, episode count and deadline, and we will quote both options: the same quality as these samples, and a lower-cost version made with lighter models.","Escríbenos con el formato, el número de episodios y el plazo, y te presupuestamos las dos opciones: la misma calidad que estas muestras y una versión más económica hecha con modelos más ligeros.","请发邮件告诉我们画幅、集数与工期，我们将分别报价：与样片同等质量的版本，以及使用轻量模型、成本更低的版本。")}</p></div>
+   <div class="qbtn"><a class="btn gold" href="mailto:${MAIL}?subject=${encodeURIComponent("AI production quote")}">${i("Email us","Escríbenos","发邮件给我们")} →</a><button class="btn" data-contact="ai">${i("Send a brief","Enviar un briefing","提交需求")}</button></div></div>`;
+}
+function openReel(n){
+  const r=AI_REEL[n-1];if(!r)return;
+  const el=document.createElement("div");el.className="scrim";el.id="modal";el.setAttribute("role","dialog");el.setAttribute("aria-modal","true");el.setAttribute("aria-label",pick(r.g));
+  el.innerHTML=`<div class="panel reelpanel"><button class="x" data-close aria-label="${i("Close","Cerrar","关闭")}">×</button>
+   <video src="img/ai/v/d${n}.mp4" poster="img/ai/v/p${n}.jpg" controls autoplay playsinline></video>
+   <div class="reelcap"><div class="eyebrow">${i("AI Studio · produced by us","AI Studio · producción propia","AI工作室 · 自主制作")}</div><h3>${esc(pick(r.g))}</h3>
+   <p>${i("Made end to end in our Guangzhou studio: script, AI-generated cast and sets, edit, sound and bilingual subtitles.","Hecho de principio a fin en nuestro estudio de Cantón: guion, reparto y escenarios generados con IA, montaje, sonido y subtítulos bilingües.","全流程由广州工作室完成：剧本、AI生成演员与场景、剪辑、声音与双语字幕。")}</p>
+   <button class="btn gold sm" data-contact="ai">${i("Get a quote","Pedir presupuesto","获取报价")} →</button></div></div>`;
+  document.body.appendChild(el);document.body.style.overflow="hidden";el.querySelector(".x").focus();
+}
 function vAI(){
   const svc=[
    [i("AI drama series","Series dramáticas con IA","AI短剧正剧"),i("Scripted series with dialogue and full character arcs, vertical 9:16 or horizontal 16:9, from 20 to 40 episodes, in any genre from romance to fantasy and mystery.","Series de ficción con diálogos y arcos de personaje completos, en vertical 9:16 u horizontal 16:9, de 20 a 40 episodios, en cualquier género: romance, fantasía o misterio.","对白驱动、人物弧光完整的正剧，竖屏9:16或横屏16:9，20–40集，覆盖言情、西幻、悬疑等各类题材。")],
@@ -72,6 +98,10 @@ function vAI(){
     <div class="cta" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px"><button class="btn gold" data-contact="ai">${i("Commission a project","Encargar un proyecto","定制项目")} →</button><button class="btn" data-contact="ai">${i("Request sample reels","Pedir muestras","索取样片")}</button><a class="btn" href="#ai-training" data-jump="ai-training">${i("Training & courses","Formación y cursos","培训与课程")}</a></div></div>
     <div class="facts-line on-dark"><div><b>150+</b><span>${i("AI dramas delivered for overseas platforms","dramas con IA entregados a plataformas internacionales","部出海AI短剧已交付")}</span></div><div><b>100+</b><span>${i("Scripted titles since April 2026","títulos de ficción desde abril de 2026","部正剧 · 2026年4月起")}</span></div><div><b>9:16 · 16:9</b><span>${i("Vertical & horizontal","Vertical y horizontal","竖屏与横屏")}</span></div><div><b>3 + SRT</b><span>${i("Versions per title: bilingual, English, textless","versiones por título: bilingüe, inglés, sin texto","每部三版本：双语、纯英、无字幕")}</span></div></div>
   </div></section>
+
+  <section class="sec tint" id="ai-reel"><div class="wrap">
+    <div class="sec-head row"><div><div class="eyebrow">${i("Quality samples","Muestras de calidad","质量样片")}</div><h2 style="margin-top:12px">${i("See the quality before you commission.","Comprueba la calidad antes de encargar.","下单前，先看成片质量。")}</h2><p class="lede" style="margin-top:12px">${i("Four recent productions with Western casts for overseas platforms. Tap one to watch it with sound.","Cuatro producciones recientes con reparto occidental para plataformas internacionales. Toca una para verla con sonido.","四部近期为海外平台制作的欧美演员AI短剧。点击即可有声观看。")}</p></div></div>
+    ${reelCards()}${qualityNote()}</div></section>
 
   <section class="sec"><div class="wrap">
     <div class="sec-head"><div class="eyebrow">${i("What you can commission","Qué puedes encargar","可定制服务")}</div><h2>${i("From a single campaign film to a 40-episode series.","De una sola película de campaña a una serie de 40 episodios.","从一支宣传片，到40集的完整剧集。")}</h2></div>

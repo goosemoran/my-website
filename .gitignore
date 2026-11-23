@@ -1,1 +1,4 @@
 .DS_Store
+
+# original source videos (web versions live in img/ai/v)
+/demo*.mp4

@@ -1,6 +1,6 @@
 /* ---------- state & helpers ---------- */
-const VIEWS=["home","catalogue","ai","animation","mechasia","network","coproduction","about","rights","contact"];
-const NAVV=["home","catalogue","ai","animation","network","coproduction","about","contact"];
+const VIEWS=["home","ai","catalogue","animation","mechasia","network","coproduction","about","rights","contact"];
+const NAVV=["home","ai","catalogue","animation","network","coproduction","about","contact"];
 const navOf=v=>v==="mechasia"?"animation":v==="rights"?"about":v;
 let lang="en";
 try{const s=localStorage.getItem("bb-lang");if(s)lang=s;else{const n=(navigator.language||"en").toLowerCase();lang=n.startsWith("zh")?"zh":n.startsWith("es")||n.startsWith("pt")?"es":"en"}}catch(e){const n=(navigator.language||"en").toLowerCase();lang=n.startsWith("zh")?"zh":n.startsWith("es")?"es":"en"}
@@ -81,11 +81,12 @@ function vHome(){
   return `
   <section class="hero"><div class="wrap hero-grid">
     <div>
+      <button class="aipill" data-go="ai"><b>AI</b><span>${i("New: AI drama made to order · 150+ delivered","Novedad: drama con IA a medida · más de 150 entregados","新业务：AI短剧定制 · 已交付150+部")}</span> →</button>
       <div class="eyebrow">${i("International Content Sales & Rights Trading","Venta internacional de contenidos y comercialización de derechos","国际影视内容销售与版权贸易")}</div>
       <h1 style="margin-top:20px">${i('<span>CHINESE CONTENT.</span><span>GLOBAL RIGHTS.</span><span>IBERO-AMERICAN REACH.</span>','<span>CONTENIDO CHINO.</span><span>DERECHOS GLOBALES.</span><span>ALCANCE IBEROAMERICANO.</span>','<span>中国内容</span><span>全球版权</span><span>伊比利亚美洲市场</span>')}</h1>
       <div class="sub">${i("Connecting Chinese Content with the Ibero-American Market","Conectamos el contenido chino con el mercado iberoamericano","连接中国影视内容与伊比利亚美洲市场")}</div>
       <p class="intro">${i("Connecting Chinese film, television and animation content with broadcasters, streaming platforms and distributors across Spain and Latin America.","Conectamos el cine, la televisión y la animación de China con cadenas, plataformas de streaming y distribuidores de España y América Latina.","连接中国电影、电视与动画内容，面向西班牙及拉丁美洲的电视台、流媒体平台与发行商。")}</p>
-      <div class="cta"><button class="btn gold" data-go="catalogue">${i("Explore our catalogue","Explorar el catálogo","浏览版权目录")} →</button><button class="btn" data-go="contact">${i("Contact sales","Contactar con ventas","联系商务")}</button></div>
+      <div class="cta"><button class="btn gold" data-go="catalogue">${i("Explore our catalogue","Explorar el catálogo","浏览版权目录")} →</button><button class="btn" data-go="ai">${i("AI production","Producción con IA","AI定制制作")} →</button></div>
     </div>
     <div class="wall" aria-hidden="true">${col(wall[0],"img/sp/s2.jpg")}${col(wall[1],"img/mc/poster.jpg")}${col(wall[2])}</div>
   </div>
@@ -93,6 +94,8 @@ function vHome(){
     <span class="terr"><b>ES</b><b>PT</b><span>MX</span><span>CO</span><span>BR</span><span>AR</span><span>CL</span><span>PE</span><span>EC</span><span>UY</span><span>PA</span></span>
     <span class="tot">${total} ${i("featured titles · 3,000+ vertical dramas","títulos destacados · más de 3.000 series verticales","部精选作品 · 3000+竖屏剧")}</span></div></div>
   </section>
+
+  ${aiBand()}
 
   <section class="sec"><div class="wrap who">
     <div class="sec-head" style="margin:0"><div class="eyebrow">${i("Who we are","Quiénes somos","关于白橡树")}</div>
@@ -102,8 +105,6 @@ function vHome(){
   </div></section>
 
   ${mechaBand()}
-
-  ${aiBand()}
 
   <section class="sec tint"><div class="wrap">
     <div class="sec-head"><div class="eyebrow">${i("Our business","Nuestro negocio","我们的业务")}</div><h2>${i("Sell first. Represent second. Build with partners third.","Primero, vender; después, representar; y, por último, crear con socios.","先销售，再代理，后合作共建。")}</h2></div>
@@ -252,11 +253,12 @@ function wantBand(){
    ${contactLines("on-dark")}<div style="margin-top:18px"><button class="btn gold" data-contact="submit">${i("Submit your content","Enviar contenido","提交内容")} →</button></div></div></div></section>`;
 }
 function aiBand(){
-  return `<section class="sec"><div class="wrap"><div class="vband aiband"><div class="aistack" aria-hidden="true">${[1,11,8].map(n=>`<img src="img/ai/c${String(n).padStart(2,"0")}.jpg" alt="" loading="lazy">`).join("")}</div>
-   <div><div class="eyebrow">${i("New · AI Studio","Novedad · AI Studio","新业务 · AI定制")}</div>
-   <h3 style="margin:10px 0 8px">${i("Need new content? We make AI series and films to order.","¿Necesitas contenido nuevo? Hacemos series y películas con IA a medida.","需要新内容？我们按需定制AI剧集与影片。")}</h3>
-   <p style="color:var(--ink-soft);font-size:15.5px;max-width:64ch">${i("150+ AI dramas already delivered for overseas platforms, in vertical and horizontal formats, with bilingual, English and textless versions. Our Guangzhou production base takes commissions from platforms, broadcasters and brands worldwide.","Más de 150 dramas con IA ya entregados a plataformas internacionales, en vertical y horizontal, en versión bilingüe, en inglés y sin texto. Nuestra base de producción en Cantón acepta encargos de plataformas, cadenas y marcas de todo el mundo.","已为海外平台交付150+部AI短剧，竖屏横屏皆可，提供双语、纯英与无字幕版本。广州制作基地承接全球平台、电视台与品牌的定制项目。")}</p>
-   <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap"><button class="btn sm gold" data-go="ai">${i("See our AI work","Ver nuestro trabajo con IA","查看AI作品")} →</button><button class="btn sm" data-contact="ai">${i("Commission a project","Encargar un proyecto","定制项目")}</button></div></div></div></div></section>`;
+  return `<section class="sec band aihome"><div class="wrap">
+   <div class="sec-head row"><div><div class="eyebrow">${i("AI Studio · made in China, at scale","AI Studio · producción a escala en China","AI工作室 · 中国规模化AI内容制作")}</div>
+    <h2 style="margin-top:12px">${i("We produce AI drama for the world.","Producimos drama con IA para todo el mundo.","我们为全球市场制作AI短剧。")}</h2>
+    <p class="lede" style="margin-top:12px">${i("150+ AI dramas delivered to overseas platforms from our Guangzhou production base, in vertical and horizontal formats, with bilingual, English and textless versions. Platforms, broadcasters and brands commission series and films from us.","Más de 150 dramas con IA entregados a plataformas internacionales desde nuestra base de producción en Cantón, en vertical y horizontal, en versión bilingüe, en inglés y sin texto. Plataformas, cadenas y marcas nos encargan series y películas.","广州制作基地已为海外平台交付150+部AI短剧，竖屏横屏皆可，提供双语、纯英与无字幕版本。全球平台、电视台与品牌向我们定制剧集与影片。")}</p></div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn gold" data-go="ai">${i("See all AI work","Ver todo el trabajo con IA","查看全部AI作品")} →</button><button class="btn" data-contact="ai">${i("Commission a project","Encargar un proyecto","定制项目")}</button></div></div>
+   ${reelCards()}${qualityNote()}</div></section>`;
 }
 function mechaBand(){
   const m=byId("mecha");
@@ -592,7 +594,7 @@ function render(){
   document.title="BELLOTA BLANCA";
 }
 document.addEventListener("click",e=>{
-  const t=e.target.closest("[data-go],[data-open],[data-ai],[data-jump],[data-mtab],[data-lang],[data-cat],[data-contact],[data-ctab],[data-close],[data-inq],[data-legal],[data-copy],[data-copy-pre],#burger,#f-reset,.scrim");
+  const t=e.target.closest("[data-go],[data-open],[data-ai],[data-reel],[data-jump],[data-mtab],[data-lang],[data-cat],[data-contact],[data-ctab],[data-close],[data-inq],[data-legal],[data-copy],[data-copy-pre],#burger,#f-reset,.scrim");
   if(!t)return;
   if(t.classList.contains("scrim")){if(e.target===t)closeModal();return}
   if(t.dataset.close!==undefined){closeModal();return}
@@ -601,6 +603,7 @@ document.addEventListener("click",e=>{
   if(t.dataset.go){closeModal();$("#nav")&&$("#nav").classList.remove("open");go(t.dataset.go);return}
   if(t.dataset.open){openTitle(t.dataset.open);return}
   if(t.dataset.ai){openAI(+t.dataset.ai);return}
+  if(t.dataset.reel){openReel(+t.dataset.reel);return}
   if(t.dataset.jump){e.preventDefault();const r=document.getElementById(t.dataset.jump);if(r)window.scrollTo({top:r.getBoundingClientRect().top+window.scrollY-90,behavior:"smooth"});return}
   if(t.dataset.mtab){mtab=t.dataset.mtab;closeModal();if(view!=="mechasia"){go("mechasia")}else{render()}return}
   if(t.dataset.contact){closeModal();contactTab=t.dataset.contact;go("contact");return}
