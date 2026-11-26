@@ -52,7 +52,7 @@ function reelCards(){
 function qualityNote(){
   return `<div class="qnote"><div><b>${i("Want this quality for your project, or a lighter-model option for a smaller budget?","¿Quieres esta calidad para tu proyecto o un modelo más ligero para un presupuesto menor?","想要同等质量，或用更低成本的模型版本控制预算？")}</b>
    <p>${i("Email us with your format, episode count and deadline, and we will quote both options: the same quality as these samples, and a lower-cost version made with lighter models.","Escríbenos con el formato, el número de episodios y el plazo, y te presupuestamos las dos opciones: la misma calidad que estas muestras y una versión más económica hecha con modelos más ligeros.","请发邮件告诉我们画幅、集数与工期，我们将分别报价：与样片同等质量的版本，以及使用轻量模型、成本更低的版本。")}</p></div>
-   <div class="qbtn"><a class="btn gold" href="mailto:${MAIL}?subject=${encodeURIComponent("AI production quote")}">${i("Email us","Escríbenos","发邮件给我们")} →</a><button class="btn" data-contact="ai">${i("Send a brief","Enviar un briefing","提交需求")}</button></div></div>`;
+   <div class="qbtn"><a class="btn gold" href="mailto:${MAIL_AI}?subject=${encodeURIComponent("AI production quote")}">${i("Email us","Escríbenos","发邮件给我们")} →</a><button class="btn" data-contact="ai">${i("Send a brief","Enviar un briefing","提交需求")}</button></div></div>`;
 }
 function openReel(n){
   const r=AI_REEL[n-1];if(!r)return;

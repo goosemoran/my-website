@@ -736,7 +736,7 @@ function reelCards(){
 function qualityNote(){
   return `<div class="qnote"><div><b>${i("Want this quality for your project, or a lighter-model option for a smaller budget?","¿Quieres esta calidad para tu proyecto o un modelo más ligero para un presupuesto menor?","想要同等质量，或用更低成本的模型版本控制预算？")}</b>
    <p>${i("Email us with your format, episode count and deadline, and we will quote both options: the same quality as these samples, and a lower-cost version made with lighter models.","Escríbenos con el formato, el número de episodios y el plazo, y te presupuestamos las dos opciones: la misma calidad que estas muestras y una versión más económica hecha con modelos más ligeros.","请发邮件告诉我们画幅、集数与工期，我们将分别报价：与样片同等质量的版本，以及使用轻量模型、成本更低的版本。")}</p></div>
-   <div class="qbtn"><a class="btn gold" href="mailto:${MAIL}?subject=${encodeURIComponent("AI production quote")}">${i("Email us","Escríbenos","发邮件给我们")} →</a><button class="btn" data-contact="ai">${i("Send a brief","Enviar un briefing","提交需求")}</button></div></div>`;
+   <div class="qbtn"><a class="btn gold" href="mailto:${MAIL_AI}?subject=${encodeURIComponent("AI production quote")}">${i("Email us","Escríbenos","发邮件给我们")} →</a><button class="btn" data-contact="ai">${i("Send a brief","Enviar un briefing","提交需求")}</button></div></div>`;
 }
 function openReel(n){
   const r=AI_REEL[n-1];if(!r)return;
@@ -850,7 +850,7 @@ const i=(en,es,zh)=>lang==="es"?es:lang==="zh"?zh:en;
 const pick=o=>o?(o[lang]||o.en||""):"";
 const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const $=s=>document.querySelector(s);
-const MAIL="distri-cicc@foxmail.com",MAIL2="moranproduction@foxmail.com",MAIL3="bellotablancafilm@gmail.com",WA="8613533059826",PHONE="+86 135 3305 9826";
+const MAIL="distribution@bellotablanca.aicic.vip",MAIL_AI="aicontent@bellotablanca.aicic.vip",MAIL_PROD="production@bellotablanca.aicic.vip",MAIL3="bellotablancafilm@gmail.com",MAILTO={buy:MAIL,submit:MAIL,ai:MAIL_AI,partner:MAIL_PROD},WA="8613533059826",PHONE="+86 135 3305 9826";
 const byId=id=>ITEMS.find(x=>x.id===id);
 
 /* ---------- vocab ---------- */
@@ -1060,8 +1060,8 @@ function vRights(){
 
 /* ---------- shared bands ---------- */
 const waLink=`https://wa.me/${WA}`;
-function contactLines(cls=""){
-  return `<div class="cline ${cls}"><a href="mailto:${MAIL}">${MAIL}</a><a href="mailto:${MAIL3}">${MAIL3}</a><a href="${waLink}" target="_blank" rel="noopener">WhatsApp ${PHONE}</a></div>`;
+function contactLines(cls="",m=MAIL){
+  return `<div class="cline ${cls}"><a href="mailto:${m}">${m}</a><a href="mailto:${MAIL3}">${MAIL3}</a><a href="${waLink}" target="_blank" rel="noopener">WhatsApp ${PHONE}</a></div>`;
 }
 function blBand(){
   const bl=ITEMS.filter(x=>x.id.startsWith("bl_")&&x.cats[0]==="drama");
@@ -1265,7 +1265,7 @@ function vMechasia(){
      <section class="sec"><div class="wrap"><div class="sec-head"><div class="eyebrow">${i("Trade information","Información comercial","贸易信息")}</div><h2>${i("Specifications at a glance.","Especificaciones de un vistazo.","规格一览。")}</h2></div>
       <div class="tbl-wrap"><table class="tbl"><thead><tr><th>${i("Item no.","Ref.","货号")}</th><th>${i("Character","Personaje","角色")}</th><th>${i("Alt. form","Forma alt.","第二形态")}</th><th>${i("Height","Altura","高度")}</th><th>${i("Pack size (mm)","Envase (mm)","彩盒尺寸 (mm)")}</th><th>${i("Pcs/ctn","Uds/caja","件/箱")}</th><th>${i("Carton (mm)","Caja (mm)","外箱 (mm)")}</th><th>m³</th><th>${i("Wave","Oleada","批次")}</th></tr></thead><tbody>${rows}</tbody></table></div>
       <p class="fine" style="margin-top:12px">${i("Prices, EAN / barcodes, weights and shipping terms on request.","Precios, EAN / códigos de barras, pesos y condiciones de envío bajo petición.","价格、EAN条码、重量与运输条款可按需提供。")}</p></div></section>
-     <section class="sec band"><div class="wrap"><div class="eyebrow">${i("Talk to us","Habla con nosotros","联系我们")}</div><h2 style="margin-top:10px">${i("Distributor, licensee or product developer?","¿Distribuidor, licenciatario o desarrollador de producto?","分销商、被授权方还是产品开发方？")}</h2><div style="margin-top:16px">${contactLines("on-dark")}</div><div style="margin-top:18px"><button class="btn gold" data-contact="partner">${i("Start a conversation","Iniciar conversación","开启合作")} →</button></div></div></section>`;
+     <section class="sec band"><div class="wrap"><div class="eyebrow">${i("Talk to us","Habla con nosotros","联系我们")}</div><h2 style="margin-top:10px">${i("Distributor, licensee or product developer?","¿Distribuidor, licenciatario o desarrollador de producto?","分销商、被授权方还是产品开发方？")}</h2><div style="margin-top:16px">${contactLines("on-dark")}</div><div style="margin-top:18px"><button class="btn gold" data-contact="buy">${i("Start a conversation","Iniciar conversación","开启合作")} →</button></div></div></section>`;
   }
   return hero+tabbar+body;
 }
@@ -1366,7 +1366,7 @@ function vContact(){
       <div class="tabs" style="margin-bottom:8px">${tabs.map(t=>`<button data-ctab="${t[0]}" aria-pressed="${contactTab===t[0]}">${t[1]}</button>`).join("")}</div>
       <p class="fine" style="margin-bottom:22px">${sub[contactTab]}</p>
       <div id="cform-host">${formHTML(contactTab,{})}</div></div>
-    <aside class="addr"><div><b>${i("Company","Empresa","公司")}</b>BELLOTA BLANCA FILM & PRODUCCIONES S.L.<br>白橡树电影制片公司</div><div><b>${i("Office","Oficina","办公地点")}</b>Madrid, Spain</div><div><b>${i("Sales & distribution","Ventas y distribución","销售与发行")}</b><span class="sel">${MAIL}</span> <button class="link" data-copy="${MAIL}" style="margin-left:8px">${i("Copy","Copiar","复制")}</button></div><div><b>${i("Founder & partnerships","Fundadora y alianzas","创始人与合作")}</b><span class="sel">${MAIL2}</span> <button class="link" data-copy="${MAIL2}" style="margin-left:8px">${i("Copy","Copiar","复制")}</button></div><div><b>${i("General enquiries","Consultas generales","综合咨询")}</b><span class="sel">${MAIL3}</span> <button class="link" data-copy="${MAIL3}" style="margin-left:8px">${i("Copy","Copiar","复制")}</button></div><div><b>WhatsApp</b><a href="${waLink}" target="_blank" rel="noopener" style="color:var(--gold-ink)">${PHONE}</a></div><div><b>${i("WeChat","WeChat","微信")}</b>363141461 · moranproduction</div><div><b>${i("Contact","Contacto","联系人")}</b>Moran 默然</div><div><b>${i("Languages","Idiomas","语言")}</b>English · Español · 中文</div></aside></div></div></section>`;
+    <aside class="addr"><div><b>${i("Company","Empresa","公司")}</b>BELLOTA BLANCA FILM & PRODUCCIONES S.L.<br>白橡树电影制片公司</div><div><b>${i("Office","Oficina","办公地点")}</b>Madrid, Spain</div><div><b>${i("Distribution","Distribución","发行业务")}</b><span class="sel">${MAIL}</span> <button class="link" data-copy="${MAIL}" style="margin-left:8px">${i("Copy","Copiar","复制")}</button></div><div><b>${i("Custom AI content","Contenido con IA a medida","AI内容定制")}</b><span class="sel">${MAIL_AI}</span> <button class="link" data-copy="${MAIL_AI}" style="margin-left:8px">${i("Copy","Copiar","复制")}</button></div><div><b>${i("Co-production","Coproducción","联合制作")}</b><span class="sel">${MAIL_PROD}</span> <button class="link" data-copy="${MAIL_PROD}" style="margin-left:8px">${i("Copy","Copiar","复制")}</button></div><div><b>${i("General enquiries","Consultas generales","综合咨询")}</b><span class="sel">${MAIL3}</span> <button class="link" data-copy="${MAIL3}" style="margin-left:8px">${i("Copy","Copiar","复制")}</button></div><div><b>WhatsApp</b><a href="${waLink}" target="_blank" rel="noopener" style="color:var(--gold-ink)">${PHONE}</a></div><div><b>${i("WeChat","WeChat","微信")}</b>363141461 · moranproduction</div><div><b>${i("Contact","Contacto","联系人")}</b>Moran 默然</div><div><b>${i("Languages","Idiomas","语言")}</b>English · Español · 中文</div></aside></div></div></section>`;
 }
 
 function footer(){
@@ -1374,7 +1374,7 @@ function footer(){
   <div><img src="img/logo.png" width="96" height="96" alt="BELLOTA BLANCA FILM & PRODUCCIONES S.L." style="display:block;margin-bottom:18px"><div class="tag">Connecting China, Spain and Latin America through Content & Rights.</div></div>
   <div><h4>${i("Explore","Explorar","导航")}</h4>${["catalogue","ai","animation","mechasia","network"].map(v=>`<button class="fl" data-go="${v}">${nav(v)}</button>`).join("")}</div>
   <div><h4>${i("Company","Empresa","公司")}</h4>${["coproduction","about","rights","contact"].map(v=>`<button class="fl" data-go="${v}">${nav(v)}</button>`).join("")}${["Privacy Policy","Cookie Policy","Legal Notice","Terms of Use"].map((x,k)=>`<button class="fl" data-legal="${k}">${[i("Privacy Policy","Política de privacidad","隐私政策"),i("Cookie Policy","Política de cookies","Cookie政策"),i("Legal Notice","Aviso legal","法律声明"),i("Terms of Use","Condiciones de uso","使用条款")][k]}</button>`).join("")}</div></div>
-  <p class="fine">© BELLOTA BLANCA FILM & PRODUCCIONES S.L. · Madrid, Spain · ${MAIL} · ${MAIL3} · WhatsApp ${PHONE}<br>${i("Titles, artwork and trademarks belong to their respective owners. Availability is indicative and subject to contract.","Los títulos, imágenes y marcas pertenecen a sus respectivos titulares. La disponibilidad es orientativa y está sujeta a contrato.","作品、图片与商标归各自权利人所有。授权情况仅供参考，以合同为准。")}</p></div></footer>`;
+  <p class="fine">© BELLOTA BLANCA FILM & PRODUCCIONES S.L. · Madrid, Spain · ${MAIL} · ${MAIL_AI} · ${MAIL_PROD} · ${MAIL3} · WhatsApp ${PHONE}<br>${i("Titles, artwork and trademarks belong to their respective owners. Availability is indicative and subject to contract.","Los títulos, imágenes y marcas pertenecen a sus respectivos titulares. La disponibilidad es orientativa y está sujeta a contrato.","作品、图片与商标归各自权利人所有。授权情况仅供参考，以合同为准。")}</p></div></footer>`;
 }
 
 /* ---------- detail modal ---------- */
@@ -1417,7 +1417,7 @@ function closeModal(){const m=$("#modal");if(m){m.remove();document.body.style.o
 function openLegal(k){
   const names=[i("Privacy Policy","Política de privacidad","隐私政策"),i("Cookie Policy","Política de cookies","Cookie政策"),i("Legal Notice","Aviso legal","法律声明"),i("Terms of Use","Condiciones de uso","使用条款")];
   const el=document.createElement("div");el.className="scrim";el.id="modal";el.setAttribute("role","dialog");el.setAttribute("aria-modal","true");
-  el.innerHTML=`<div class="panel" style="width:min(560px,100%)"><button class="x" data-close aria-label="Close">×</button><div style="padding:34px"><div class="eyebrow">BELLOTA BLANCA</div><h2 style="font-size:28px;margin:10px 0 14px">${names[k]}</h2><p style="color:var(--ink-soft)">${i("The final text is supplied by legal counsel before launch and covers EU data protection (GDPR) and cookie requirements. Questions in the meantime:","La asesoría jurídica redactará el texto definitivo antes del lanzamiento; cubrirá la protección de datos de la UE (RGPD) y los requisitos de cookies. Mientras tanto:","正式文本将在上线前由法律顾问提供，涵盖欧盟数据保护（GDPR）与Cookie要求。在此之前如有疑问：")} <b class="mono">${MAIL}</b></p></div></div>`;
+  el.innerHTML=`<div class="panel" style="width:min(560px,100%)"><button class="x" data-close aria-label="Close">×</button><div style="padding:34px"><div class="eyebrow">BELLOTA BLANCA</div><h2 style="font-size:28px;margin:10px 0 14px">${names[k]}</h2><p style="color:var(--ink-soft)">${i("The final text is supplied by legal counsel before launch and covers EU data protection (GDPR) and cookie requirements. Questions in the meantime:","La asesoría jurídica redactará el texto definitivo antes del lanzamiento; cubrirá la protección de datos de la UE (RGPD) y los requisitos de cookies. Mientras tanto:","正式文本将在上线前由法律顾问提供，涵盖欧盟数据保护（GDPR）与Cookie要求。在此之前如有疑问：")} <b class="mono">${MAIL3}</b></p></div></div>`;
   document.body.appendChild(el);document.body.style.overflow="hidden";el.querySelector(".x").focus();
 }
 
@@ -1440,8 +1440,8 @@ function handleSubmit(form){
   if(kind==="ai"){["q-type","q-info","q-langs","q-terr","q-dead"].forEach((k,n)=>{if(g(k))L.push(`${["Project type","Format / episodes","Languages","Target market","Deadline / budget"][n]}: ${g(k)}`)})}
   if(kind==="partner"&&g("q-type"))L.push(`Organisation type: ${g("q-type")}`);
   if(g("q-msg"))L.push("","Message:",g("q-msg"));
-  const body=L.join("\n");const subj=head+(g("q-title")?" — "+g("q-title"):"");
-  out.innerHTML=`<div class="result"><b style="font-family:var(--display);font-size:20px">${i("Your inquiry is ready to send","Tu consulta está lista para enviar","您的询价已生成")}</b><p class="fine">${i("Your message has not been sent yet. Copy it or open it in your mail app, then send it to","Tu mensaje aún no se ha enviado. Cópialo o ábrelo en tu aplicación de correo y envíalo a","内容尚未发送。请复制或在邮件应用中打开，然后发送至")} <b>${MAIL}</b>.</p><pre id="inq-text">${esc(body)}</pre><div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn sm gold" type="button" data-copy-pre>${i("Copy message","Copiar mensaje","复制内容")}</button><a class="btn sm" href="mailto:${MAIL}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}">${i("Open in mail app","Abrir en correo","在邮件应用中打开")}</a></div></div>`;
+  const to=MAILTO[kind]||MAIL;const body=L.join("\n");const subj=head+(g("q-title")?" — "+g("q-title"):"");
+  out.innerHTML=`<div class="result"><b style="font-family:var(--display);font-size:20px">${i("Your inquiry is ready to send","Tu consulta está lista para enviar","您的询价已生成")}</b><p class="fine">${i("Your message has not been sent yet. Copy it or open it in your mail app, then send it to","Tu mensaje aún no se ha enviado. Cópialo o ábrelo en tu aplicación de correo y envíalo a","内容尚未发送。请复制或在邮件应用中打开，然后发送至")} <b>${to}</b>.</p><pre id="inq-text">${esc(body)}</pre><div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn sm gold" type="button" data-copy-pre>${i("Copy message","Copiar mensaje","复制内容")}</button><a class="btn sm" href="mailto:${to}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}">${i("Open in mail app","Abrir en correo","在邮件应用中打开")}</a></div></div>`;
   out.scrollIntoView({block:"nearest",behavior:"smooth"});
 }
 function copyText(t,btn){

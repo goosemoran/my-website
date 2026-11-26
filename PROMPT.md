@@ -259,8 +259,10 @@
 
 ## 6. 联系信息（固定写法）
 
-- Sales & distribution：`distri-cicc@foxmail.com`
-- Founder & partnerships：`moranproduction@foxmail.com`
+- Distribution：`distribution@bellotablanca.aicic.vip`
+- Custom AI content：`aicontent@bellotablanca.aicic.vip`
+- Co-production：`production@bellotablanca.aicic.vip`
+- General enquiries：`bellotablancafilm@gmail.com`
 - WhatsApp：`+86 135 3305 9826`（链接 `https://wa.me/8613533059826`）
 - WeChat：`moranproduction`
 - Office：Madrid, Spain
