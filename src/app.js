@@ -11,7 +11,7 @@ const i=(en,es,zh)=>lang==="es"?es:lang==="zh"?zh:en;
 const pick=o=>o?(o[lang]||o.en||""):"";
 const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const $=s=>document.querySelector(s);
-const MAIL="distribution@bellotablanca.aicic.vip",MAIL_AI="aicontent@bellotablanca.aicic.vip",MAIL_PROD="production@bellotablanca.aicic.vip",MAIL3="bellotablancafilm@gmail.com",MAILTO={buy:MAIL,submit:MAIL,ai:MAIL_AI,partner:MAIL_PROD},WA="8613533059826",PHONE="+86 135 3305 9826";
+const MAIL="distri@bellotablanca.aicic.vip",MAIL_AI="aicontent@bellotablanca.aicic.vip",MAIL_PROD="production@bellotablanca.aicic.vip",MAIL3="bellotablancafilm@gmail.com",MAILTO={buy:MAIL,submit:MAIL,ai:MAIL_AI,partner:MAIL_PROD},WA="8613533059826",PHONE="+86 135 3305 9826";
 const byId=id=>ITEMS.find(x=>x.id===id);
 
 /* ---------- vocab ---------- */

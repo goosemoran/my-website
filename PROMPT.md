@@ -259,7 +259,7 @@
 
 ## 6. 联系信息（固定写法）
 
-- Distribution：`distribution@bellotablanca.aicic.vip`
+- Distribution：`distri@bellotablanca.aicic.vip`
 - Custom AI content：`aicontent@bellotablanca.aicic.vip`
 - Co-production：`production@bellotablanca.aicic.vip`
 - General enquiries：`bellotablancafilm@gmail.com`
